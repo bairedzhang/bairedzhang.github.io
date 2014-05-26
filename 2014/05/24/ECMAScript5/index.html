@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>es5新增方法简单整理 | bairedzhang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="article" property="og:type">
+<meta content="es5新增方法简单整理" property="og:title">
+<meta content="http://bairedzhang.github.io/2014/05/24/ECMAScript5/" property="og:url">
+<meta content="http://10.10.52.199/sohuhd/tv/raw/master/doc/img/ECMAScript5_mmd.jpeg" property="og:image">
+<meta content="bairedzhang" property="og:site_name">
+<meta content="ECMAScript5 新增方法
+
+描述：本文档针对ECMAScript5扩展Array、String、Date、Function、Object、JSON的内容进行介绍提纲：
+参考链接：http://kangax.github.io/es5-compat-table/http://www.zhangxinxu.com/wordpress/2012/01/introducing-ecmascript" property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="bairedzhang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bairedzhang</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://bairedzhang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ECMAScript5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/ECMAScript5/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      es5新增方法简单整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ECMAScript5_新增方法">ECMAScript5 新增方法</h1>
+<hr>
+<p>描述：<br>本文档针对ECMAScript5扩展Array、String、Date、Function、Object、JSON的内容进行介绍<br>提纲：<br><img src="http://10.10.52.199/sohuhd/tv/raw/master/doc/img/ECMAScript5_mmd.jpeg" alt="outline"></p>
+<p>参考链接：<br><a href="http://kangax.github.io/es5-compat-table/" target="_blank">http://kangax.github.io/es5-compat-table/</a><br><a href="http://www.zhangxinxu.com/wordpress/2012/01/introducing-ecmascript-5-1/" target="_blank">http://www.zhangxinxu.com/wordpress/2012/01/introducing-ecmascript-5-1/</a><br><a href="http://msdn.microsoft.com/zh-cn/library/htbw4ywd(v=vs.94).aspx" target="_blank">http://msdn.microsoft.com/zh-cn/library/htbw4ywd(v=vs.94).aspx</a></p>
+<h1 id="Array"><a href="">Array</a></h1>
+<hr>
+<h4 id="Array-isArray"><a href="">Array.isArray</a></h4>
+<p><strong>描述：</strong><br>确定对象是否为数组。</p>
+<p><strong>参数：</strong><br>object必需。 要测试的对象。</p>
+<p><strong>备注：</strong><br>虽然instanceof 也能用于类型判断，但只适用于简单情况；多窗口情况下可能造成，一个对象将不可能是另外窗体中的构造函数实例，这样的混淆会造成instanceof不可靠。</p>
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.isArray
+ * 备注：虽然instanceof 也能用于类型判断，但只适用于简单情况；多窗口情况下可能造成，一个对象将不可能是另外窗体中的构造函数实例，这样的混淆会造成instanceof不可靠
+ * @uesd : 《javascript权威指南(第6版)》 P161
+ * **/</span>
+<span class="built_in">Array</span>.isArray = <span class="built_in">Array</span>.isArray || <span class="function"><span class="keyword">function</span><span class="params">(o)</span>{</span>
+    <span class="keyword">return</span> <span class="keyword">typeof</span> o === <span class="string">"object"</span> && <span class="built_in">Object</span>.prototype.toString.call(o) === <span class="string">"[object Array]"</span>;
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="查询相关API"><a href="">查询相关API</a></h3>
+<hr>
+<h4 id="Array-prototype-indexOf"><a href="">Array.prototype.indexOf</a></h4>
+<p><strong>描述：</strong><br>返回某个值在数组中的第一个匹配项的索引。</p>
+<p><strong>参数：</strong><br>array1.indexOf(searchElement[, fromIndex])</p>
+<p>array1必需。 一个数组对象。<br>searchElement必需。 要在 array1 中定位的值。<br>fromIndex可选。 用于开始搜索的数组索引。 如果省略 fromIndex，则从索引 0 处开始搜索。支持负数，即从倒数第n向后找</p>
+<p><strong>返回值：</strong><br>数组中的 searchElement 的第一个匹配项的索引；如果未找到 searchElement，则为 -1。</p>
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.indexOf
+ * arr.indexOf(searchElement[, fromIndex])
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *        https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.indexOf.js
+ *        https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.indexOf) {
+    <span class="built_in">Array</span>.prototype.indexOf = <span class="function"><span class="keyword">function</span> <span class="params">(searchElement, fromIndex)</span> {</span>
+        <span class="keyword">if</span> ( <span class="keyword">this</span> === <span class="literal">undefined</span> || <span class="keyword">this</span> === <span class="literal">null</span> ) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>( <span class="string">'"this" is null or not defined'</span> );
+        }
+
+        <span class="keyword">var</span> length = <span class="keyword">this</span>.length &gt;&gt;&gt; <span class="number">0</span>; <span class="comment">// Hack to convert object.length to a UInt32</span>
+
+        fromIndex = +fromIndex || <span class="number">0</span>;
+
+        <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(fromIndex) === <span class="literal">Infinity</span>) {
+            fromIndex = <span class="number">0</span>;
+        }
+
+        <span class="keyword">if</span> (fromIndex &lt; <span class="number">0</span>) {
+            fromIndex += length;
+            <span class="keyword">if</span> (fromIndex &lt; <span class="number">0</span>) {
+                fromIndex = <span class="number">0</span>;
+            }
+        }
+
+        <span class="keyword">for</span> (;fromIndex &lt; length; fromIndex++) {
+            <span class="keyword">if</span> (<span class="keyword">this</span>[fromIndex] === searchElement) {
+                <span class="keyword">return</span> fromIndex;
+            }
+        }
+
+        <span class="keyword">return</span> -<span class="number">1</span>;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<h4 id="Array-prototype-lastIndexOf"><a href="">Array.prototype.lastIndexOf</a></h4>
+<p><strong>描述：</strong><br>返回指定的值在数组中的最后一个匹配项的索引。</p>
+<p><strong>参数：</strong><br>array1.lastIndexOf(searchElement[, fromIndex])<br>array1必需。 一个数组对象。<br>searchElement必需。 要在 array1 中定位的值。<br>fromIndex可选。 用于开始搜索的数组索引。 如果省略 fromIndex，则搜索将从数组中的最后一个索引处开始。</p>
+<p><strong>返回值：</strong><br>数组中的 searchElement 的最后一个匹配项的索引；如果未找到 searchElement，则为 -1。</p>
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.lastIndexOf
+ * array1.lastIndexOf(searchElement[, fromIndex])
+ * @used : https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.lastIndexOf.jsh
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+ *        https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.lastIndexOf)
+{
+    <span class="built_in">Array</span>.prototype.lastIndexOf = <span class="function"><span class="keyword">function</span><span class="params">(searchElement <span class="comment">/*, fromIndex*/</span>)</span>
+    {</span>
+<span class="pi">        "use strict"</span>;
+
+        <span class="keyword">if</span> (<span class="keyword">this</span> == <span class="literal">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> t = <span class="built_in">Object</span>(<span class="keyword">this</span>);
+        <span class="keyword">var</span> len = t.length &gt;&gt;&gt; <span class="number">0</span>;
+        <span class="keyword">if</span> (len === <span class="number">0</span>)
+            <span class="keyword">return</span> -<span class="number">1</span>;
+
+        <span class="keyword">var</span> n = len;
+        <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &gt; <span class="number">1</span>)
+        {
+            n = <span class="built_in">Number</span>(<span class="built_in">arguments</span>[<span class="number">1</span>]);
+            <span class="keyword">if</span> (n != n)
+                n = <span class="number">0</span>;
+            <span class="keyword">else</span> <span class="keyword">if</span> (n != <span class="number">0</span> && n != <span class="literal">Infinity</span> && n != -<span class="literal">Infinity</span>)
+                n = (n &gt; <span class="number">0</span> || -<span class="number">1</span>) * <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.abs(n));
+        }
+
+        <span class="keyword">var</span> k = n &gt;= <span class="number">0</span>  ? <span class="built_in">Math</span>.min(n, len - <span class="number">1</span>) : len - <span class="built_in">Math</span>.abs(n);
+
+        <span class="keyword">for</span> (; k &gt;= <span class="number">0</span>; k--){
+            <span class="keyword">if</span> (k <span class="keyword">in</span> t && t[k] === searchElement)
+                <span class="keyword">return</span> k;
+        }
+        <span class="keyword">return</span> -<span class="number">1</span>;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="判断相关API"><a href="">判断相关API</a></h3>
+<hr>
+<h4 id="Array-prototype-every"><a href="">Array.prototype.every</a></h4>
+<p><strong>描述：</strong><br>确定数组的所有成员是否满足指定的测试。</p>
+<p><strong>参数：</strong><br>array1.every(callbackfn[, thisArg])<br>array1必需。 一个数组对象。<br>callbackfn必需。callback(value, index, array) 一个接受最多三个参数的函数。 every 方法会为 array1 中的每个元素调用 callbackfn 函数，直到 callbackfn 返回 false，或直到到达数组的结尾。<br>thisArg可选。 可在 callbackfn 函数中为其引用 this 关键字的对象。 如果省略 thisArg，则 undefined 将用作 this 值。</p>
+<p><strong>回调函数语法</strong><br>function callbackfn(value, index, array1)可使用最多三个参数来声明回调函数。</p>
+<ul>
+<li>value数组元素的值。</li>
+<li>index数组元素的数字索引。</li>
+<li>array1包含该元素的数组对象。</li>
+</ul>
+<p><strong>返回值：</strong><br>如果 callbackfn 函数为所有数组元素返回 true，则为 true；否则为 false。 如果数组没有元素，则 every 方法将返回 true。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">isBigEnough</span><span class="params">(element, index, array)</span> {</span>
+  <span class="keyword">return</span> (element &gt;= <span class="number">10</span>);
+}
+<span class="keyword">var</span> passed = [<span class="number">12</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">130</span>, <span class="number">44</span>].every(isBigEnough);
+<span class="comment">// passed is false</span>
+passed = [<span class="number">12</span>, <span class="number">54</span>, <span class="number">18</span>, <span class="number">130</span>, <span class="number">44</span>].every(isBigEnough);
+<span class="comment">// passed is true</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.every
+ * array1.every(callbackfn[, thisArg])
+ * @used : https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.every.js
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+ *       https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.every)
+{
+    <span class="built_in">Array</span>.prototype.every = <span class="function"><span class="keyword">function</span><span class="params">(callbackfn <span class="comment">/*, thisArg */</span>)</span>
+    {</span>
+<span class="pi">        'use strict'</span>;
+
+        <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="keyword">void</span> <span class="number">0</span> || <span class="keyword">this</span> === <span class="literal">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> t = <span class="built_in">Object</span>(<span class="keyword">this</span>);
+        <span class="keyword">var</span> len = t.length &gt;&gt;&gt; <span class="number">0</span>;
+        <span class="keyword">if</span> (<span class="keyword">typeof</span> callbackfn !== <span class="string">'function'</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> thisArg = <span class="built_in">arguments</span>.length &gt;= <span class="number">2</span> ? <span class="built_in">arguments</span>[<span class="number">1</span>] : <span class="keyword">void</span> <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)
+        {
+            <span class="keyword">if</span> (i <span class="keyword">in</span> t && !callbackfn.call(thisArg, t[i], i, t))
+                <span class="keyword">return</span> <span class="literal">false</span>;
+        }
+
+        <span class="keyword">return</span> <span class="literal">true</span>;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<h4 id="Array-prototype-some"><a href="">Array.prototype.some</a></h4>
+<p><strong>描述：</strong><br>有任意元素满足回调函数条件则返回 true。</p>
+<p><strong>参数：</strong><br>array1.some(callbackfn[, thisArg])<br>array1必需。 一个数组对象。<br>callbackfn必需。 一个接受最多三个参数的函数。 every 方法会为 array1 中的每个元素调用 callbackfn 函数，直到 callbackfn 返回 false，或直到到达数组的结尾。<br>thisArg可选。 可在 callbackfn 函数中为其引用 this 关键字的对象。 如果省略 thisArg，则 undefined 将用作 this 值。</p>
+<p><strong>回调函数语法</strong><br>function callbackfn(value, index, array1)可使用最多三个参数来声明回调函数。</p>
+<ul>
+<li>value数组元素的值。</li>
+<li>index数组元素的数字索引。</li>
+<li>array1包含该元素的数组对象。</li>
+</ul>
+<p><strong>返回值：</strong><br>如果 callbackfn 函数为任何数组元素均返回 true，则为 true；否则为 false。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>];
+a.some(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span> <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>; }) <span class="comment">// =&gt; true : 存在元素是偶数</span>
+a.some(<span class="built_in">isNaN</span>); <span class="comment">// =&gt; false ： a不包含非数值元素</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.some
+ * array1.some(callbackfn[, thisArg])
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *       https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.some.js
+ *       https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.some)
+{
+    <span class="built_in">Array</span>.prototype.some = <span class="function"><span class="keyword">function</span><span class="params">(callbackfn <span class="comment">/*, thisArg */</span>)</span>
+    {</span>
+<span class="pi">        'use strict'</span>;
+
+        <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="keyword">void</span> <span class="number">0</span> || <span class="keyword">this</span> === <span class="literal">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> t = <span class="built_in">Object</span>(<span class="keyword">this</span>);
+        <span class="keyword">var</span> len = t.length &gt;&gt;&gt; <span class="number">0</span>;
+        <span class="keyword">if</span> (<span class="keyword">typeof</span> callbackfn !== <span class="string">'function'</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> thisArg = <span class="built_in">arguments</span>.length &gt;= <span class="number">2</span> ? <span class="built_in">arguments</span>[<span class="number">1</span>] : <span class="keyword">void</span> <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)
+        {
+            <span class="keyword">if</span> (i <span class="keyword">in</span> t && callbackfn.call(thisArg, t[i], i, t))
+                <span class="keyword">return</span> <span class="literal">true</span>;
+        }
+
+        <span class="keyword">return</span> <span class="literal">false</span>;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="遍历相关API"><a href="">遍历相关API</a></h3>
+<hr>
+<h4 id="Array-prototype-forEach"><a href="">Array.prototype.forEach</a></h4>
+<p><strong>描述：</strong><br>为数组中的每个元素执行指定操作。</p>
+<p><strong>参数：</strong><br>array1.forEach(callbackfn[, thisArg])<br>array1必需。 一个数组对象。<br>callbackfn必需。 一个接受最多三个参数的函数。 对于数组中的每个元素，forEach 都会调用 callbackfn 函数一次。<br>thisArg可选。 可在 callbackfn 函数中为其引用 this 关键字的对象。 如果省略 thisArg，则 undefined 将用作 this 值。</p>
+<p><strong>回调函数语法</strong><br>function callbackfn(value, index, array1)可使用最多三个参数来声明回调函数。</p>
+<ul>
+<li>value数组元素的值。</li>
+<li>index数组元素的数字索引。</li>
+<li>array1包含该元素的数组对象。</li>
+</ul>
+<p><strong>备注</strong><br>对于数组中的每个元素，forEach 方法都会调用 callbackfn 函数一次（采用升序索引顺序）。 数组中缺少的元素不会调用该回调函数。除了数组对象之外，forEach 方法可由具有 length 属性且具有已按数字编制索引的属性名的任何对象使用。</p>
+<p><strong>修改数组对象</strong><br>forEach 方法不直接修改原始数组，但回调函数可能会修改它。 下表描述了在 forEach 方法启动后修改数组对象所获得的结果。</p>
+<table>
+<thead>
+<tr>
+<th>forEach 方法启动后的条件</th>
+<th>元素是否传递给回调函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在数组的原始长度之外添加元素。</td>
+<td>否。</td>
+</tr>
+<tr>
+<td>添加元素以填充数组中缺少的元素。</td>
+<td>是，如果该索引尚未传递给回调函数。</td>
+</tr>
+<tr>
+<td>元素被更改。</td>
+<td>是，如果该元素尚未传递给回调函数。</td>
+</tr>
+<tr>
+<td>从数组中删除元素。</td>
+<td>否，除非该元素已传递给回调函数。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="keyword">var</span> numbers = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>];
+<span class="keyword">var</span> sum = <span class="number">0</span>;
+numbers.forEach(
+    <span class="function"><span class="keyword">function</span> <span class="title">addNumber</span><span class="params">(value)</span> {</span> sum += value; }
+);
+
+document.write(sum);
+<span class="comment">// Output: 33</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.forEach
+ * array1.forEach(callbackfn[, thisArg])
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *       https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.forEach.js
+ *       https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.forEach)
+{
+    <span class="built_in">Array</span>.prototype.forEach = <span class="function"><span class="keyword">function</span><span class="params">(callbackfn <span class="comment">/*, thisArg */</span>)</span>
+    {</span>
+<span class="pi">        "use strict"</span>;
+
+        <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="keyword">void</span> <span class="number">0</span> || <span class="keyword">this</span> === <span class="literal">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> t = <span class="built_in">Object</span>(<span class="keyword">this</span>);
+        <span class="keyword">var</span> len = t.length &gt;&gt;&gt; <span class="number">0</span>;
+        <span class="keyword">if</span> (<span class="keyword">typeof</span> callbackfn !== <span class="string">"function"</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> thisArg = <span class="built_in">arguments</span>.length &gt;= <span class="number">2</span> ? <span class="built_in">arguments</span>[<span class="number">1</span>] : <span class="keyword">void</span> <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)
+        {
+            <span class="keyword">if</span> (i <span class="keyword">in</span> t)
+                callbackfn.call(thisArg, t[i], i, t);
+        }
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<h4 id="Array-prototype-map"><a href="">Array.prototype.map</a></h4>
+<p><strong>描述：</strong><br>对数组的每个元素调用定义的回调函数，并返回包含结果的新数组。</p>
+<p><strong>参数：</strong><br>array1.forEach(callbackfn[, thisArg])<br>array1必需。 一个数组对象。<br>callbackfn必需。 一个接受最多三个参数的函数。 对于数组中的每个元素，forEach 都会调用 callbackfn 函数一次。<br>thisArg可选。 可在 callbackfn 函数中为其引用 this 关键字的对象。 如果省略 thisArg，则 undefined 将用作 this 值。</p>
+<p><strong>返回值：</strong><br>与原始数组每一项有关联的，经过回调函数处理的新数组</p>
+<p><strong>回调函数语法</strong><br>function callbackfn(value, index, array1)可使用最多三个参数来声明回调函数。</p>
+<ul>
+<li>value数组元素的值。</li>
+<li>index数组元素的数字索引。</li>
+<li>array1包含该元素的数组对象。</li>
+</ul>
+<p><strong>备注</strong><br>对于数组中的每个元素，map 方法都会调用 callbackfn 函数一次（采用升序索引顺序）。 不为数组中缺少的元素调用该回调函数。除了数组对象之外，map 方法可由具有 length 属性且具有已按数字编制索引的属性名的任何对象使用。</p>
+<p><strong>修改数组对象</strong><br>map 方法不直接修改原始数组，但回调函数可能会修改它。 下表描述了在 map 方法启动后修改数组对象所获得的结果。</p>
+<table>
+<thead>
+<tr>
+<th>map 方法启动后的条件</th>
+<th>元素是否传递给回调函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在数组的原始长度之外添加元素。</td>
+<td>否。</td>
+</tr>
+<tr>
+<td>添加元素以填充数组中缺少的元素。</td>
+<td>是，如果该索引尚未传递给回调函数。</td>
+</tr>
+<tr>
+<td>元素被更改。</td>
+<td>是，如果该元素尚未传递给回调函数。</td>
+</tr>
+<tr>
+<td>从数组中删除元素。</td>
+<td>否，除非该元素已传递给回调函数。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="comment">// Apply Math.sqrt(value) to each element in an array.</span>
+<span class="keyword">var</span> numbers = [<span class="number">9</span>, <span class="number">16</span>];
+<span class="keyword">var</span> result = numbers.map(<span class="built_in">Math</span>.sqrt);
+
+document.write(result);
+<span class="comment">// Output: 3,4</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.map
+ * array1.for(callbackfn[, thisArg])
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *       https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.map.js
+ *       https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.map)
+{
+    <span class="built_in">Array</span>.prototype.map = <span class="function"><span class="keyword">function</span><span class="params">(callbackfn <span class="comment">/*, thisArg */</span>)</span>
+    {</span>
+<span class="pi">        "use strict"</span>;
+
+        <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="keyword">void</span> <span class="number">0</span> || <span class="keyword">this</span> === <span class="literal">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> t = <span class="built_in">Object</span>(<span class="keyword">this</span>);
+        <span class="keyword">var</span> len = t.length &gt;&gt;&gt; <span class="number">0</span>;
+        <span class="keyword">if</span> (<span class="keyword">typeof</span> callbackfn !== <span class="string">"function"</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> res = <span class="keyword">new</span> <span class="built_in">Array</span>(len);
+        <span class="keyword">var</span> thisArg = <span class="built_in">arguments</span>.length &gt;= <span class="number">2</span> ? <span class="built_in">arguments</span>[<span class="number">1</span>] : <span class="keyword">void</span> <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)
+        {
+            <span class="comment">// NOTE: Absolute correctness would demand Object.defineProperty</span>
+            <span class="comment">//       be used.  But this method is fairly new, and failure is</span>
+            <span class="comment">//       possible only if Object.prototype or Array.prototype</span>
+            <span class="comment">//       has a property |i| (very unlikely), so use a less-correct</span>
+            <span class="comment">//       but more portable alternative.</span>
+            <span class="keyword">if</span> (i <span class="keyword">in</span> t)
+                res[i] = callbackfn.call(thisArg, t[i], i, t);
+        }
+
+        <span class="keyword">return</span> res;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="筛选API"><a href="">筛选API</a></h3>
+<hr>
+<h4 id="Array-prototype-filter"><a href="">Array.prototype.filter</a></h4>
+<p><strong>描述：</strong></p>
+<p>返回数组中的满足回调函数中指定的条件的元素。</p>
+<p><strong>参数：</strong><br>array1.filter(callbackfn[, thisArg])<br>array1必需。 一个数组对象。<br>callbackfn必需。 一个接受最多三个参数的函数。 对于数组中的每个元素，filter 方法都会调用 callbackfn 函数一次。<br>thisArg可选。 可在 callbackfn 函数中为其引用 this 关键字的对象。 如果省略 thisArg，则 undefined 将用作 this 值。</p>
+<p><strong>返回值：</strong><br>一个包含回调函数为其返回 true 的所有值的新数组。 如果回调函数为 array1 的所有元素返回 false，则新数组的长度为 0。</p>
+<p><strong>回调函数语法</strong><br>function callbackfn(value, index, array1)可使用最多三个参数来声明回调函数。</p>
+<ul>
+<li>value数组元素的值。</li>
+<li>index数组元素的数字索引。</li>
+<li>array1包含该元素的数组对象。</li>
+</ul>
+<p><strong>备注</strong><br>对于数组中的每个元素，map 方法都会调用 callbackfn 函数一次（采用升序索引顺序）。 不为数组中缺少的元素调用该回调函数。除了数组对象之外，map 方法可由具有 length 属性且具有已按数字编制索引的属性名的任何对象使用。</p>
+<p><strong>修改数组对象</strong><br>filter 方法不直接修改原始数组，但回调函数可能会修改它。 下表描述了在 filter 方法启动后修改数组对象所获得的结果。</p>
+<table>
+<thead>
+<tr>
+<th>filter 方法启动后的条件</th>
+<th>元素是否传递给回调函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在数组的原始长度之外添加元素。</td>
+<td>否。</td>
+</tr>
+<tr>
+<td>添加元素以填充数组中缺少的元素。</td>
+<td>是，如果该索引尚未传递给回调函数。</td>
+</tr>
+<tr>
+<td>元素被更改。</td>
+<td>是，如果该元素尚未传递给回调函数。</td>
+</tr>
+<tr>
+<td>从数组中删除元素。</td>
+<td>否，除非该元素已传递给回调函数。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>
+<span class="keyword">var</span> arr = [<span class="number">5</span>, <span class="string">"element"</span>, <span class="number">10</span>, <span class="string">"the"</span>, <span class="literal">true</span>];
+<span class="keyword">var</span> result = arr.filter(
+    <span class="function"><span class="keyword">function</span> <span class="params">(value)</span> {</span>
+        <span class="keyword">return</span> (<span class="keyword">typeof</span> value === <span class="string">'string'</span>);
+    }
+);
+
+document.write(result);
+<span class="comment">// Output: element, the</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.filter
+ * array1.filter(callbackfn[, thisArg])
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *       https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.filter.js
+ *       https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.filter)
+{
+    <span class="built_in">Array</span>.prototype.filter = <span class="function"><span class="keyword">function</span><span class="params">(fun <span class="comment">/*, thisArg */</span>)</span>
+    {</span>
+<span class="pi">        "use strict"</span>;
+
+        <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="keyword">void</span> <span class="number">0</span> || <span class="keyword">this</span> === <span class="literal">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> t = <span class="built_in">Object</span>(<span class="keyword">this</span>);
+        <span class="keyword">var</span> len = t.length &gt;&gt;&gt; <span class="number">0</span>;
+        <span class="keyword">if</span> (<span class="keyword">typeof</span> fun != <span class="string">"function"</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();
+
+        <span class="keyword">var</span> res = [];
+        <span class="keyword">var</span> thisArg = <span class="built_in">arguments</span>.length &gt;= <span class="number">2</span> ? <span class="built_in">arguments</span>[<span class="number">1</span>] : <span class="keyword">void</span> <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)
+        {
+            <span class="keyword">if</span> (i <span class="keyword">in</span> t)
+            {
+                <span class="keyword">var</span> val = t[i];
+
+                <span class="comment">// NOTE: Technically this should Object.defineProperty at</span>
+                <span class="comment">//       the next index, as push can be affected by</span>
+                <span class="comment">//       properties on Object.prototype and Array.prototype.</span>
+                <span class="comment">//       But that method's new, and collisions should be</span>
+                <span class="comment">//       rare, so use the more-compatible alternative.</span>
+                <span class="keyword">if</span> (fun.call(thisArg, val, i, t))
+                    res.push(val);
+            }
+        }
+
+        <span class="keyword">return</span> res;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="将元素组合API"><a href="">将元素组合API</a></h3>
+<hr>
+<h4 id="Array-prototype-reduce"><a href="">Array.prototype.reduce</a></h4>
+<p><strong>描述：</strong><br>对数组中的所有元素调用指定的回调函数。 该回调函数的返回值为累积结果，并且此返回值在下一次调用该回调函数时作为参数提供。</p>
+<p><strong>参数：</strong><br>array1.reduce(callbackfn[, initialValue])<br>array1必需。 一个数组对象。<br>callbackfn必需。 一个接受最多四个参数的函数。 对于数组中的每个元素，reduce 方法都会调用 callbackfn 函数一次。<br>initialValue可选。 如果指定 initialValue，则它将用作初始值来启动累积。 第一次调用 callbackfn 函数会将此值作为参数而非数组值提供。</p>
+<p><strong>返回值：</strong><br>通过最后一次调用回调函数获得的累积结果。</p>
+<p><strong>备注：</strong><br>如果提供了 initialValue，则 reduce 方法会对数组中的每个元素调用一次 callbackfn 函数（按升序索引顺序）。 如果未提供 initialValue，则 reduce 方法会对从第二个元素开始的每个元素调用 callbackfn 函数。回调函数的返回值在下一次调用回调函数时作为 previousValue 参数提供。 最后一次调用回调函数获得的返回值为 reduce 方法的返回值。数组中缺少的元素不会调用该回调函数。</p>
+<p><strong>回调函数语法</strong><br>function callbackfn(previousValue, currentValue, currentIndex, array1)可使用最多四个参数来声明回调函数。</p>
+<ul>
+<li>previousValue 通过上一次调用回调函数获得的值。 如果向 reduce 方法提供 initialValue，则在首次调用函数时，previousValue 为 initialValue。</li>
+<li>currentValue 当前数组元素的值。</li>
+<li>currentIndex 当前数组元素的数字索引。</li>
+<li>array1 包含该元素的数组对象。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>
+<span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];
+<span class="keyword">var</span> merged = a.reduce(<span class="function"><span class="keyword">function</span><span class="params">(x,y)</span>{</span><span class="keyword">return</span> x + y;},<span class="number">0</span>);
+console.log(merged); <span class="comment">// =&gt; 15</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.reduce
+ * array1.reduce(callbackfn[, initialValue])
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *       https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.reduce.js
+ *       https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.reduce) {
+    <span class="built_in">Array</span>.prototype.reduce = <span class="function"><span class="keyword">function</span><span class="params">(callback, opt_initialValue)</span>{</span>
+<span class="pi">        'use strict'</span>;
+        <span class="keyword">if</span> (<span class="literal">null</span> === <span class="keyword">this</span> || <span class="string">'undefined'</span> === <span class="keyword">typeof</span> <span class="keyword">this</span>) {
+            <span class="comment">// At the moment all modern browsers, that support strict mode, have</span>
+            <span class="comment">// native implementation of Array.prototype.reduce. For instance, IE8</span>
+            <span class="comment">// does not support strict mode, so this check is actually useless.</span>
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(
+                <span class="string">'Array.prototype.reduce called on null or undefined'</span>);
+        }
+        <span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> callback) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(callback + <span class="string">' is not a function'</span>);
+        }
+        <span class="keyword">var</span> index, value,
+            length = <span class="keyword">this</span>.length &gt;&gt;&gt; <span class="number">0</span>,
+            isValueSet = <span class="literal">false</span>;
+        <span class="keyword">if</span> (<span class="number">1</span> &lt; <span class="built_in">arguments</span>.length) {
+            value = opt_initialValue;
+            isValueSet = <span class="literal">true</span>;
+        }
+        <span class="keyword">for</span> (index = <span class="number">0</span>; length &gt; index; ++index) {
+            <span class="keyword">if</span> (<span class="keyword">this</span>.hasOwnProperty(index)) {
+                <span class="keyword">if</span> (isValueSet) {
+                    value = callback(value, <span class="keyword">this</span>[index], index, <span class="keyword">this</span>);
+                }
+                <span class="keyword">else</span> {
+                    value = <span class="keyword">this</span>[index];
+                    isValueSet = <span class="literal">true</span>;
+                }
+            }
+        }
+        <span class="keyword">if</span> (!isValueSet) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Reduce of empty array with no initial value'</span>);
+        }
+        <span class="keyword">return</span> value;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<h4 id="Array-prototype-reduceRight"><a href="">Array.prototype.reduceRight</a></h4>
+<p><strong>描述：</strong><br>与Array.prototype.reduce原理一样，不同的是它按照索引从高到低(从右向左)处理数组。</p>
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Array.prototype.reduceRight
+ * array1.reduceRight(callbackfn[, initialValue])
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight
+ * @ref : https://github.com/plusdude/array-generics/blob/master/array.generics.js
+ *       https://github.com/burib/es5-polyfills/blob/master/src/Array/Array.reduceRight.js
+ *       https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ * **/</span>
+<span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.reduceRight) {
+    <span class="built_in">Array</span>.prototype.reduceRight = <span class="function"><span class="keyword">function</span><span class="params">(callback, initialValue)</span> {</span>
+<span class="pi">        'use strict'</span>;
+        <span class="keyword">if</span> (<span class="literal">null</span> === <span class="keyword">this</span> || <span class="string">'undefined'</span> === <span class="keyword">typeof</span> <span class="keyword">this</span>) {
+            <span class="comment">// At the moment all modern browsers, that support strict mode, have</span>
+            <span class="comment">// native implementation of Array.prototype.reduceRight. For instance,</span>
+            <span class="comment">// IE8 does not support strict mode, so this check is actually useless.</span>
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(
+                <span class="string">'Array.prototype.reduceRight called on null or undefined'</span>);
+        }
+        <span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> callback) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(callback + <span class="string">' is not a function'</span>);
+        }
+        <span class="keyword">var</span> index, value,
+            length = <span class="keyword">this</span>.length &gt;&gt;&gt; <span class="number">0</span>,
+            isValueSet = <span class="literal">false</span>;
+        <span class="keyword">if</span> (<span class="number">1</span> &lt; <span class="built_in">arguments</span>.length) {
+            value = initialValue;
+            isValueSet = <span class="literal">true</span>;
+        }
+        <span class="keyword">for</span> (index = length - <span class="number">1</span>; -<span class="number">1</span> &lt; index; --index) {
+            <span class="keyword">if</span> (<span class="keyword">this</span>.hasOwnProperty(index)) {
+                <span class="keyword">if</span> (isValueSet) {
+                    value = callback(value, <span class="keyword">this</span>[index], index, <span class="keyword">this</span>);
+                }
+                <span class="keyword">else</span> {
+                    value = <span class="keyword">this</span>[index];
+                    isValueSet = <span class="literal">true</span>;
+                }
+            }
+        }
+        <span class="keyword">if</span> (!isValueSet) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Reduce of empty array with no initial value'</span>);
+        }
+        <span class="keyword">return</span> value;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h1 id="String"><a href="">String</a></h1>
+<hr>
+<h4 id="String-prototype-trim"><a href="">String.prototype.trim</a></h4>
+<p><strong>描述：</strong><br>从字符串中移除前导空格、尾随空格和行结束符。</p>
+<p><strong>参数：</strong><br>stringObj必需。 一个 String 对象或字符串。 trim 方法不修改该字符串。</p>
+<p><strong>返回值：</strong><br>已移除前导空格、尾随空格和行结束符的字符串。</p>
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="comment">/**
+ * String.prototype.trim
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">String</span>.prototype.trim) {
+    <span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">''</span>);
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h1 id="Date"><a href="">Date</a></h1>
+<hr>
+<h4 id="Date-now"><a href="">Date.now</a></h4>
+<p><strong>描述：</strong><br>获取当前时间毫秒数</p>
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Date.prototype.now
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Date</span>.now) {
+    <span class="built_in">Date</span>.now = <span class="function"><span class="keyword">function</span> <span class="title">now</span><span class="params">()</span> {</span>
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<h4 id="Date-prototype-toISOString"><a href="">Date.prototype.toISOString</a></h4>
+<p><strong>描述：</strong><br>以字符串值的形式返回采用 ISO 格式的日期。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="keyword">var</span> dt = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"30 July 2010 15:05 UTC"</span>);
+document.write(dt.toISOString());
+document.write(<span class="string">"&lt;br /&gt;"</span>);
+document.write(dt.toUTCString());
+
+<span class="comment">// Output:</span>
+<span class="comment">//  2010-07-30T15:05:00.000Z</span>
+<span class="comment">//  Fri, 30 Jul 2010 15:05:00 UTC</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Date.prototype.toISOString
+ * @used : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+ * **/</span>
+<span class="keyword">if</span> ( !<span class="built_in">Date</span>.prototype.toISOString ) {
+    ( <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+
+        <span class="function"><span class="keyword">function</span> <span class="title">pad</span><span class="params">(number)</span> {</span>
+            <span class="keyword">if</span> ( number &lt; <span class="number">10</span> ) {
+                <span class="keyword">return</span> <span class="string">'0'</span> + number;
+            }
+            <span class="keyword">return</span> number;
+        }
+
+        <span class="built_in">Date</span>.prototype.toISOString = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <span class="keyword">return</span> <span class="keyword">this</span>.getUTCFullYear() +
+                <span class="string">'-'</span> + pad( <span class="keyword">this</span>.getUTCMonth() + <span class="number">1</span> ) +
+                <span class="string">'-'</span> + pad( <span class="keyword">this</span>.getUTCDate() ) +
+                <span class="string">'T'</span> + pad( <span class="keyword">this</span>.getUTCHours() ) +
+                <span class="string">':'</span> + pad( <span class="keyword">this</span>.getUTCMinutes() ) +
+                <span class="string">':'</span> + pad( <span class="keyword">this</span>.getUTCSeconds() ) +
+                <span class="string">'.'</span> + (<span class="keyword">this</span>.getUTCMilliseconds() / <span class="number">1000</span>).toFixed(<span class="number">3</span>).slice( <span class="number">2</span>, <span class="number">5</span> ) +
+                <span class="string">'Z'</span>;
+        };
+
+    }() );
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h1 id="Function"><a href="">Function</a></h1>
+<hr>
+<h4 id="Function-prototype-bind"><a href="">Function.prototype.bind</a></h4>
+<p><strong>描述：</strong><br>对于给定函数，创建具有与原始函数相同的主体的绑定函数。 在绑定功能中，this 对象解析为传入的对象。 该绑定函数具有指定的初始参数。</p>
+<p><strong>参数：</strong><br>fn 必需。 一个函数对象。<br>thisArg 必需。 可在新函数中为其引用 this 关键字的对象。<br>arg1[,arg2[,argN]]] 可选。 要传递到新函数的参数的列表。</p>
+<p><strong>返回值</strong><br>与 fn 函数相同的新函数，thisArg 对象和初始参数除外。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(y)</span>{</span> retrun <span class="keyword">this</span>.x + y;} <span class="comment">//这个是待绑定的函数</span>
+<span class="keyword">var</span> o = {x:<span class="number">1</span>};                     <span class="comment">//将要绑定的对象</span>
+<span class="keyword">var</span> g = f.bind(o);                 <span class="comment">//通过调用g(x)来调用o.f(x)</span>
+g(<span class="number">2</span>) <span class="comment">// =&gt; 3</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="built_in">Function</span>.prototype.bind = <span class="built_in">Function</span>.prototype.bind || <span class="function"><span class="keyword">function</span><span class="params">(f,o)</span>{</span>
+	<span class="keyword">if</span>(f.bind) <span class="keyword">return</span> f.bind(o);
+	<span class="keyword">else</span> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+		<span class="keyword">return</span> f.apply(o,<span class="built_in">arguments</span>);
+	};
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h1 id="Object"><a href="">Object</a></h1>
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h2 id="参考：http://blog-csdn-net/shyleoking/article/details/7316174">参考：<a href="http://blog.csdn.net/shyleoking/article/details/7316174" target="_blank">http://blog.csdn.net/shyleoking/article/details/7316174</a></h2>
+<h4 id="Object-create"><a href="">Object.create</a></h4>
+<p><strong>描述：</strong><br>该函数用来创建一个新的对象。新创建对象的内部属性[[Prototype]]的值由调用时的参数指定。在调用时还可以传入一个包含要定义的属性的对象。这个参数对象会被传递给 Object.defineProperties 函数来在新创建的对象中定义属性。通过 Object.create 可以很容易地实现基于原型的继承。</p>
+<p><strong>参数：</strong><br>proto必需。要用作原型的对象。 可以为 null。<br>descriptors可选。 包含一个或多个属性描述符的 JavaScript 对象。</p>
+<p><strong>返回值：</strong><br>一个具有指定的内部原型且包含指定的属性（如果有）的新对象。</p>
+<p><strong>备注：</strong><br>descriptors对象“数据属性”是可获取且可设置值的属性。 数据属性描述符包含 value 特性，以及 writable、enumerable 和 configurable 特性。 如果未指定最后三个特性，则它们默认为 false。 只要检索或设置该值，“访问器属性”就会调用用户提供的函数。 访问器属性描述符包含 set 特性和/或 get 特性。 有关详细信息，请参阅 Object.defineProperty 函数 (JavaScript)。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="code"><pre>
+<span class="comment">//下面的示例创建使用 null 原型的对象并添加两个可枚举的属性。</span>
+
+<span class="keyword">var</span> newObj = <span class="built_in">Object</span>.create(<span class="literal">null</span>, {
+            size: {
+                value: <span class="string">"large"</span>,
+                enumerable: <span class="literal">true</span>
+            },
+            shape: {
+                value: <span class="string">"round"</span>,
+                enumerable: <span class="literal">true</span>
+            }
+        });
+
+document.write(newObj.size + <span class="string">"&lt;br/&gt;"</span>);
+document.write(newObj.shape + <span class="string">"&lt;br/&gt;"</span>);
+document.write(<span class="built_in">Object</span>.getPrototypeOf(newObj));
+
+<span class="comment">// Output:</span>
+<span class="comment">// large</span>
+<span class="comment">// round</span>
+<span class="comment">// null</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Object.create
+ * 备注：mozilla和大部分git中的代码只支持第一个参数，并且不支持第一个参数为null的情况，所以firefox与其他浏览器在ES5 Object.create方法的实现上存在差异。目前的polyfill支持两个参数，且支持第一个参数为null的情况。
+ * 注意：该方法中使用了ES5的 Object.defineProperties,所以在申明该方法前请确定Object.defineProperties方法已经存在，否则会抛出异常
+ * @uesd : https://github.com/es-shims/es5-shim/blob/master/es5-sham.js
+ * @ref : https://github.com/bullgare/polyfill5/blob/master/polyfill5.js
+ *       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+ * **/</span>
+<span class="keyword">if</span> (!<span class="built_in">Object</span>.create) {
+
+    <span class="comment">// Contributed by Brandon Benvie, October, 2012</span>
+    <span class="keyword">var</span> createEmpty;
+    <span class="keyword">var</span> supportsProto = <span class="built_in">Object</span>.prototype.__proto__ === <span class="literal">null</span>;
+    <span class="keyword">if</span> (supportsProto || <span class="keyword">typeof</span> document == <span class="string">'undefined'</span>) {
+        createEmpty = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            <span class="keyword">return</span> { <span class="string">"__proto__"</span>: <span class="literal">null</span> };
+        };
+    } <span class="keyword">else</span> {
+        <span class="comment">// In old IE __proto__ can't be used to manually set `null`, nor does</span>
+        <span class="comment">// any other method exist to make an object that inherits from nothing,</span>
+        <span class="comment">// aside from Object.prototype itself. Instead, create a new global</span>
+        <span class="comment">// object and *steal* its Object.prototype and strip it bare. This is</span>
+        <span class="comment">// used as the prototype to create nullary objects.</span>
+        createEmpty = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            <span class="keyword">var</span> iframe = document.createElement(<span class="string">'iframe'</span>);
+            <span class="keyword">var</span> parent = document.body || document.documentElement;
+            iframe.style.display = <span class="string">'none'</span>;
+            parent.appendChild(iframe);
+            iframe.src = <span class="string">'javascript:'</span>;
+            <span class="keyword">var</span> empty = iframe.contentWindow.Object.prototype;
+            parent.removeChild(iframe);
+            iframe = <span class="literal">null</span>;
+            <span class="keyword">delete</span> empty.constructor;
+            <span class="keyword">delete</span> empty.hasOwnProperty;
+            <span class="keyword">delete</span> empty.propertyIsEnumerable;
+            <span class="keyword">delete</span> empty.isPrototypeOf;
+            <span class="keyword">delete</span> empty.toLocaleString;
+            <span class="keyword">delete</span> empty.toString;
+            <span class="keyword">delete</span> empty.valueOf;
+            empty.__proto__ = <span class="literal">null</span>;
+
+            <span class="function"><span class="keyword">function</span> <span class="title">Empty</span><span class="params">()</span> {</span>}
+            Empty.prototype = empty;
+            <span class="comment">// short-circuit future calls</span>
+            createEmpty = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+                <span class="keyword">return</span> <span class="keyword">new</span> Empty();
+            };
+            <span class="keyword">return</span> <span class="keyword">new</span> Empty();
+        };
+    }
+
+    <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span> <span class="title">create</span><span class="params">(prototype, properties)</span> {</span>
+
+        <span class="keyword">var</span> object;
+        <span class="function"><span class="keyword">function</span> <span class="title">Type</span><span class="params">()</span> {</span>}  <span class="comment">// An empty constructor.</span>
+
+        <span class="keyword">if</span> (prototype === <span class="literal">null</span>) {
+            object = createEmpty();
+        } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (<span class="keyword">typeof</span> prototype !== <span class="string">"object"</span> && <span class="keyword">typeof</span> prototype !== <span class="string">"function"</span>) {
+                <span class="comment">// In the native implementation `parent` can be `null`</span>
+                <span class="comment">// OR *any* `instanceof Object`  (Object|Function|Array|RegExp|etc)</span>
+                <span class="comment">// Use `typeof` tho, b/c in old IE, DOM elements are not `instanceof Object`</span>
+                <span class="comment">// like they are in modern browsers. Using `Object.create` on DOM elements</span>
+                <span class="comment">// is...err...probably inappropriate, but the native version allows for it.</span>
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">"Object prototype may only be an Object or null"</span>); <span class="comment">// same msg as Chrome</span>
+            }
+            Type.prototype = prototype;
+            object = <span class="keyword">new</span> Type();
+            <span class="comment">// IE has no built-in implementation of `Object.getPrototypeOf`</span>
+            <span class="comment">// neither `__proto__`, but this manually setting `__proto__` will</span>
+            <span class="comment">// guarantee that `Object.getPrototypeOf` will work as expected with</span>
+            <span class="comment">// objects created using `Object.create`</span>
+            object.__proto__ = prototype;
+        }
+
+        <span class="keyword">if</span> (properties !== <span class="keyword">void</span> <span class="number">0</span>) {
+            <span class="built_in">Object</span>.defineProperties(object, properties);
+        }
+
+        <span class="keyword">return</span> object;
+    };
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="属性相关API"><a href="">属性相关API</a></h3>
+<hr>
+<h4 id="Object-defineProperty"><a href="">Object.defineProperty</a></h4>
+<p><strong>描述：</strong><br>将属性添加到对象或修改现有属性的特性。</p>
+<p><strong>参数：</strong><br>Object.defineProperty(object, propertyname, descriptor)<br>object必需。 对其添加或修改属性的对象。 这可以是本机 JavaScript 对象（即用户定义的对象或内置对象）或 DOM 对象。<br>propertyname必需。 一个包含属性名称的字符串。<br>descriptor必需。 属性的描述符。 它可以针对数据属性或访问器属性。</p>
+<p><strong>返回值：</strong><br>已修改的对象。</p>
+<p><strong>备注：</strong><br>可使用 Object.defineProperty 函数来执行下面的操作：</p>
+<ul>
+<li>将新属性添加到对象。 在对象没有指定的属性名称时执行此操作。</li>
+<li>修改现有属性的特性。 在对象已有指定的属性名称时执行此操作。</li>
+</ul>
+<p>描述符对象中提供了属性定义，它描述了数据属性或访问器属性的特性。 描述符对象是 Object.defineProperty 函数的参数。<br>若要将多个属性添加到对象或要修改多个现有属性，可以使用 Object.defineProperties 函数 (JavaScript)。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="comment">//添加属性</span>
+<span class="keyword">var</span> obj = {};
+<span class="built_in">Object</span>.defineProperty(obj, <span class="string">"newDataProperty"</span>,{
+        value: <span class="number">101</span>,
+        writable: <span class="literal">true</span>,
+        enumerable: <span class="literal">true</span>,
+        configurable: <span class="literal">true</span>
+    });
+</pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">//修改属性，接上面代码</span>
+<span class="built_in">Object</span>.defineProperty(obj, <span class="string">"newDataProperty"</span>, { writable: <span class="literal">false</span> });
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h4 id="Object-defineProperties"><a href="">Object.defineProperties</a></h4>
+<p><strong>描述：</strong><br>将一个或多个属性添加到对象，并/或修改现有属性的特性。</p>
+<p><strong>参数：</strong><br>object.defineProperties(object, descriptors)<br>object 必需。 对其添加或修改属性的对象。 这可以是本机 JavaScript 对象或 DOM 对象。<br>descriptors 必需。 包含一个或多个描述符对象的 JavaScript 对象。每个描述符对象描述一个数据属性或访问器属性。</p>
+<p><strong>返回值：</strong><br>已传递给函数的对象。</p>
+<p><strong>备注：</strong><br>descriptors参数是一个包含一个或多个描述符对象的对象。数据属性是可储存和检索值的属性。数据属性描述符包含一个 value 特性和/或一个writable特性。有关更多信息，请参见数据属性和访问器属性。 一旦设置或检索属性值，访问器属性就会调用用户提供的函数。 访问器属性描述符包含 set 特性和/或 get 特性。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="comment">//添加属性</span>
+<span class="keyword">var</span> obj = {};
+<span class="built_in">Object</span>.defineProperties(obj, {
+    newDataProperty: {
+        value: <span class="number">101</span>,
+        writable: <span class="literal">true</span>,
+        enumerable: <span class="literal">true</span>,
+        configurable: <span class="literal">true</span>
+    },
+    newAccessorProperty: {
+        set: <span class="function"><span class="keyword">function</span> <span class="params">(x)</span> {</span>
+        document.write(<span class="string">"in property set accessor"</span> + newLine);
+        <span class="keyword">this</span>.newaccpropvalue = x;
+    },
+    get: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        document.write(<span class="string">"in property get accessor"</span> + newLine);
+        <span class="keyword">return</span> <span class="keyword">this</span>.newaccpropvalue;
+    },
+    enumerable: <span class="literal">true</span>,
+    configurable: <span class="literal">true</span>
+}});
+</pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="comment">//修改属性，接上面代码</span>
+<span class="built_in">Object</span>.defineProperties(obj, {
+    newDataProperty: { writable: <span class="literal">false</span> },
+    newAccessorProperty: { enumerable: <span class="literal">false</span> },
+    anotherDataProperty: { value: <span class="string">"abc"</span> }
+});
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h4 id="Object-getPrototypeOf"><a href="">Object.getPrototypeOf</a></h4>
+<p><strong>描述：</strong><br>返回对象的原型。</p>
+<p><strong>参数：</strong><br>Object.getPrototypeOf(object)<br>object必需。 引用原型的对象。</p>
+<p><strong>返回值：</strong><br>object 参数的原型。 原型也是对象。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre>
+<span class="comment">//下面的示例使用 Object.getPrototypeOf 函数来验证数据类型。</span>
+<span class="keyword">var</span> reg = <span class="regexp">/a/</span>;
+<span class="keyword">var</span> result = (<span class="built_in">Object</span>.getPrototypeOf(reg) === <span class="built_in">RegExp</span>.prototype);
+document.write(result + <span class="string">" "</span>);
+
+<span class="keyword">var</span> err = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"an error"</span>);
+<span class="keyword">var</span> result = (<span class="built_in">Object</span>.getPrototypeOf(err) === <span class="built_in">Error</span>.prototype);
+document.write(result);
+
+<span class="comment">// Output: true true</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h4 id="Object-getOwnPropertyDescriptor"><a href="">Object.getOwnPropertyDescriptor</a></h4>
+<p><strong>描述：</strong><br>获取指定对象自己的属性描述符。 自己的属性描述符是直接在对象上定义的描述符，而不是从对象的原型继承的描述符。</p>
+<p><strong>参数：</strong><br>Object.getOwnPropertyDescriptor(object, propertyname)<br>object必需。包含该属性的对象。<br>propertyname必需。属性的名称。</p>
+<p><strong>返回值：</strong><br>属性的描述符。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="comment">//若要列出属性的特性，可将以下代码添加到该示例。</span>
+<span class="comment">// Get the descriptor from the object.</span>
+<span class="keyword">var</span> desc2 = <span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">"newDataProperty"</span>);
+
+<span class="comment">// List the descriptor attributes.</span>
+<span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> desc2) {
+    document.write(prop + <span class="string">': '</span> + desc2[prop]);
+    document.write(<span class="string">"&lt;br /&gt;"</span>);
+}
+
+<span class="comment">// Output:</span>
+<span class="comment">// value: abc</span>
+<span class="comment">// writable: false</span>
+<span class="comment">// enumerable: true</span>
+<span class="comment">// configurable: true</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h4 id="Object-getOwnPropertyNames"><a href="">Object.getOwnPropertyNames</a></h4>
+<p><strong>描述：</strong><br>返回对象自己的属性的名称。 一个对象的自己的属性是指直接对该对象定义的属性，而不是从该对象的原型继承的属性。 对象的属性包括字段（对象）和函数。</p>
+<p><strong>参数：</strong><br>Object.keys(object)<br>object必需。 包含自己的属性的对象</p>
+<p><strong>返回值：</strong><br>一个数组，其中包含对象自己的属性的名称。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="comment">//下面的示例创建一个对象，该对象具有三个属性和一个方法。 然后使用 getOwnPropertyNames 方法获取该对象自己的属性（包括方法）。</span>
+<span class="function"><span class="keyword">function</span> <span class="title">Pasta</span><span class="params">(grain, width, shape)</span> {</span>
+    <span class="comment">// Define properties.</span>
+    <span class="keyword">this</span>.grain = grain;
+    <span class="keyword">this</span>.width = width;
+    <span class="keyword">this</span>.shape = shape;
+    <span class="keyword">this</span>.toString = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">return</span> (<span class="keyword">this</span>.grain + <span class="string">", "</span> + <span class="keyword">this</span>.width + <span class="string">", "</span> + <span class="keyword">this</span>.shape);
+    }
+}
+
+<span class="comment">// Create an object.</span>
+<span class="keyword">var</span> spaghetti = <span class="keyword">new</span> Pasta(<span class="string">"wheat"</span>, <span class="number">0.2</span>, <span class="string">"circle"</span>);
+
+<span class="comment">// Get the own property names.</span>
+<span class="keyword">var</span> arr = <span class="built_in">Object</span>.getOwnPropertyNames(spaghetti);
+document.write (arr);
+
+<span class="comment">// Output:</span>
+<span class="comment">//   grain,width,shape,toString</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h4 id="Object-keys"><a href="">Object.keys</a></h4>
+<p><strong>描述：</strong><br>返回对象的可枚举属性和方法的名称。</p>
+<p><strong>参数：</strong><br>object必需。 包含属性和方法的对象。 这可以是您创建的对象或现有文档对象模型 (DOM) 对象。</p>
+<p><strong>返回值：</strong><br>一个数组，其中包含对象的可枚举属性和方法的名称。</p>
+<p><strong>备注：</strong><br>keys 方法仅返回可枚举属性和方法的名称。 若要返回可枚举的和不可枚举的属性和方法的名称，可使用 Object.getOwnPropertyNames 函数 (JavaScript)。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="code"><pre>
+<span class="comment">//下面的示例创建一个对象，该对象具有三个属性和一个方法。 然后使用 keys 方法获取该对象的属性和方法。</span>
+<span class="comment">// Create a constructor function.</span>
+<span class="function"><span class="keyword">function</span> <span class="title">Pasta</span><span class="params">(grain, width, shape)</span> {</span>
+    <span class="keyword">this</span>.grain = grain;
+    <span class="keyword">this</span>.width = width;
+    <span class="keyword">this</span>.shape = shape;
+
+    <span class="comment">// Define a method.</span>
+    <span class="keyword">this</span>.toString = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">return</span> (<span class="keyword">this</span>.grain + <span class="string">", "</span> + <span class="keyword">this</span>.width + <span class="string">", "</span> + <span class="keyword">this</span>.shape);
+    }
+}
+
+<span class="comment">// Create an object.</span>
+<span class="keyword">var</span> spaghetti = <span class="keyword">new</span> Pasta(<span class="string">"wheat"</span>, <span class="number">0.2</span>, <span class="string">"circle"</span>);
+
+<span class="comment">// Put the enumerable properties and methods of the object in an array.</span>
+<span class="keyword">var</span> arr = <span class="built_in">Object</span>.keys(spaghetti);
+document.write (arr);
+
+<span class="comment">// Output:</span>
+<span class="comment">// grain,width,shape,toString</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h2 id="===">===</h2>
+<h3 id="扩展相关API"><a href="">扩展相关API</a></h3>
+<h1 id="—-">—-</h1>
+<h4 id="Object-seal"><a href="">Object.seal</a></h4>
+<p><strong>描述：</strong><br>阻止修改现有属性的特性，并阻止添加新属性。</p>
+<p><strong>参数：</strong><br>object必需。 在其上锁定特性的对象。</p>
+<p><strong>返回值：</strong><br>传递给函数的对象。</p>
+<p><strong>备注：</strong><br>Object.seal 函数执行以下两项操作：</p>
+<ul>
+<li>使对象不可扩展，这样便无法向其添加新属性。</li>
+<li>为对象的所有属性将 configurable 特性设置为 false。</li>
+</ul>
+<p>在 configurable 特性为 false 时，无法更改属性的特性且无法删除属性。 在 configurable 为 false 且 writable 为 true 时，可以更改 value 和 writable 特性。<br>Object.seal 函数不更改 writable 特性。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="comment">// Create an object that has two properties.</span>
+<span class="keyword">var</span> obj = { pasta: <span class="string">"spaghetti"</span>, length: <span class="number">10</span> };
+<span class="comment">// Seal the object.</span>
+<span class="built_in">Object</span>.seal(obj);
+document.write(<span class="built_in">Object</span>.isSealed(obj));
+document.write(<span class="string">"&lt;br/&gt;"</span>);
+
+<span class="comment">// Try to add a new property, and then verify that it is not added. </span>
+obj.newProp = <span class="number">50</span>;
+document.write(obj.newProp);
+document.write(<span class="string">"&lt;br/&gt;"</span>);
+
+<span class="comment">// Try to delete a property, and then verify that it is still present. </span>
+<span class="keyword">delete</span> obj.length;
+document.write(obj.length);
+
+<span class="comment">// Output:</span>
+<span class="comment">// true</span>
+<span class="comment">// undefined</span>
+<span class="comment">// 10</span>
+</pre></td></tr></table></figure>
+
+
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<p>===</p>
+<h4 id="Object-seal相关函数"><a href="">Object.seal相关函数</a></h4>
+<p>以下相关函数可阻止修改对象的特性。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>对象已设置为不可扩展的</th>
+<th>为每个属性将 configurable 设置为 false</th>
+<th>为每个属性将 writable 设置为 false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object.preventExtensions</td>
+<td>是</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>Object.seal</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>Object.freeze</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>如果满足下表中标记的所有条件，则以下函数返回 true。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>对象是否可扩展</th>
+<th>为所有属性将 configurable 设置为 false</th>
+<th>为所有数据属性将 writable 设置为 false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object.isExtensible</td>
+<td>是</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>Object.isSealed</td>
+<td>否</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>Object.isFrozen</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Polyfill</strong><br>描述：整个ES5中Object的polyfill请参考<a href="https://github.com/es-shims/es5-shim/blob/master/es5-sham.js" target="_blank">es5-sham.js</a></p>
+<h2 id="===-1">===</h2>
+<h1 id="JSON"><a href="">JSON</a></h1>
+<hr>
+<h4 id="JSON-stringify"><a href="">JSON.stringify</a></h4>
+<p><strong>描述：</strong><br>将 JavaScript 值转换为 JavaScript 对象表示法 (Json) 字符串。</p>
+<p><strong>参数：</strong><br>JSON.stringify(value [, replacer] [, space])<br>value 必需。 要转换的 JavaScript 值（通常为对象或数组）。<br>replacer 可选。 转换结果的函数或数组。</p>
+<ul>
+<li>如果 replacer 为一个函数，则 JSON.stringify 会调用该函数，并传入每个成员的键和值。 使用返回值而不是原始值。 如果此函数返回 undefined，则排除成员。 根对象的键是一个空字符串：””。</li>
+<li>如果 replacer 为一个数组，则仅转换该数组中具有键值的成员。 成员的转换顺序与键在数组中的顺序一样。 当 value 参数也为数组时，将忽略 replacer 数组。</li>
+</ul>
+<p>space 可选。 向返回值 JSON 文本添加缩进、空白和换行符以使其更易于读取。</p>
+<ul>
+<li>如果省略 space，则将生成返回值文本，而没有任何额外空白。</li>
+<li>如果 space 为一个数字，则返回值文本在每个级别缩进指定数目的空格。 如果 space 大于 10，则文本缩进 10 个空格。</li>
+<li>如果 space 是非空字符串（例如“\t”），则返回值文本在每个级别中缩进字符串中的字符数。</li>
+<li>如果 space 是长度大于 10 个字符的字符串，则使用前 10 个字符。</li>
+</ul>
+<p><strong>Polyfill：</strong><br>参见 tv\js\base\core\g.js 1653 - 1696行实现</p>
+<p>===</p>
+<h4 id="JSON-parse"><a href="">JSON.parse</a></h4>
+<p>===</p>
+<p><strong>描述：</strong><br>将 JavaScript 对象表示法 (JSON) 字符串转换为对象。<br><strong>参数：</strong><br>JSON.parse(text [, reviver])<br>text 必需。 一个有效的 JSON 字符串。<br>reviver 可选。 一个转换结果的函数。 将为对象的每个成员调用此函数。 如果成员包含嵌套对象，则先于父对象转换嵌套对象。 对于每个成员，会发生以下情况：</p>
+<ul>
+<li>如果 reviver 返回一个有效值，则成员值将替换为转换后的值。</li>
+<li>如果 reviver 返回它接收的相同值，则不修改成员值。</li>
+<li>如果 reviver 返回 null 或 unde</li>
+<li>fined，则删除成员。</li>
+</ul>
+<p><strong>Polyfill：</strong><br>参见 tv\js\base\core\g.js 1653 - 1696行实现</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/ECMAScript5/" data-id="hjgjdy5radsz4mo9" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/ECMAScript5/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript web/">javascript web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/05/24/asynchronous/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js异步响应总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/24/guid/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">markdown语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css-frame/">css-frame</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/prototype/">prototype</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/正则/">正则</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/面试/">面试</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-frame/">css-frame</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript web/">javascript web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异步/">异步</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTTP/" style="font-size: 10.00px;">HTTP</a><a href="/tags/css-frame/" style="font-size: 10.00px;">css-frame</a><a href="/tags/grunt/" style="font-size: 10.00px;">grunt</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/javascript web/" style="font-size: 10.00px;">javascript web</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/nodejs/" style="font-size: 10.00px;">nodejs</a><a href="/tags/prototype/" style="font-size: 10.00px;">prototype</a><a href="/tags/web/" style="font-size: 10.00px;">web</a><a href="/tags/异步/" style="font-size: 10.00px;">异步</a><a href="/tags/技巧/" style="font-size: 10.00px;">技巧</a><a href="/tags/正则/" style="font-size: 10.00px;">正则</a><a href="/tags/面试/" style="font-size: 10.00px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/regexp/">js正则总结</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/prototype/">js原型</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/mongoose/">node-mongoose db</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/js面试题总结/">js面试题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 bairedzhang<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'bairedzhang';
+  
+  var disqus_url = 'http://bairedzhang.github.io/2014/05/24/ECMAScript5/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>

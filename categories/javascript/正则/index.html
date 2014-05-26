@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Category: 正则 | bairedzhang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="website" property="og:type">
+<meta content="bairedzhang" property="og:title">
+<meta content="http://bairedzhang.github.io/categories/javascript/正则/" property="og:url">
+<meta property="og:image">
+<meta content="bairedzhang" property="og:site_name">
+<meta content="bairedzhang-jser" property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="bairedzhang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bairedzhang</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://bairedzhang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-regexp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/regexp/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/正则/">正则</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/regexp/">js正则总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RegExp">RegExp</h2>
+<pre><code>    <span class="keyword">var</span> expression = <span class="regexp">/pattern/</span>flags;
+    <span class="keyword">var</span> expression = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"pattern"</span>,flags);
+</code></pre><p>其中的模式（pattern）部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。<br><strong> 由于RegExp构造函数的模式参数是字符串，所以在某些情况下要对字符进行双重转义。所有元字符都必须双重转义，那些转义过的字符也是如此。</strong></p>
+<ul>
+<li>g:全局模式，应用于所有字符串，而非在发现第一个匹配项时立即停止</li>
+<li>i:不区分大小写</li>
+<li>m:多行模式</li>
+</ul>
+<p>所有元字符需要转义。包括：</p>
+<pre><code>    <span class="list">( <span class="collection">[ <span class="collection">{ \ ^ $ | ) ? * + . ]</span>}</span></span>
+</code></pre><p>直接量字符:</p>
+<pre><code>    <span class="command">\o</span>         NUL字符
+    <span class="command">\t</span>        制表符
+    <span class="command">\n</span>        换行符
+    <span class="command">\v</span>        垂直制表符
+    <span class="command">\f</span>        换页符
+    <span class="command">\r</span>        回车符
+    <span class="command">\uxxxx</span>    16进制数 xxxx制定的unicode
+</code></pre><p>字符类:</p>
+<pre><code>    .        除换行符和其它Unicode行终止符之外的任意字符
+    <span class="command">\w</span>        任何ASCII字符组成的单词，等价于<span class="special">[</span>a-zA-Z0-9<span class="special">]</span>
+    <span class="command">\W</span>        任何不是ASCII字符组成的单词，等价于<span class="special">[</span>^a-zA-Z0-9<span class="special">]</span>
+    <span class="command">\s</span>        任何Unicode空白符
+    <span class="command">\S</span>        任何非Unicode空白符的字符，注意<span class="command">\w</span>和<span class="command">\S</span>不 
+    <span class="command">\d</span>        任何ASCII数字，等价于<span class="special">[</span>0-9<span class="special">]</span>
+    <span class="command">\D</span>        <span class="special">[</span>^0-9<span class="special">]</span>
+    <span class="special">[</span><span class="command">\b</span><span class="special">]</span>    退格直接量(特例)
+</code></pre><p>重复字符语法：</p>
+<pre><code>    ？        <span class="rules">{<span class="rule">0,1}</span></span>
+    +        <span class="rules">{<span class="rule">1,}</span></span>
+    *        <span class="rules">{<span class="rule">0,}</span></span>
+</code></pre><p><strong>使用正则表达式字面量和使用RegExp够做函数创建的正则表达式不一样。前者始终会共享一个RegExp实例，后者每次都是创建一个新实例。</strong></p>
+<h3 id="实例属性">实例属性</h3>
+<p>RegExp每个实例都有下列属性：</p>
+<ul>
+<li>global:boolean</li>
+<li>ignoreCase:boolean</li>
+<li>lastIndex:int,表示开始搜索下一个匹配项的字符位置，从0算起</li>
+<li>multiline:boolean</li>
+<li>source:正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回</li>
+</ul>
+<h3 id="实例方法">实例方法</h3>
+<blockquote>
+<p>主要方法是<code>exec()</code>，该方法专门为捕获设计的。返回包含第一个匹配项信息的数组，没有返回null。数组包含两个额外的属性：<code>index</code>和<code>input</code>。index表示匹配项在字符串中的位置，input表示应用正则表达式的字符串。数组第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串（没有捕获组则只包含第一项）。<strong>对于exec而言，即使在模式中设置了全局标志（g），它每次也只会返回一个匹配项。在不设置全局标志的情况下，在同一个字符串上多次调用exec()方法将始终返回第一个匹配项的信息。在设置全局标志的情况下，每次调用将会字符串中继续查找新匹配项</strong></p>
+<p>第二个方法是<code>test()</code></p>
+</blockquote>
+<pre><code>input              <span class="variable">$_</span>         最近一次要匹配的字符串
+lastMatch          <span class="variable">$&amp;</span>        最近一次的匹配项
+lastParen        <span class="variable">$+</span>        最近一次匹配的捕获组
+leftContext        <span class="variable">$`</span>        input字符串中lastMatch之前的文本
+multiline        <span class="variable">$*</span>        布尔值，表示是否所有表达式都使用多行模式。
+rightContext    <span class="variable">$`</span>        input字符串中lastMatch之后的文本
+</code></pre><h2 id="语法">语法</h2>
+<p><img src="http://bairedzhang.github.io/imgs/reg1.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg2.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg3.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg4.png" alt="Alt text"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="upcp4i4mn52zhr3n" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css-frame/">css-frame</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/prototype/">prototype</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/正则/">正则</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/面试/">面试</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-frame/">css-frame</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript web/">javascript web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异步/">异步</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTTP/" style="font-size: 10.00px;">HTTP</a><a href="/tags/css-frame/" style="font-size: 10.00px;">css-frame</a><a href="/tags/grunt/" style="font-size: 10.00px;">grunt</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/javascript web/" style="font-size: 10.00px;">javascript web</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/nodejs/" style="font-size: 10.00px;">nodejs</a><a href="/tags/prototype/" style="font-size: 10.00px;">prototype</a><a href="/tags/web/" style="font-size: 10.00px;">web</a><a href="/tags/异步/" style="font-size: 10.00px;">异步</a><a href="/tags/技巧/" style="font-size: 10.00px;">技巧</a><a href="/tags/正则/" style="font-size: 10.00px;">正则</a><a href="/tags/面试/" style="font-size: 10.00px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/regexp/">js正则总结</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/prototype/">js原型</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/mongoose/">node-mongoose db</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/js面试题总结/">js面试题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 bairedzhang<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'bairedzhang';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>
