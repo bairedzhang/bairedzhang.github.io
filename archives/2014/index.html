@@ -62,7 +62,7 @@
     <article id="post-Event" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/05/29/Event/" class="article-date">
-  <time datetime="2014-05-28T16:03:48.000Z" itemprop="datePublished">May 29 2014</time>
+  <time datetime="2014-05-29T02:15:20.000Z" itemprop="datePublished">May 29 2014</time>
 </a>
     
   </div>
@@ -73,7 +73,7 @@
       
         <p>事件系统</p>
 <blockquote>
-<p>浏览器提供了3中层次API,<em>最原始的写在标签内</em>，再次以el.onXXX=function形式绑定（DOM0事件），最后是多投事件系统（DOM2事件）。</p>
+<p>浏览器提供了3种层次API,<em>最原始的写在标签内</em>，再次以el.onXXX=function形式绑定（DOM0事件），最后是多投事件系统（DOM2事件）。</p>
 </blockquote>
 <h3 id="IE与Opera方">IE与Opera方</h3>
 <ul>
@@ -82,7 +82,7 @@
 <li>创建：document.createEventObject()</li>
 <li>派发：el.fireEvent(type,event)</li>
 </ul>
-<h3 id="W3Cf方">W3Cf方</h3>
+<h3 id="W3C方">W3C方</h3>
 <ul>
 <li>绑定：el.addEventListener(type,callback,[phase])</li>
 <li>卸载: el.removeEventListener(type,callback,[phase])</li>
@@ -94,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/29/Event/" data-id="g0m1udq8b4k0nfwu" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/29/Event/" data-id="58w44wmtbpkmke7h" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/29/Event/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -184,247 +184,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="ha61ergo4kkhp2l7" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="w9p2hqsgoul3squo" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-prototype" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/prototype/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/prototype/">prototype</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/prototype/">js原型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Prototype">Prototype</h1>
-<h2 id="创建对象">创建对象</h2>
-<h3 id="工厂模式">工厂模式</h3>
-<pre><code> <span class="function"><span class="keyword">function</span> <span class="title">createPerson</span><span class="params">(name,age,job)</span>{</span>
-     <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();
-     o.name = name;
-     o.age = age;
-     o.job = job;
-     o.sayName = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-         alert(<span class="keyword">this</span>.name);
-     };
-     <span class="keyword">return</span> o;
- }
-</code></pre><h3 id="构造函数模式">构造函数模式</h3>
-<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">Person</span> <span class="params">(name,age,job)</span>{</span>
-        <span class="keyword">this</span>.name = name;
-        <span class="keyword">this</span>.age = age;
-        <span class="keyword">this</span>.job = job;
-        <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            alert(<span class="keyword">this</span>.name);
-        }
-    }
-</code></pre><h3 id="原型模式">原型模式</h3>
-<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">Person</span> <span class="params">(name,age,job)</span>{</span>
-        <span class="keyword">this</span>.name = name;
-        <span class="keyword">this</span>.age = age;
-        <span class="keyword">this</span>.job = job;
-    }
-    Person.prototype={
-        sayName:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            alert(<span class="keyword">this</span>.name);
-        }
-    }
-</code></pre><h4 id="理解原型">理解原型</h4>
-<blockquote>
-<p>无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个 prototype属性，这个属性指向函数的原型对象。默认所有原型都会获得一个constructor属性，指向prototype所在函数的指针。</p>
-</blockquote>
-<pre><code>    isPrototypeOf(),getPrototypeOf(),hasOwnProperty();
-
-    <span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>};
-    <span class="keyword">var</span> person = <span class="keyword">new</span> Person();
-    等价于：
-        <span class="keyword">var</span> person = {};
-        person.__proto__ = Person.prototype;
-        Person.call(person);
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="87iesq7d0t525lul" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/prototype/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prototype/">prototype</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mongoose" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/mongoose/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/nodejs/">nodejs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/mongoose/">node-mongoose db</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="_"> </h3>
-<pre><code><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);
-<span class="keyword">var</span> schema = mongoose.Schema;
-db = mongoose.createConnection(port);
-db.on(<span class="string">'open'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    console.log(<span class="string">'database connect successfully'</span>);
-})；
-
-example:
-    <span class="keyword">var</span>  PersonSchema = <span class="keyword">new</span> schema({name:<span class="built_in">String</span>});
-    <span class="keyword">var</span>  PersonModel = db.model(<span class="string">'Person'</span>,PersonSchema);
-    <span class="keyword">var</span>  personEntity = <span class="keyword">new</span> PersonModel({name:<span class="string">'bairedzhang'</span>);
-    personEntity.save();
-    PersonModel.find({name:<span class="regexp">/^baired/</span>},<span class="function"><span class="keyword">function</span><span class="params">(err,persons)</span>{</span>
-
-    });
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="t4enmekxmbw5b07e" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/js面试题总结/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
-<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> counter = <span class="number">0</span>;
-    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        counter++;
-        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
-    }
-    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> tmp = counter;
-        counter = <span class="number">0</span>;
-        <span class="keyword">return</span> tmp;
-    }
-    <span class="keyword">return</span> fn;        
-})();
-<span class="comment">//===以下方法有待改进</span>
-<span class="keyword">var</span> t = <span class="number">0</span>;
-<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
-    t++;
-    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
-    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> nt = t;
-        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
-        t =<span class="number">0</span>;
-    },<span class="number">100</span>);
-
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
-            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
-        }
-        <span class="keyword">return</span> args;
-    }
-}
-</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
-<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
-or
-<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
-    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
-    }
-})
-</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="2uy7c5t4hd25df94" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
 
     </footer>
   </div>
@@ -518,12 +283,300 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="4gyhid7xztdm87nv" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="od43lpwsb6014ool" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-prototype" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/prototype/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/prototype/">prototype</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/prototype/">js原型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Prototype">Prototype</h1>
+<h2 id="创建对象">创建对象</h2>
+<h3 id="工厂模式">工厂模式</h3>
+<pre><code> <span class="function"><span class="keyword">function</span> <span class="title">createPerson</span><span class="params">(name,age,job)</span>{</span>
+     <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();
+     o.name = name;
+     o.age = age;
+     o.job = job;
+     o.sayName = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+         alert(<span class="keyword">this</span>.name);
+     };
+     <span class="keyword">return</span> o;
+ }
+</code></pre><h3 id="构造函数模式">构造函数模式</h3>
+<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">Person</span> <span class="params">(name,age,job)</span>{</span>
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+        <span class="keyword">this</span>.job = job;
+        <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            alert(<span class="keyword">this</span>.name);
+        }
+    }
+</code></pre><h3 id="原型模式">原型模式</h3>
+<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">Person</span> <span class="params">(name,age,job)</span>{</span>
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+        <span class="keyword">this</span>.job = job;
+    }
+    Person.prototype={
+        sayName:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            alert(<span class="keyword">this</span>.name);
+        }
+    }
+</code></pre><h4 id="理解原型">理解原型</h4>
+<blockquote>
+<p>无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个 prototype属性，这个属性指向函数的原型对象。默认所有原型都会获得一个constructor属性，指向prototype所在函数的指针。</p>
+</blockquote>
+<pre><code>    isPrototypeOf(),getPrototypeOf(),hasOwnProperty();
+
+    <span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>};
+    <span class="keyword">var</span> person = <span class="keyword">new</span> Person();
+    等价于：
+        <span class="keyword">var</span> person = {};
+        person.__proto__ = Person.prototype;
+        Person.call(person);
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="bqrekdy2znwe0iy7" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/prototype/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prototype/">prototype</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mongoose" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/mongoose/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/nodejs/">nodejs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/mongoose/">node-mongoose db</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="_"> </h3>
+<pre><code><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);
+<span class="keyword">var</span> schema = mongoose.Schema;
+db = mongoose.createConnection(port);
+db.on(<span class="string">'open'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    console.log(<span class="string">'database connect successfully'</span>);
+})；
+
+example:
+    <span class="keyword">var</span>  PersonSchema = <span class="keyword">new</span> schema({name:<span class="built_in">String</span>});
+    <span class="keyword">var</span>  PersonModel = db.model(<span class="string">'Person'</span>,PersonSchema);
+    <span class="keyword">var</span>  personEntity = <span class="keyword">new</span> PersonModel({name:<span class="string">'bairedzhang'</span>);
+    personEntity.save();
+    PersonModel.find({name:<span class="regexp">/^baired/</span>},<span class="function"><span class="keyword">function</span><span class="params">(err,persons)</span>{</span>
+
+    });
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="md18rsvo3fn4ntmi" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/HTTP/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1_HTTP概述">1 HTTP概述</h2>
+<h3 id="1-1-1媒体类型">1.1.1媒体类型</h3>
+<p><strong>MIME(Multipurpose Internet Mail Extension,多用途因特网邮件扩展)</strong>,HTTP采纳了它描述并标记多媒体内容。</p>
+<ul>
+<li>HTML格式：text/html</li>
+<li>普通ASCII文本：text/plain</li>
+<li>JPEG图片：image/jpeg</li>
+<li>GIF:image/gif</li>
+<li>Quicktime:video/quicktime</li>
+<li>PowerPoint :application/vnd.ms-powerpoint<h3 id="1-1-2URI">1.1.2URI</h3>
+<strong>URI(Uniform Resource Identifier 统一资源标识符)</strong>,分为URL和URN.<h3 id="1-1-3URL">1.1.3URL</h3>
+<strong>统一资源定位符</strong></li>
+<li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
+<li>第二部分给出服务器的因特网地址</li>
+<li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
+<strong>统一资源名</strong><h1 id="#">#</h1>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="ldsouq44g4xy1134" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-guid" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/guid/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/markdown/">markdown</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/guid/">markdown语法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>斜体强调：<em>em</em>，<strong>strong</strong></p>
+<h1 id="h1">h1</h1>
+<h6 id="h6">h6</h6>
+<h1 id="H1">H1</h1>
+<h2 id="H2">H2</h2>
+<blockquote>
+<p>blockquot</p>
+</blockquote>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ol>
+<li>li</li>
+<li>li</li>
+</ol>
+<p>这是一个普通段落：</p>
+<pre><code><span class="title">pre</span>-&gt;code-&gt; 这是一个代码区块。
+</code></pre><hr>
+<hr>
+<p>this is <a href="http:www.baidu.com" title="title">an example</a> inline link</p>
+<p>This is <a href="http://example.com/" title="Optional Title Here" target="_blank">an</a> reference-style link.</p>
+<p>Use the <code>printf()</code> function.</p>
+<p>A single backtick in a code span: <code>`foo` </code></p>
+<p>Please don’t use any <code>&lt;blink&gt;</code> tags.</p>
+<p><code>&amp;#8212;</code> is the decimal-encoded equivalent of <code>&amp;mdash;</code>.</p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" alt="Alt text"></p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" width="200"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="allfweaxsn8dq1ak" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/guid/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
     </footer>
   </div>
@@ -586,7 +639,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="1skm3aial0fgmwji" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="j9xu9seh89nav2f5" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -630,7 +683,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="66gykhctl8qlguvw" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="q5lxlfhfqvm4yy8e" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/bootstrap/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -904,74 +957,12 @@ async.filter(dirContents,isFilename,<span class="function"><span class="keyword"
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="knjffg4oj41tigd3" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="k75y0u2z59rkugde" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/asynchronous/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异步/">异步</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/HTTP/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1_HTTP概述">1 HTTP概述</h2>
-<h3 id="1-1-1媒体类型">1.1.1媒体类型</h3>
-<p><strong>MIME(Multipurpose Internet Mail Extension,多用途因特网邮件扩展)</strong>,HTTP采纳了它描述并标记多媒体内容。</p>
-<ul>
-<li>HTML格式：text/html</li>
-<li>普通ASCII文本：text/plain</li>
-<li>JPEG图片：image/jpeg</li>
-<li>GIF:image/gif</li>
-<li>Quicktime:video/quicktime</li>
-<li>PowerPoint :application/vnd.ms-powerpoint<h3 id="1-1-2URI">1.1.2URI</h3>
-<strong>URI(Uniform Resource Identifier 统一资源标识符)</strong>,分为URL和URN.<h3 id="1-1-3URL">1.1.3URL</h3>
-<strong>统一资源定位符</strong></li>
-<li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
-<li>第二部分给出服务器的因特网地址</li>
-<li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
-<strong>统一资源名</strong><h1 id="#">#</h1>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="739ya17ugzjljuyg" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
     </footer>
   </div>
@@ -1040,15 +1031,15 @@ async.filter(dirContents,isFilename,<span class="function"><span class="keyword"
           </li>
         
           <li>
+            <a href="/2014/05/24/regexp/">js正则总结</a>
+          </li>
+        
+          <li>
             <a href="/2014/05/24/prototype/">js原型</a>
           </li>
         
           <li>
             <a href="/2014/05/24/mongoose/">node-mongoose db</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/24/js面试题总结/">js面试题</a>
           </li>
         
       </ul>
