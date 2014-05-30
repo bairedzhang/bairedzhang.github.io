@@ -94,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/29/Event/" data-id="58w44wmtbpkmke7h" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/29/Event/" data-id="x8pmekwsb74wtitx" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/29/Event/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -106,14 +106,14 @@
 
 
   
-    <article id="post-高级技巧" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/高级技巧/" class="article-date">
+    <a href="/2014/05/24/HTTP/" class="article-date">
   <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
   </div>
 
   </div>
@@ -124,7 +124,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/高级技巧/">js高级技巧</a>
+      <a class="article-title" href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
     </h1>
   
 
@@ -132,64 +132,108 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高级技巧">高级技巧</h1>
-<h3 id="类型检测">类型检测</h3>
-<pre><code>Object.prototype.toString.call(value)//[object <span class="keyword">Function</span>/JSON/<span class="keyword">Array</span>/<span class="keyword">String</span>/<span class="keyword">Number</span>] 
-</code></pre><h3 id="作用域安全的构造函数">作用域安全的构造函数</h3>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span><span class="params">(args)</span>{</span>
-    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Constructor){
-        <span class="comment">//doSomething</span>
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> Constructor(args)
-    }
-}
-</code></pre><h3 id="惰性载入函数">惰性载入函数</h3>
-<pre><code> <span class="keyword">var</span> CreateXHR = (<span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
-    <span class="keyword">if</span>(<span class="keyword">typeof</span> XMLHttpRequest !=<span class="string">'undefined'</span>){
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();
-        }
+        <h2 id="1_HTTP概述">1 HTTP概述</h2>
+<h3 id="1-1-1媒体类型">1.1.1媒体类型</h3>
+<p><strong>MIME(Multipurpose Internet Mail Extension,多用途因特网邮件扩展)</strong>,HTTP采纳了它描述并标记多媒体内容。</p>
+<ul>
+<li>HTML格式：text/html</li>
+<li>普通ASCII文本：text/plain</li>
+<li>JPEG图片：image/jpeg</li>
+<li>GIF:image/gif</li>
+<li>Quicktime:video/quicktime</li>
+<li>PowerPoint :application/vnd.ms-powerpoint<h3 id="1-1-2URI">1.1.2URI</h3>
+<strong>URI(Uniform Resource Identifier 统一资源标识符)</strong>,分为URL和URN.<h3 id="1-1-3URL">1.1.3URL</h3>
+<strong>统一资源定位符</strong></li>
+<li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
+<li>第二部分给出服务器的因特网地址</li>
+<li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
+<strong>统一资源名</strong><br><strong>URI的第二种形式，作为特定内容的唯一名称使用，与目前资源所在地无关</strong><h3 id="1-2-1事务方法">1.2.1事务方法</h3>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>HTTP方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>从服务器向客户端发送命名资源</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>将来自客户端的数据存储到一个命名的服务器资源中去</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>从服务器中删除命名资源</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>将客户端数据发送到一个服务器网关应用程序</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>仅发送命名资源响应中的 HTTP 首部</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-2_状态码">1.2.2 状态码</h3>
+<table>
+<thead>
+<tr>
+<th>HTTP状态码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Redirect</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-3Web页面中可以包含多个对象">1.2.3Web页面中可以包含多个对象</h3>
+<h3 id="1-3报文">1.3报文</h3>
+<p>分为request message,response message,包括以下三个部分：</p>
+<ul>
+<li>起始行:报文的第一行，请求报文用来说明要做些什么，响应报文用来说明出现了什么情况。</li>
+<li>首部字段：起始行后面有零个或多个首部字段。每个首部字段都包含一个名字和一个值，为了便于解析，两者之间用冒号（:）来分隔，<br>  首部以一个空行结束。每添加一个首部字段和添加新行一样简单。</li>
+<li>主体：空行之后就是可选报文的主体了，其中包含了所有类型的数据。请求主体中包括了要发送给Web服务器的数据；响应主体中装载了要返回给客户端的数据。起始行和首部都是文本形式且都是结构化的，主体则不同，主体中可以包含任意的二进制数据(图片，视频，音轨，软件程序等)，当然，主体中也可以包含文本。<h3 id="1-4-1TCP/IP">1.4.1TCP/IP</h3>
+HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把联网的细节都<br>交给了通用、可靠的因特网传输协议 TCP/IP。<br>TCP提供了：</li>
+<li>无差错的数据传输</li>
+<li>按序传输</li>
+<li>未分段的数据流<h3 id="1-4-2连接、IP地址及端口号">1.4.2连接、IP地址及端口号</h3>
+浏览器通过HTTP显示位于远端服务器中HMTL资源的步骤如下：</li>
+<li>浏览器从URL中解析出服务器主机名；</li>
+<li>浏览器将服务器的主机名转换成服务器的IP地址；</li>
+<li>浏览器讲端口号（如果有的话）从URL中解析出来；</li>
+<li>浏览器建立一条与Web服务器的TCP连接；</li>
+<li>浏览器向服务器发送一条HTTP请求报文；</li>
+<li>服务器向浏览器回送一条HTTP响应报文；</li>
+<li>关闭连接，浏览器显示文档；<h3 id="1-4-3_一个使用Telnet的实例">1.4.3 一个使用Telnet的实例</h3>
+</li>
+</ul>
 
-    }
-    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> ActiveXObject !=<span class="string">'undefined'</span>){
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">if</span>(<span class="keyword">typeof</span> argumenst.callee.ActiveXString !=<span class="string">'string'</span>){
-                <span class="keyword">var</span> versions = [<span class="string">'MSXML2.XMLHttp.6.0'</span>
-                               ,<span class="string">'MSXML2.XMLHttp3.0'</span>
-                               ,<span class="string">'MSXML2.XMLHttp'</span>];
-                <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;version.length;i++){
-                    <span class="keyword">try</span>{
-                        <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(versions[i]);
-                        <span class="built_in">arguments</span>.callee.ActiveXString = vresions[i];
-                        <span class="keyword">break</span>;
-                    }<span class="keyword">catch</span>(e){}
-                }
-            }
-            <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(ActiveXString);
-        }
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"new XHR Object supply"</span>);
-        }
-    }
-})();    
-</code></pre><h3 id="定时器">定时器</h3>
-<pre><code>    <span class="keyword">var</span> interval = <span class="function"><span class="keyword">function</span><span class="params">(fn,intervaltime)</span>{</span>
-        <span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            fn(timer);
-            timer = setTimeout(argumens.callee,intervaltime);
-        },intervaltime)
-    }
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="w9p2hqsgoul3squo" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="4hoez3d80vdc5x4v" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
     </footer>
   </div>
@@ -283,7 +327,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="od43lpwsb6014ool" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="fp6yi8lu14l5ym4h" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -372,7 +416,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="bqrekdy2znwe0iy7" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="tyl4crlprnycwxqx" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/prototype/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -432,7 +476,7 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="md18rsvo3fn4ntmi" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="7bnfiv6qzi0m22dg" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -446,14 +490,14 @@ example:
 
 
   
-    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-高级技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/HTTP/" class="article-date">
+    <a href="/2014/05/24/高级技巧/" class="article-date">
   <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
   </div>
 
   </div>
@@ -464,7 +508,7 @@ example:
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
+      <a class="article-title" href="/2014/05/24/高级技巧/">js高级技巧</a>
     </h1>
   
 
@@ -472,34 +516,64 @@ example:
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1_HTTP概述">1 HTTP概述</h2>
-<h3 id="1-1-1媒体类型">1.1.1媒体类型</h3>
-<p><strong>MIME(Multipurpose Internet Mail Extension,多用途因特网邮件扩展)</strong>,HTTP采纳了它描述并标记多媒体内容。</p>
-<ul>
-<li>HTML格式：text/html</li>
-<li>普通ASCII文本：text/plain</li>
-<li>JPEG图片：image/jpeg</li>
-<li>GIF:image/gif</li>
-<li>Quicktime:video/quicktime</li>
-<li>PowerPoint :application/vnd.ms-powerpoint<h3 id="1-1-2URI">1.1.2URI</h3>
-<strong>URI(Uniform Resource Identifier 统一资源标识符)</strong>,分为URL和URN.<h3 id="1-1-3URL">1.1.3URL</h3>
-<strong>统一资源定位符</strong></li>
-<li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
-<li>第二部分给出服务器的因特网地址</li>
-<li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
-<strong>统一资源名</strong><h1 id="#">#</h1>
-</li>
-</ul>
+        <h1 id="高级技巧">高级技巧</h1>
+<h3 id="类型检测">类型检测</h3>
+<pre><code>Object.prototype.toString.call(value)//[object <span class="keyword">Function</span>/JSON/<span class="keyword">Array</span>/<span class="keyword">String</span>/<span class="keyword">Number</span>] 
+</code></pre><h3 id="作用域安全的构造函数">作用域安全的构造函数</h3>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span><span class="params">(args)</span>{</span>
+    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Constructor){
+        <span class="comment">//doSomething</span>
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> Constructor(args)
+    }
+}
+</code></pre><h3 id="惰性载入函数">惰性载入函数</h3>
+<pre><code> <span class="keyword">var</span> CreateXHR = (<span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
+    <span class="keyword">if</span>(<span class="keyword">typeof</span> XMLHttpRequest !=<span class="string">'undefined'</span>){
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();
+        }
 
+    }
+    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> ActiveXObject !=<span class="string">'undefined'</span>){
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">if</span>(<span class="keyword">typeof</span> argumenst.callee.ActiveXString !=<span class="string">'string'</span>){
+                <span class="keyword">var</span> versions = [<span class="string">'MSXML2.XMLHttp.6.0'</span>
+                               ,<span class="string">'MSXML2.XMLHttp3.0'</span>
+                               ,<span class="string">'MSXML2.XMLHttp'</span>];
+                <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;version.length;i++){
+                    <span class="keyword">try</span>{
+                        <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(versions[i]);
+                        <span class="built_in">arguments</span>.callee.ActiveXString = vresions[i];
+                        <span class="keyword">break</span>;
+                    }<span class="keyword">catch</span>(e){}
+                }
+            }
+            <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(ActiveXString);
+        }
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"new XHR Object supply"</span>);
+        }
+    }
+})();    
+</code></pre><h3 id="定时器">定时器</h3>
+<pre><code>    <span class="keyword">var</span> interval = <span class="function"><span class="keyword">function</span><span class="params">(fn,intervaltime)</span>{</span>
+        <span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            fn(timer);
+            timer = setTimeout(argumens.callee,intervaltime);
+        },intervaltime)
+    }
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="ldsouq44g4xy1134" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="3648qfmew5vkgvae" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
 
     </footer>
   </div>
@@ -571,7 +645,7 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="allfweaxsn8dq1ak" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="gwp6qjnefex40r0o" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/guid/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -639,7 +713,7 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="j9xu9seh89nav2f5" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="gev35bgkgk9f0gq4" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -683,7 +757,7 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="q5lxlfhfqvm4yy8e" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="9l5l2el9ypafxaci" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/bootstrap/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -957,7 +1031,7 @@ async.filter(dirContents,isFilename,<span class="function"><span class="keyword"
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="k75y0u2z59rkugde" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="qz9rdbg9s63jlz6i" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/asynchronous/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1027,7 +1101,7 @@ async.filter(dirContents,isFilename,<span class="function"><span class="keyword"
           </li>
         
           <li>
-            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
+            <a href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
           </li>
         
           <li>

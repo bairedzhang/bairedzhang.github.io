@@ -100,14 +100,88 @@
 <li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
 <li>第二部分给出服务器的因特网地址</li>
 <li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
-<strong>统一资源名</strong><h1 id="#">#</h1>
+<strong>统一资源名</strong><br><strong>URI的第二种形式，作为特定内容的唯一名称使用，与目前资源所在地无关</strong><h3 id="1-2-1事务方法">1.2.1事务方法</h3>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>HTTP方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>从服务器向客户端发送命名资源</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>将来自客户端的数据存储到一个命名的服务器资源中去</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>从服务器中删除命名资源</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>将客户端数据发送到一个服务器网关应用程序</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>仅发送命名资源响应中的 HTTP 首部</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-2_状态码">1.2.2 状态码</h3>
+<table>
+<thead>
+<tr>
+<th>HTTP状态码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Redirect</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-3Web页面中可以包含多个对象">1.2.3Web页面中可以包含多个对象</h3>
+<h3 id="1-3报文">1.3报文</h3>
+<p>分为request message,response message,包括以下三个部分：</p>
+<ul>
+<li>起始行:报文的第一行，请求报文用来说明要做些什么，响应报文用来说明出现了什么情况。</li>
+<li>首部字段：起始行后面有零个或多个首部字段。每个首部字段都包含一个名字和一个值，为了便于解析，两者之间用冒号（:）来分隔，<br>  首部以一个空行结束。每添加一个首部字段和添加新行一样简单。</li>
+<li>主体：空行之后就是可选报文的主体了，其中包含了所有类型的数据。请求主体中包括了要发送给Web服务器的数据；响应主体中装载了要返回给客户端的数据。起始行和首部都是文本形式且都是结构化的，主体则不同，主体中可以包含任意的二进制数据(图片，视频，音轨，软件程序等)，当然，主体中也可以包含文本。<h3 id="1-4-1TCP/IP">1.4.1TCP/IP</h3>
+HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把联网的细节都<br>交给了通用、可靠的因特网传输协议 TCP/IP。<br>TCP提供了：</li>
+<li>无差错的数据传输</li>
+<li>按序传输</li>
+<li>未分段的数据流<h3 id="1-4-2连接、IP地址及端口号">1.4.2连接、IP地址及端口号</h3>
+浏览器通过HTTP显示位于远端服务器中HMTL资源的步骤如下：</li>
+<li>浏览器从URL中解析出服务器主机名；</li>
+<li>浏览器将服务器的主机名转换成服务器的IP地址；</li>
+<li>浏览器讲端口号（如果有的话）从URL中解析出来；</li>
+<li>浏览器建立一条与Web服务器的TCP连接；</li>
+<li>浏览器向服务器发送一条HTTP请求报文；</li>
+<li>服务器向浏览器回送一条HTTP响应报文；</li>
+<li>关闭连接，浏览器显示文档；<h3 id="1-4-3_一个使用Telnet的实例">1.4.3 一个使用Telnet的实例</h3>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="ldsouq44g4xy1134" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="4hoez3d80vdc5x4v" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -173,7 +247,7 @@
           </li>
         
           <li>
-            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
+            <a href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
           </li>
         
           <li>
