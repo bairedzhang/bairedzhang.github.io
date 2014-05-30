@@ -181,14 +181,27 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
 <li>浏览器建立一条与Web服务器的TCP连接；</li>
 <li>浏览器向服务器发送一条HTTP请求报文；</li>
 <li>服务器向浏览器回送一条HTTP响应报文；</li>
-<li>关闭连接，浏览器显示文档；<h3 id="1-4-3_一个使用Telnet的实例">1.4.3 一个使用Telnet的实例</h3>
+<li><p>关闭连接，浏览器显示文档；</p>
+<h3 id="1-4-3telnet">1.4.3telnet</h3>
+<h3 id="1-5协议版本">1.5协议版本</h3>
+<h3 id="1-6web的结构组件">1.6web的结构组件</h3>
 </li>
+<li><p>代理：位于客户端和服务器之间的HTTP中间实体</p>
+</li>
+<li>缓存：HTTP的仓库，使常用页面的副本可以保存在离客户端更近的地方。</li>
+<li>网关：连接其他应用程序的特殊Web服务器。</li>
+<li>隧道：对HTTP通信报文进行盲转发的特殊代理</li>
+<li>Agent代理：发起自动HTTP请求的半智能Web客户端</li>
 </ul>
-
+<h2 id="2URL与资源">2URL与资源</h2>
+<h3 id="2-1浏览因特网资源">2.1浏览因特网资源</h3>
+<h3 id="2-2URL语法">2.2URL语法</h3>
+<pre><code>    &lt;scheme&gt;<span class="symbol">://&lt;user&gt;</span><span class="symbol">:&lt;password&gt;</span>@&lt;host&gt;<span class="symbol">:&lt;port&gt;/&lt;path&gt;</span>;&lt;params&gt;?&lt;query&gt;<span class="comment">#&lt;frag&gt;</span>
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="bp4g97hiyx0ps3f4" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="80okm7kfj1k9m1o7" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -201,19 +214,19 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
     
 <nav id="article-nav">
   
-    <a href="/2014/05/24/asynchronous/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/05/29/Event/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          js异步响应总结
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2014/05/24/ECMAScript5/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/05/24/regexp/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">es5新增方法简单整理</div>
+      <div class="article-nav-title">js正则总结</div>
     </a>
   
 </nav>
@@ -278,7 +291,11 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
           </li>
         
           <li>
-            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
+            <a href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/regexp/">js正则总结</a>
           </li>
         
           <li>
@@ -287,10 +304,6 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
         
           <li>
             <a href="/2014/05/24/mongoose/">node-mongoose db</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/24/js面试题总结/">js面试题</a>
           </li>
         
       </ul>
