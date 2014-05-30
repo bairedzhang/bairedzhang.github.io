@@ -1952,7 +1952,7 @@ document.write(obj.length);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/ECMAScript5/" data-id="3ibzfa2s3zcxwmxm" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/ECMAScript5/" data-id="ej93n30rucgqg3nw" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/ECMAScript5/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1966,14 +1966,14 @@ document.write(obj.length);
 
 
   
-    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-guid" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/js面试题总结/" class="article-date">
+    <a href="/2014/05/24/guid/" class="article-date">
   <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
+    <a class="article-category-link" href="/categories/markdown/">markdown</a>
   </div>
 
   </div>
@@ -1984,7 +1984,7 @@ document.write(obj.length);
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
+      <a class="article-title" href="/2014/05/24/guid/">markdown语法</a>
     </h1>
   
 
@@ -1992,58 +1992,49 @@ document.write(obj.length);
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
-<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> counter = <span class="number">0</span>;
-    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        counter++;
-        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
-    }
-    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> tmp = counter;
-        counter = <span class="number">0</span>;
-        <span class="keyword">return</span> tmp;
-    }
-    <span class="keyword">return</span> fn;        
-})();
-<span class="comment">//===以下方法有待改进</span>
-<span class="keyword">var</span> t = <span class="number">0</span>;
-<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
-    t++;
-    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
-    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> nt = t;
-        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
-        t =<span class="number">0</span>;
-    },<span class="number">100</span>);
-
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
-            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
-        }
-        <span class="keyword">return</span> args;
-    }
-}
-</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
-<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
-or
-<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
-    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
-    }
-})
-</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
+        <p>斜体强调：<em>em</em>，<strong>strong</strong></p>
+<h1 id="h1">h1</h1>
+<h6 id="h6">h6</h6>
+<h1 id="H1">H1</h1>
+<h2 id="H2">H2</h2>
+<blockquote>
+<p>blockquot</p>
+</blockquote>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ol>
+<li>li</li>
+<li>li</li>
+</ol>
+<p>这是一个普通段落：</p>
+<pre><code><span class="title">pre</span>-&gt;code-&gt; 这是一个代码区块。
+</code></pre><hr>
+<hr>
+<p>this is <a href="http:www.baidu.com" title="title">an example</a> inline link</p>
+<p>This is <a href="http://example.com/" title="Optional Title Here" target="_blank">an</a> reference-style link.</p>
+<p>Use the <code>printf()</code> function.</p>
+<p>A single backtick in a code span: <code>`foo` </code></p>
+<p>Please don’t use any <code>&lt;blink&gt;</code> tags.</p>
+<p><code>&amp;#8212;</code> is the decimal-encoded equivalent of <code>&amp;mdash;</code>.</p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" alt="Alt text"></p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" width="200"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="ega9m0qnjhtjkbsw" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="z6lpbfxmfhjkwyoq" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/05/24/guid/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
     </footer>
   </div>
@@ -2108,11 +2099,7 @@ or
           </li>
         
           <li>
-            <a href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/24/regexp/">js正则总结</a>
+            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
           </li>
         
           <li>
@@ -2121,6 +2108,10 @@ or
         
           <li>
             <a href="/2014/05/24/mongoose/">node-mongoose db</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/js面试题总结/">js面试题</a>
           </li>
         
       </ul>
