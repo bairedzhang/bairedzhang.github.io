@@ -137,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="lh5kco7i30u95q4s" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="ohn9ksp0xv9ajlac" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -236,7 +236,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="0suc5jvifjszm8cp" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="h5b8ekej933d5gmb" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -325,7 +325,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="lb4i78dcv8opif7c" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="azn97fbopynvlrnz" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/prototype/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -385,12 +385,98 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="zyv1bfixbl93rm3f" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="dwv31vdc2skrz4rc" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/js面试题总结/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
+<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> counter = <span class="number">0</span>;
+    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        counter++;
+        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
+    }
+    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">var</span> tmp = counter;
+        counter = <span class="number">0</span>;
+        <span class="keyword">return</span> tmp;
+    }
+    <span class="keyword">return</span> fn;        
+})();
+<span class="comment">//===以下方法有待改进</span>
+<span class="keyword">var</span> t = <span class="number">0</span>;
+<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
+    t++;
+    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
+    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">var</span> nt = t;
+        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
+        t =<span class="number">0</span>;
+    },<span class="number">100</span>);
+
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
+            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
+        }
+        <span class="keyword">return</span> args;
+    }
+}
+</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
+<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
+or
+<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
+    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
+    }
+})
+</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="sbqvuds527eqb52z" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
 
     </footer>
   </div>
@@ -453,7 +539,7 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="1v3qvjej8cmb5btv" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="6c9675yupn7sx2fm" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -727,98 +813,12 @@ async.filter(dirContents,isFilename,<span class="function"><span class="keyword"
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="6rf3v86by0ir8c4k" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="r1133ksa3rzi941b" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/asynchronous/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异步/">异步</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/js面试题总结/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
-<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> counter = <span class="number">0</span>;
-    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        counter++;
-        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
-    }
-    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> tmp = counter;
-        counter = <span class="number">0</span>;
-        <span class="keyword">return</span> tmp;
-    }
-    <span class="keyword">return</span> fn;        
-})();
-<span class="comment">//===以下方法有待改进</span>
-<span class="keyword">var</span> t = <span class="number">0</span>;
-<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
-    t++;
-    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
-    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> nt = t;
-        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
-        t =<span class="number">0</span>;
-    },<span class="number">100</span>);
-
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
-            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
-        }
-        <span class="keyword">return</span> args;
-    }
-}
-</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
-<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
-or
-<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
-    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
-    }
-})
-</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="2spu4485ugjkauff" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
 
     </footer>
   </div>

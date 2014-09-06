@@ -137,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="lh5kco7i30u95q4s" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="ohn9ksp0xv9ajlac" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -226,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="lb4i78dcv8opif7c" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="azn97fbopynvlrnz" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/prototype/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -286,7 +286,7 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="zyv1bfixbl93rm3f" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="dwv31vdc2skrz4rc" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -300,14 +300,14 @@ example:
 
 
   
-    <article id="post-guid" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/guid/" class="article-date">
+    <a href="/2014/05/24/js面试题总结/" class="article-date">
   <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/markdown/">markdown</a>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
   </div>
 
   </div>
@@ -318,7 +318,7 @@ example:
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/guid/">markdown语法</a>
+      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
     </h1>
   
 
@@ -326,49 +326,692 @@ example:
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>斜体强调：<em>em</em>，<strong>strong</strong></p>
-<h1 id="h1">h1</h1>
-<h6 id="h6">h6</h6>
-<h1 id="H1">H1</h1>
-<h2 id="H2">H2</h2>
-<blockquote>
-<p>blockquot</p>
-</blockquote>
-<ul>
-<li>li</li>
-</ul>
-<ul>
-<li>li</li>
-</ul>
-<ul>
-<li>li</li>
-</ul>
-<ol>
-<li>li</li>
-<li>li</li>
-</ol>
-<p>这是一个普通段落：</p>
-<pre><code><span class="title">pre</span>-&gt;code-&gt; 这是一个代码区块。
-</code></pre><hr>
-<hr>
-<p>this is <a href="http:www.baidu.com" title="title">an example</a> inline link</p>
-<p>This is <a href="http://example.com/" title="Optional Title Here" target="_blank">an</a> reference-style link.</p>
-<p>Use the <code>printf()</code> function.</p>
-<p>A single backtick in a code span: <code>`foo` </code></p>
-<p>Please don’t use any <code>&lt;blink&gt;</code> tags.</p>
-<p><code>&amp;#8212;</code> is the decimal-encoded equivalent of <code>&amp;mdash;</code>.</p>
-<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" alt="Alt text"></p>
-<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" width="200"></p>
+        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
+<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> counter = <span class="number">0</span>;
+    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        counter++;
+        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
+    }
+    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">var</span> tmp = counter;
+        counter = <span class="number">0</span>;
+        <span class="keyword">return</span> tmp;
+    }
+    <span class="keyword">return</span> fn;        
+})();
+<span class="comment">//===以下方法有待改进</span>
+<span class="keyword">var</span> t = <span class="number">0</span>;
+<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
+    t++;
+    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
+    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">var</span> nt = t;
+        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
+        t =<span class="number">0</span>;
+    },<span class="number">100</span>);
+
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
+            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
+        }
+        <span class="keyword">return</span> args;
+    }
+}
+</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
+<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
+or
+<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
+    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
+    }
+})
+</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="fzwhlkv17plbuyya" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="sbqvuds527eqb52z" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/guid/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-regexp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/regexp/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/正则/">正则</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/regexp/">js正则总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RegExp">RegExp</h2>
+<pre><code>    <span class="keyword">var</span> expression = <span class="regexp">/pattern/</span>flags;
+    <span class="keyword">var</span> expression = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"pattern"</span>,flags);
+</code></pre><p>其中的模式（pattern）部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。<br><strong> 由于RegExp构造函数的模式参数是字符串，所以在某些情况下要对字符进行双重转义。所有元字符都必须双重转义，那些转义过的字符也是如此。</strong></p>
+<ul>
+<li>g:全局模式，应用于所有字符串，而非在发现第一个匹配项时立即停止</li>
+<li>i:不区分大小写</li>
+<li>m:多行模式</li>
+</ul>
+<p>所有元字符需要转义。包括：</p>
+<pre><code>    <span class="list">( <span class="collection">[ <span class="collection">{ \ ^ $ | ) ? * + . ]</span>}</span></span>
+</code></pre><p>直接量字符:</p>
+<pre><code>    <span class="command">\o</span>         NUL字符
+    <span class="command">\t</span>        制表符
+    <span class="command">\n</span>        换行符
+    <span class="command">\v</span>        垂直制表符
+    <span class="command">\f</span>        换页符
+    <span class="command">\r</span>        回车符
+    <span class="command">\uxxxx</span>    16进制数 xxxx制定的unicode
+</code></pre><p>字符类:</p>
+<pre><code>    .        除换行符和其它Unicode行终止符之外的任意字符
+    <span class="command">\w</span>        任何ASCII字符组成的单词，等价于<span class="special">[</span>a-zA-Z0-9<span class="special">]</span>
+    <span class="command">\W</span>        任何不是ASCII字符组成的单词，等价于<span class="special">[</span>^a-zA-Z0-9<span class="special">]</span>
+    <span class="command">\s</span>        任何Unicode空白符
+    <span class="command">\S</span>        任何非Unicode空白符的字符，注意<span class="command">\w</span>和<span class="command">\S</span>不 
+    <span class="command">\d</span>        任何ASCII数字，等价于<span class="special">[</span>0-9<span class="special">]</span>
+    <span class="command">\D</span>        <span class="special">[</span>^0-9<span class="special">]</span>
+    <span class="special">[</span><span class="command">\b</span><span class="special">]</span>    退格直接量(特例)
+</code></pre><p>重复字符语法：</p>
+<pre><code>    ？        <span class="rules">{<span class="rule">0,1}</span></span>
+    +        <span class="rules">{<span class="rule">1,}</span></span>
+    *        <span class="rules">{<span class="rule">0,}</span></span>
+</code></pre><p><strong>使用正则表达式字面量和使用RegExp够做函数创建的正则表达式不一样。前者始终会共享一个RegExp实例，后者每次都是创建一个新实例。</strong></p>
+<h3 id="实例属性">实例属性</h3>
+<p>RegExp每个实例都有下列属性：</p>
+<ul>
+<li>global:boolean</li>
+<li>ignoreCase:boolean</li>
+<li>lastIndex:int,表示开始搜索下一个匹配项的字符位置，从0算起</li>
+<li>multiline:boolean</li>
+<li>source:正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回</li>
+</ul>
+<h3 id="实例方法">实例方法</h3>
+<blockquote>
+<p>主要方法是<code>exec()</code>，该方法专门为捕获设计的。返回包含第一个匹配项信息的数组，没有返回null。数组包含两个额外的属性：<code>index</code>和<code>input</code>。index表示匹配项在字符串中的位置，input表示应用正则表达式的字符串。数组第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串（没有捕获组则只包含第一项）。<strong>对于exec而言，即使在模式中设置了全局标志（g），它每次也只会返回一个匹配项。在不设置全局标志的情况下，在同一个字符串上多次调用exec()方法将始终返回第一个匹配项的信息。在设置全局标志的情况下，每次调用将会字符串中继续查找新匹配项</strong></p>
+<p>第二个方法是<code>test()</code></p>
+</blockquote>
+<pre><code>input              <span class="variable">$_</span>         最近一次要匹配的字符串
+lastMatch          <span class="variable">$&amp;</span>        最近一次的匹配项
+lastParen        <span class="variable">$+</span>        最近一次匹配的捕获组
+leftContext        <span class="variable">$`</span>        input字符串中lastMatch之前的文本
+multiline        <span class="variable">$*</span>        布尔值，表示是否所有表达式都使用多行模式。
+rightContext    <span class="variable">$`</span>        input字符串中lastMatch之后的文本
+</code></pre><h2 id="语法">语法</h2>
+<p><img src="http://bairedzhang.github.io/imgs/reg1.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg2.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg3.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg4.png" alt="Alt text"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="h5b8ekej933d5gmb" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-grunt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/grunt/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/grunt/">gruntFile简单配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="grunt">grunt</h1>
+<h3 id="install">install</h3>
+<pre><code>        npm <span class="keyword">install</span> grunt-cli -g
+        进入项目根目录配置package.json,gruntFile
+        npm <span class="keyword">install</span>
+        grunt
+</code></pre><h5 id="gruntFile">gruntFile</h5>
+<pre><code>    <span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span></span>{
+        grunt.initConfig({
+            pkg:grunt.file.readJSON(<span class="string">'package.json'</span>),
+            uglify:{
+                banner:<span class="string">''</span>,
+                beautify:{
+                    beautify:<span class="keyword">false</span>,
+                    ascii-only:<span class="keyword">true</span>
+                }
+            },
+            ....
+        })
+
+        grunt.loadNpmTask(<span class="string">'uglify'</span>);
+
+        grunt.registerTask(<span class="string">'default'</span>,[<span class="string">'uglify'</span>]);    
+    }
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="6c9675yupn7sx2fm" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grunt/">grunt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-bootstrap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/bootstrap/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css-frame/">css-frame</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/bootstrap/">bootstrap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="738ixi8c1ofbi7xc" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/bootstrap/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css-frame/">css-frame</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-asynchronous" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/asynchronous/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/asynchronous/">js异步响应总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Asynchronous">Asynchronous</h1>
+<h2 id="1-public/subscribe">1.public/subscribe</h2>
+<blockquote>
+<p>node自身提供的events模块是发布/订阅模式的一个简单实现，node中部分模块都继承自它，这个模块比前端中大量DOM事件简单，不存在事件冒泡，也不存在preventDeafault、stopPropagation(),stopImmediatePropagation()等控制事件传递的方法。它具有addListener/on(),once(),removeListener,removeAllListeners()和emit()等基本的事件监听模式的方法实现。</p>
+</blockquote>
+<pre><code>examples:
+    emitter.<span class="keyword">on</span>(<span class="string">'event1'</span>,<span class="function"><span class="keyword">function</span><span class="params">(<span class="keyword">message</span>)</span><span class="comment">{
+        console.log(message);
+    }</span>);</span>
+    emitter.emit(<span class="string">'event1'</span>,<span class="string">'i am message'</span>);
+</code></pre><h2 id="2-promise/defferer">2.promise/defferer</h2>
+<blockquote>
+<p>Deffered 就是Promise的超集，它比promise多一项关键特性：可以直接触发。纯promise只允许添加多个调用，而且必须由其他什么东西来触发这些调用。<br>  使用resolve方法或者reject均可触发Deferred对象。</p>
+</blockquote>
+<pre><code>      <span class="keyword">var</span> promptDeferred = <span class="keyword">new</span> $.Defrred();
+      promptDefferred
+      .always(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+          conosole.log(<span class="string">'A choice was made:'</span>);
+      }).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+          conosole.log(<span class="string">'Starting game...'</span>);
+      }).fail(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+          conosole.log(<span class="string">'No game today...'</span>);
+      });
+
+  <span class="keyword">var</span> promptPromise = promptDefrred.promise();<span class="comment">//纯promise对象,无resolve/reject</span>
+  <span class="keyword">var</span> promise1 = promptDefrred.promise();
+  <span class="keyword">var</span> promise2 = promptDefrred.promise();
+  console.log(promise1 ===promise2)<span class="comment">//true,多个promise对象和promptDeferred分享同样的stat(pending,resolved,rejected);</span>
+  console.log(promise1 === promise1.promise());<span class="comment">//true 对promise对象再调用promise方法，只不过产生一个指向相同对象的引用</span>
+</code></pre><blockquote>
+<p>使用promise方法的唯一理由就是“封装”。</p>
+</blockquote>
+<h3 id="2-1jquery_API中的promise对象">2.1jquery API中的promise对象</h3>
+<pre><code>    Animation
+<span class="keyword">var</span> $flash = $(<span class="string">'.flash'</span>);
+<span class="keyword">var</span> showPromise = $flash.show().promise();
+
+<span class="keyword">var</span> slideUpDeferred = <span class="keyword">new</span> $.Deferred();
+$(<span class="string">'.menu'</span>).slideUp(slideUpDeferred.resolve);
+<span class="keyword">var</span> slideUpPromise = slideUpDeferred.promise();    
+以下<span class="number">3</span>种等效：
+$(onReady);
+$(document).ready(onReady);
+$.ready.promise().done(onReady);
+</code></pre><h4 id="2-1-1向回调函数传据数">2.1.1向回调函数传据数</h4>
+<pre><code>    <span class="keyword">var</span> slashdotter = {
+        comment:<span class="function"><span class="keyword">function</span><span class="params">(editor)</span>{</span>
+            conosole.log(<span class="string">'Obviously'</span>,editor,<span class="string">'is the best text editor.'</span>);
+        }
+    };
+    <span class="keyword">var</span> grammarDeferred = <span class="keyword">new</span> $.Deferred();
+    grammarDefferred.done(<span class="function"><span class="keyword">function</span><span class="params">(verb,object)</span>{</span>
+        <span class="keyword">this</span>[verb](object);
+    });
+    grammarDefferred.resolve.call(slashdotter,<span class="string">'comment'</span>,<span class="string">'Emacs'</span>);
+    <span class="comment">//grammarDefferred.resolveWith(slashdotter,[comment,'Emacs']);</span>
+    <span class="comment">//grammarDefferred.resolve.apply(slashdotter,['comment','Emacs']);</span>
+》Obviously Emacs is the best text editor.
+</code></pre><h4 id="2-1-2进度通知">2.1.2进度通知</h4>
+<pre><code>    <span class="keyword">var</span> nanowrimoing = $.Deferred();
+    <span class="keyword">var</span> wordGoal = <span class="number">5000</span>;
+    nanowrimoing.progress(<span class="function"><span class="keyword">function</span><span class="params">(wordCount)</span>{</span>
+        <span class="keyword">var</span> percentComplete = <span class="built_in">Math</span>.floor(wordCount/wordGoal*<span class="number">100</span>);
+        $(<span class="string">'#indicator'</span>).text(percentComplete +<span class="string">'% complete'</span>);
+    });
+    nanowrimoing.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        $(<span class="string">'#indicator'</span>).text(<span class="string">'Good job!'</span>);
+    });
+    $(<span class="string">'#document'</span>).on(<span class="string">'keypress'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">var</span> wordCount = $(<span class="keyword">this</span>).val().split(<span class="regexp">/\s/</span>).length;
+        <span class="keyword">if</span>(wordCount&gt;=wordCoal){                            nanowrimoing.resolve();
+        }
+        nanowrimoing.notify(wordCount);
+    });
+</code></pre><h4 id="2-1-3Promise对象合并">2.1.3Promise对象合并</h4>
+<blockquote>
+<p>Promise如此强的的一个主要原因是，它允许我们把任务当成布尔量来处理。</p>
+</blockquote>
+<pre><code>when:
+<span class="keyword">var</span> gameReadying = $.when(tutorialPromise,gameLoadedPromise);
+gameReadying.done(startGame);
+
+<span class="keyword">var</span> serverData = {};
+<span class="keyword">var</span> getting1 = $.get(<span class="string">'/1'</span>).done(<span class="function"><span class="keyword">function</span><span class="params">(result)</span>{</span>serverData[<span class="string">'1'</span>] = result;});
+<span class="keyword">var</span> getting1 = $.get(<span class="string">'/2'</span>).done(<span class="function"><span class="keyword">function</span><span class="params">(result)</span>{</span>serverData[<span class="string">'2'</span>] = result;});
+$.when(getting1,getting2).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="comment">//获得的信息现在都已位于serverData...</span>
+});
+</code></pre><blockquote>
+<p>$.when 及其他能取用Promise对象的jQuery方法均支持传入非Promise对象作为参数。<br>而这些非Promise参数会被当成因相应参数位置已赋值而执行的Promise对象来处理。例如</p>
+</blockquote>
+<pre><code>    <span class="variable">$.</span><span class="keyword">when</span>(<span class="string">'foo'</span>);<span class="regexp">//</span>相当于匿名自执行promise对象并传递数据’foo‘
+</code></pre><p>会生成一个因赋值’foo’而立即执行的Promise对象;</p>
+<pre><code>    <span class="keyword">var</span> promise = $.Deferred().resolve(<span class="string">'manchu'</span>); 
+    $.when(<span class="string">'foo'</span>, promise).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        console.log(<span class="built_in">arguments</span>);<span class="comment">//['foo','manchu'];</span>
+    });
+</code></pre><h4 id="2-1-4管道连接未来(pipe)">2.1.4管道连接未来(pipe)</h4>
+<pre><code><span class="keyword">var</span> getPromise =$.get(<span class="string">'/query'</span>);
+getPromise.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> postPromise = $.post(<span class="string">'/query'</span>)        
+})
+getPromsie完成之前无法对postPromise绑定回调，因为posePromise还不存在
+
+<span class="keyword">var</span> getPromise = $.get(<span class="string">'query'</span>);
+<span class="keyword">var</span> postPromise = getPromise.pipe(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="keyword">return</span> $.post(<span class="string">'query'</span>);
+})
+postPromise.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>});
+</code></pre><h2 id="3Async-js">3Async.js</h2>
+<h4 id="3-1-1异步工作流次序问题">3.1.1异步工作流次序问题</h4>
+<blockquote>
+<p>假想先按字母顺序读取recipes(菜谱)目录中的所有文件，接着把读取出的这些内容连接成一个字符串并显示出来，使用同步方法很容易做到这点。</p>
+</blockquote>
+<pre><code><span class="keyword">var</span> fs = <span class="keyword">require</span>(<span class="string">'fs'</span>);
+process.chdir(<span class="string">'recipes'</span>);<span class="comment">//改变工作目录</span>
+<span class="keyword">var</span> concatenation = <span class="string">''</span>;
+<span class="comment">//=======origin</span>
+fs.readdirSync(<span class="string">'.'</span>)
+  .filter(<span class="function"><span class="keyword">function</span><span class="params">(filename)</span>{</span>
+  <span class="comment">//跳过不是文件的目录</span>
+  <span class="keyword">return</span> fs.statSync(filename).isFile();
+}).<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    concatenation+=fs.readFileSync(filename,<span class="string">'utf8'</span>);
+});
+console.log(concatenation);
+
+<span class="comment">//=======answer1</span>
+fs.readdir(<span class="string">'.'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,filenames)</span>{</span>
+    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
+    <span class="function"><span class="keyword">function</span> <span class="title">readFileAt</span><span class="params">(i)</span>{</span>
+        <span class="keyword">var</span> filename = filenames[i];
+        fs.stat(filename,<span class="function"><span class="keyword">function</span><span class="params">(err,stats)</span>{</span>
+            <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
+            <span class="keyword">if</span>(!stats.isFile()) <span class="keyword">return</span> readFileAt(i+<span class="number">1</span>);
+            fs.readFile(filename,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,text)</span>{</span>
+                <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
+                concatenation+=text;
+                <span class="keyword">if</span>(i+<span class="number">1</span> ===filenames.length){
+                    <span class="keyword">return</span> console.log(concatenation);
+                }
+                readFileAt(i+<span class="number">1</span>);
+            })
+        })
+    }
+    readFileAt(<span class="number">0</span>);
+});
+
+<span class="comment">//=======answer2</span>
+<span class="keyword">var</span> async = <span class="keyword">require</span>(<span class="string">'async'</span>);
+<span class="keyword">var</span> fs = <span class="keyword">require</span>(<span class="string">'fs'</span>);
+process.chdir(<span class="string">'recipes'</span>);
+
+<span class="keyword">var</span> concatenation = <span class="string">''</span>;
+
+<span class="keyword">var</span> dirContents = fs.readdirSync(<span class="string">'.'</span>);
+
+async.filter(dirContents,isFilename,<span class="function"><span class="keyword">function</span><span class="params">(filenames)</span>{</span>
+    async.forEachSeries(filenames,readAndConcat,onComplete);
+});
+<span class="function"><span class="keyword">function</span> <span class="title">isFilename</span><span class="params">(filename,callback)</span>{</span>
+    fs.stat(filename,<span class="function"><span class="keyword">function</span><span class="params">(err,stats)</span>{</span>
+        <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
+        callback(stats.isFile());
+    });
+}
+<span class="function"><span class="keyword">function</span> <span class="title">readAndContancat</span><span class="params">(filename,callback)</span>{</span>
+    fs.readFile(filename,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,fileContents)</span>{</span>
+        <span class="keyword">if</span>(err) <span class="keyword">return</span> callback(err);
+        concatenation += fileContents;
+        callback();
+    })
+}
+<span class="function"><span class="keyword">function</span> <span class="title">onComplete</span><span class="params">(err)</span>{</span>
+    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
+    consolelog(concatenation);
+}
+</code></pre><blockquote>
+<p>Async.js提供了以下方法：</p>
+</blockquote>
+<ul>
+<li>reject/rejectSeries，与filter刚好相反</li>
+<li>map/mapSeries,1:1变换</li>
+<li>reduce/reduceRight,值的逐步变换；</li>
+<li>detect/detectSeries,找到筛选器匹配的值 </li>
+<li>sortBy,产生一个副本；</li>
+<li>some,测试是否至少有一个值符合给定标准</li>
+<li><p>every,测试是否所有值均符合标准</p>
+<h4 id="3-1-2Async-js的错误处理技术">3.1.2Async.js的错误处理技术</h4>
+<p>简单来说，Async.js遵守Node的约定。这意味着所有的I/O回调都形如<em>callback(er,results…)</em>，唯一的里外是结果为<em>布尔型</em>的回调。布尔型回调的写法就是callback(result),所以上一代码示例中的isFilename迭代器需要亲自处理错误。对于非布尔型的所有Async.js迭代器，传递非null/undefined的值作为迭代器回调的首参数将会立即因该错误值而调用完工回调(onComplete)，这正是readAndConcat不用throw也能工作的原因。</p>
+<h3 id="3-2Asyncjs的任务组织技术">3.2Asyncjs的任务组织技术</h3>
+<h4 id="3-2-1异步函数序列的运行">3.2.1异步函数序列的运行</h4>
+<pre><code>  funcs[<span class="link_label">0</span>](<span class="link_url">function(</span>){
+<span class="code">      funcs[1](function(){</span>
+<span class="code">          funcs[2](onComplete);</span>
+<span class="code">      });</span>
+  });
+</code></pre><p><em>async.series</em>和<em>async.waterfall</em>均接受一组函数作为参数并顺序运行它们，二者给任何表中的函数均传递一个node风格的回调，其差别是，前者给各个任务的只有回调，而后者还会提供任务列表中前一任务的结果。</p>
+<pre><code>  <span class="keyword">var</span> async = <span class="built_in">require</span>(<span class="string">'async'</span>);
+  <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>;
+  async.series([
+      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">100</span>);},
+      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">300</span>);},
+      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">200</span>);}
+      ],<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span>{</span>
+      concole.log(<span class="string">'Conpleted in'</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>- start)+<span class="string">'ms'</span>);<span class="comment">//600</span>
+  });
+</code></pre></li>
+</ul>
+<h4 id="3-2-2异步函数的并行运行">3.2.2异步函数的并行运行</h4>
+<p>Async.js提供了series的并行版，即parallel，也接受一组形为function(callback){..}的函数作为参数，但会再加上一个（可选的）在触发最末回调后运行的完工时间处理器。</p>
+<pre><code>    <span class="keyword">var</span> async = <span class="built_in">require</span>(<span class="string">'async'</span>);
+    <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>;
+    async.parallel([
+        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">100</span>);},
+        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">300</span>);},
+        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">200</span>);}
+        ],<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span>{</span>
+        concole.log(<span class="string">'Conpleted in'</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>- start)+<span class="string">'ms'</span>);<span class="comment">//300</span>
+    });
+</code></pre><p>Async.js按照<em>任务列表的次序</em>向完工事件处理器传递结果，<em>而不是按照生成这些结果的次序</em>。这样，我们既拥有了并行机的性能优势，又没有失去结果的可预知性。</p>
+<h3 id="3-3异步工作流的动态排队技术">3.3异步工作流的动态排队技术</h3>
+<p>series 和parallel的局限性：</p>
+<ul>
+<li>任务列表是静态，一旦调用，不能再增减任务。</li>
+<li>任务处于黑箱，无法查看进度，除非内部自行派发更新信息。</li>
+<li>只有两个选择，要么完全没有并发性，要么不受限制的并发性。对文件I/O任务是个大问题，如果要操作上千个文件，当然不想因按顺序操作而效率低下，但如果试着并行执行所有操作，又很可能会激怒操作系统。</li>
+</ul>
+<p>Async.js提供了一种可以解决上述问题的全能方法：queue。</p>
+<h4 id="3-3-1深入理解队列">3.3.1深入理解队列</h4>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="r1133ksa3rzi941b" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/asynchronous/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异步/">异步</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/HTTP/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1_HTTP概述">1 HTTP概述</h2>
+<h3 id="1-1-1媒体类型">1.1.1媒体类型</h3>
+<p><strong>MIME(Multipurpose Internet Mail Extension,多用途因特网邮件扩展)</strong>,HTTP采纳了它描述并标记多媒体内容。</p>
+<ul>
+<li>HTML格式：text/html</li>
+<li>普通ASCII文本：text/plain</li>
+<li>JPEG图片：image/jpeg</li>
+<li>GIF:image/gif</li>
+<li>Quicktime:video/quicktime</li>
+<li>PowerPoint :application/vnd.ms-powerpoint<h3 id="1-1-2URI">1.1.2URI</h3>
+<strong>URI(Uniform Resource Identifier 统一资源标识符)</strong>,分为URL和URN.<h3 id="1-1-3URL">1.1.3URL</h3>
+<strong>统一资源定位符</strong></li>
+<li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
+<li>第二部分给出服务器的因特网地址</li>
+<li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
+<strong>统一资源名</strong><br><strong>URI的第二种形式，作为特定内容的唯一名称使用，与目前资源所在地无关</strong><h3 id="1-2-1事务方法">1.2.1事务方法</h3>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>HTTP方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>从服务器向客户端发送命名资源</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>将来自客户端的数据存储到一个命名的服务器资源中去</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>从服务器中删除命名资源</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>将客户端数据发送到一个服务器网关应用程序</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>仅发送命名资源响应中的 HTTP 首部</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-2_状态码">1.2.2 状态码</h3>
+<table>
+<thead>
+<tr>
+<th>HTTP状态码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Redirect</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-3Web页面中可以包含多个对象">1.2.3Web页面中可以包含多个对象</h3>
+<h3 id="1-3报文">1.3报文</h3>
+<p>分为request message,response message,包括以下三个部分：</p>
+<ul>
+<li>起始行:报文的第一行，请求报文用来说明要做些什么，响应报文用来说明出现了什么情况。</li>
+<li>首部字段：起始行后面有零个或多个首部字段。每个首部字段都包含一个名字和一个值，为了便于解析，两者之间用冒号（:）来分隔，首部以一个空行结束。每添加一个首部字段和添加新行一样简单。</li>
+<li>主体：空行之后就是可选报文的主体了，其中包含了所有类型的数据。请求主体中包括了要发送给Web服务器的数据；响应主体中装载了要返回给客户端的数据。起始行和首部都是文本形式且都是结构化的，主体则不同，主体中可以包含任意的二进制数据(图片，视频，音轨，软件程序等)，当然，主体中也可以包含文本。<h3 id="1-4-1TCP/IP">1.4.1TCP/IP</h3>
+HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把联网的细节都<br>交给了通用、可靠的因特网传输协议 TCP/IP。<br>TCP提供了：</li>
+<li>无差错的数据传输</li>
+<li>按序传输</li>
+<li>未分段的数据流<h3 id="1-4-2连接、IP地址及端口号">1.4.2连接、IP地址及端口号</h3>
+浏览器通过HTTP显示位于远端服务器中HMTL资源的步骤如下：</li>
+<li>浏览器从URL中解析出服务器主机名；</li>
+<li>浏览器将服务器的主机名转换成服务器的IP地址；</li>
+<li>浏览器讲端口号（如果有的话）从URL中解析出来；</li>
+<li>浏览器建立一条与Web服务器的TCP连接；</li>
+<li>浏览器向服务器发送一条HTTP请求报文；</li>
+<li>服务器向浏览器回送一条HTTP响应报文；</li>
+<li><p>关闭连接，浏览器显示文档；</p>
+<h3 id="1-4-3telnet">1.4.3telnet</h3>
+<h3 id="1-5协议版本">1.5协议版本</h3>
+<h3 id="1-6web的结构组件">1.6web的结构组件</h3>
+</li>
+<li><p>代理：位于客户端和服务器之间的HTTP中间实体</p>
+</li>
+<li>缓存：HTTP的仓库，使常用页面的副本可以保存在离客户端更近的地方。</li>
+<li>网关：连接其他应用程序的特殊Web服务器。</li>
+<li>隧道：对HTTP通信报文进行盲转发的特殊代理</li>
+<li>Agent代理：发起自动HTTP请求的半智能Web客户端</li>
+</ul>
+<h2 id="2URL与资源">2URL与资源</h2>
+<h3 id="2-1浏览因特网资源">2.1浏览因特网资源</h3>
+<h3 id="2-2URL语法">2.2URL语法</h3>
+<pre><code>    &lt;scheme&gt;<span class="symbol">://&lt;user&gt;</span><span class="symbol">:&lt;password&gt;</span>@&lt;host&gt;<span class="symbol">:&lt;port&gt;/&lt;path&gt;</span>;&lt;params&gt;?&lt;query&gt;<span class="comment">#&lt;frag&gt;</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="kio3cvn1oppfflxu" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
     </footer>
   </div>
@@ -2270,664 +2913,12 @@ document.write(obj.length);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/ECMAScript5/" data-id="ossqay1197gfp2ih" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/ECMAScript5/" data-id="jui56te2hcdpf6m1" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/ECMAScript5/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript web/">javascript web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-bootstrap" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/bootstrap/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/css-frame/">css-frame</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/bootstrap/">bootstrap</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="4hzd81b70paf1rlq" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/bootstrap/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css-frame/">css-frame</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-asynchronous" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/asynchronous/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/asynchronous/">js异步响应总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Asynchronous">Asynchronous</h1>
-<h2 id="1-public/subscribe">1.public/subscribe</h2>
-<blockquote>
-<p>node自身提供的events模块是发布/订阅模式的一个简单实现，node中部分模块都继承自它，这个模块比前端中大量DOM事件简单，不存在事件冒泡，也不存在preventDeafault、stopPropagation(),stopImmediatePropagation()等控制事件传递的方法。它具有addListener/on(),once(),removeListener,removeAllListeners()和emit()等基本的事件监听模式的方法实现。</p>
-</blockquote>
-<pre><code>examples:
-    emitter.<span class="keyword">on</span>(<span class="string">'event1'</span>,<span class="function"><span class="keyword">function</span><span class="params">(<span class="keyword">message</span>)</span><span class="comment">{
-        console.log(message);
-    }</span>);</span>
-    emitter.emit(<span class="string">'event1'</span>,<span class="string">'i am message'</span>);
-</code></pre><h2 id="2-promise/defferer">2.promise/defferer</h2>
-<blockquote>
-<p>Deffered 就是Promise的超集，它比promise多一项关键特性：可以直接触发。纯promise只允许添加多个调用，而且必须由其他什么东西来触发这些调用。<br>  使用resolve方法或者reject均可触发Deferred对象。</p>
-</blockquote>
-<pre><code>      <span class="keyword">var</span> promptDeferred = <span class="keyword">new</span> $.Defrred();
-      promptDefferred
-      .always(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-          conosole.log(<span class="string">'A choice was made:'</span>);
-      }).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-          conosole.log(<span class="string">'Starting game...'</span>);
-      }).fail(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-          conosole.log(<span class="string">'No game today...'</span>);
-      });
-
-  <span class="keyword">var</span> promptPromise = promptDefrred.promise();<span class="comment">//纯promise对象,无resolve/reject</span>
-  <span class="keyword">var</span> promise1 = promptDefrred.promise();
-  <span class="keyword">var</span> promise2 = promptDefrred.promise();
-  console.log(promise1 ===promise2)<span class="comment">//true,多个promise对象和promptDeferred分享同样的stat(pending,resolved,rejected);</span>
-  console.log(promise1 === promise1.promise());<span class="comment">//true 对promise对象再调用promise方法，只不过产生一个指向相同对象的引用</span>
-</code></pre><blockquote>
-<p>使用promise方法的唯一理由就是“封装”。</p>
-</blockquote>
-<h3 id="2-1jquery_API中的promise对象">2.1jquery API中的promise对象</h3>
-<pre><code>    Animation
-<span class="keyword">var</span> $flash = $(<span class="string">'.flash'</span>);
-<span class="keyword">var</span> showPromise = $flash.show().promise();
-
-<span class="keyword">var</span> slideUpDeferred = <span class="keyword">new</span> $.Deferred();
-$(<span class="string">'.menu'</span>).slideUp(slideUpDeferred.resolve);
-<span class="keyword">var</span> slideUpPromise = slideUpDeferred.promise();    
-以下<span class="number">3</span>种等效：
-$(onReady);
-$(document).ready(onReady);
-$.ready.promise().done(onReady);
-</code></pre><h4 id="2-1-1向回调函数传据数">2.1.1向回调函数传据数</h4>
-<pre><code>    <span class="keyword">var</span> slashdotter = {
-        comment:<span class="function"><span class="keyword">function</span><span class="params">(editor)</span>{</span>
-            conosole.log(<span class="string">'Obviously'</span>,editor,<span class="string">'is the best text editor.'</span>);
-        }
-    };
-    <span class="keyword">var</span> grammarDeferred = <span class="keyword">new</span> $.Deferred();
-    grammarDefferred.done(<span class="function"><span class="keyword">function</span><span class="params">(verb,object)</span>{</span>
-        <span class="keyword">this</span>[verb](object);
-    });
-    grammarDefferred.resolve.call(slashdotter,<span class="string">'comment'</span>,<span class="string">'Emacs'</span>);
-    <span class="comment">//grammarDefferred.resolveWith(slashdotter,[comment,'Emacs']);</span>
-    <span class="comment">//grammarDefferred.resolve.apply(slashdotter,['comment','Emacs']);</span>
-》Obviously Emacs is the best text editor.
-</code></pre><h4 id="2-1-2进度通知">2.1.2进度通知</h4>
-<pre><code>    <span class="keyword">var</span> nanowrimoing = $.Deferred();
-    <span class="keyword">var</span> wordGoal = <span class="number">5000</span>;
-    nanowrimoing.progress(<span class="function"><span class="keyword">function</span><span class="params">(wordCount)</span>{</span>
-        <span class="keyword">var</span> percentComplete = <span class="built_in">Math</span>.floor(wordCount/wordGoal*<span class="number">100</span>);
-        $(<span class="string">'#indicator'</span>).text(percentComplete +<span class="string">'% complete'</span>);
-    });
-    nanowrimoing.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        $(<span class="string">'#indicator'</span>).text(<span class="string">'Good job!'</span>);
-    });
-    $(<span class="string">'#document'</span>).on(<span class="string">'keypress'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> wordCount = $(<span class="keyword">this</span>).val().split(<span class="regexp">/\s/</span>).length;
-        <span class="keyword">if</span>(wordCount&gt;=wordCoal){                            nanowrimoing.resolve();
-        }
-        nanowrimoing.notify(wordCount);
-    });
-</code></pre><h4 id="2-1-3Promise对象合并">2.1.3Promise对象合并</h4>
-<blockquote>
-<p>Promise如此强的的一个主要原因是，它允许我们把任务当成布尔量来处理。</p>
-</blockquote>
-<pre><code>when:
-<span class="keyword">var</span> gameReadying = $.when(tutorialPromise,gameLoadedPromise);
-gameReadying.done(startGame);
-
-<span class="keyword">var</span> serverData = {};
-<span class="keyword">var</span> getting1 = $.get(<span class="string">'/1'</span>).done(<span class="function"><span class="keyword">function</span><span class="params">(result)</span>{</span>serverData[<span class="string">'1'</span>] = result;});
-<span class="keyword">var</span> getting1 = $.get(<span class="string">'/2'</span>).done(<span class="function"><span class="keyword">function</span><span class="params">(result)</span>{</span>serverData[<span class="string">'2'</span>] = result;});
-$.when(getting1,getting2).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="comment">//获得的信息现在都已位于serverData...</span>
-});
-</code></pre><blockquote>
-<p>$.when 及其他能取用Promise对象的jQuery方法均支持传入非Promise对象作为参数。<br>而这些非Promise参数会被当成因相应参数位置已赋值而执行的Promise对象来处理。例如</p>
-</blockquote>
-<pre><code>    <span class="variable">$.</span><span class="keyword">when</span>(<span class="string">'foo'</span>);<span class="regexp">//</span>相当于匿名自执行promise对象并传递数据’foo‘
-</code></pre><p>会生成一个因赋值’foo’而立即执行的Promise对象;</p>
-<pre><code>    <span class="keyword">var</span> promise = $.Deferred().resolve(<span class="string">'manchu'</span>); 
-    $.when(<span class="string">'foo'</span>, promise).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        console.log(<span class="built_in">arguments</span>);<span class="comment">//['foo','manchu'];</span>
-    });
-</code></pre><h4 id="2-1-4管道连接未来(pipe)">2.1.4管道连接未来(pipe)</h4>
-<pre><code><span class="keyword">var</span> getPromise =$.get(<span class="string">'/query'</span>);
-getPromise.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> postPromise = $.post(<span class="string">'/query'</span>)        
-})
-getPromsie完成之前无法对postPromise绑定回调，因为posePromise还不存在
-
-<span class="keyword">var</span> getPromise = $.get(<span class="string">'query'</span>);
-<span class="keyword">var</span> postPromise = getPromise.pipe(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">return</span> $.post(<span class="string">'query'</span>);
-})
-postPromise.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>});
-</code></pre><h2 id="3Async-js">3Async.js</h2>
-<h4 id="3-1-1异步工作流次序问题">3.1.1异步工作流次序问题</h4>
-<blockquote>
-<p>假想先按字母顺序读取recipes(菜谱)目录中的所有文件，接着把读取出的这些内容连接成一个字符串并显示出来，使用同步方法很容易做到这点。</p>
-</blockquote>
-<pre><code><span class="keyword">var</span> fs = <span class="keyword">require</span>(<span class="string">'fs'</span>);
-process.chdir(<span class="string">'recipes'</span>);<span class="comment">//改变工作目录</span>
-<span class="keyword">var</span> concatenation = <span class="string">''</span>;
-<span class="comment">//=======origin</span>
-fs.readdirSync(<span class="string">'.'</span>)
-  .filter(<span class="function"><span class="keyword">function</span><span class="params">(filename)</span>{</span>
-  <span class="comment">//跳过不是文件的目录</span>
-  <span class="keyword">return</span> fs.statSync(filename).isFile();
-}).<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    concatenation+=fs.readFileSync(filename,<span class="string">'utf8'</span>);
-});
-console.log(concatenation);
-
-<span class="comment">//=======answer1</span>
-fs.readdir(<span class="string">'.'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,filenames)</span>{</span>
-    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-    <span class="function"><span class="keyword">function</span> <span class="title">readFileAt</span><span class="params">(i)</span>{</span>
-        <span class="keyword">var</span> filename = filenames[i];
-        fs.stat(filename,<span class="function"><span class="keyword">function</span><span class="params">(err,stats)</span>{</span>
-            <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-            <span class="keyword">if</span>(!stats.isFile()) <span class="keyword">return</span> readFileAt(i+<span class="number">1</span>);
-            fs.readFile(filename,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,text)</span>{</span>
-                <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-                concatenation+=text;
-                <span class="keyword">if</span>(i+<span class="number">1</span> ===filenames.length){
-                    <span class="keyword">return</span> console.log(concatenation);
-                }
-                readFileAt(i+<span class="number">1</span>);
-            })
-        })
-    }
-    readFileAt(<span class="number">0</span>);
-});
-
-<span class="comment">//=======answer2</span>
-<span class="keyword">var</span> async = <span class="keyword">require</span>(<span class="string">'async'</span>);
-<span class="keyword">var</span> fs = <span class="keyword">require</span>(<span class="string">'fs'</span>);
-process.chdir(<span class="string">'recipes'</span>);
-
-<span class="keyword">var</span> concatenation = <span class="string">''</span>;
-
-<span class="keyword">var</span> dirContents = fs.readdirSync(<span class="string">'.'</span>);
-
-async.filter(dirContents,isFilename,<span class="function"><span class="keyword">function</span><span class="params">(filenames)</span>{</span>
-    async.forEachSeries(filenames,readAndConcat,onComplete);
-});
-<span class="function"><span class="keyword">function</span> <span class="title">isFilename</span><span class="params">(filename,callback)</span>{</span>
-    fs.stat(filename,<span class="function"><span class="keyword">function</span><span class="params">(err,stats)</span>{</span>
-        <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-        callback(stats.isFile());
-    });
-}
-<span class="function"><span class="keyword">function</span> <span class="title">readAndContancat</span><span class="params">(filename,callback)</span>{</span>
-    fs.readFile(filename,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,fileContents)</span>{</span>
-        <span class="keyword">if</span>(err) <span class="keyword">return</span> callback(err);
-        concatenation += fileContents;
-        callback();
-    })
-}
-<span class="function"><span class="keyword">function</span> <span class="title">onComplete</span><span class="params">(err)</span>{</span>
-    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-    consolelog(concatenation);
-}
-</code></pre><blockquote>
-<p>Async.js提供了以下方法：</p>
-</blockquote>
-<ul>
-<li>reject/rejectSeries，与filter刚好相反</li>
-<li>map/mapSeries,1:1变换</li>
-<li>reduce/reduceRight,值的逐步变换；</li>
-<li>detect/detectSeries,找到筛选器匹配的值 </li>
-<li>sortBy,产生一个副本；</li>
-<li>some,测试是否至少有一个值符合给定标准</li>
-<li><p>every,测试是否所有值均符合标准</p>
-<h4 id="3-1-2Async-js的错误处理技术">3.1.2Async.js的错误处理技术</h4>
-<p>简单来说，Async.js遵守Node的约定。这意味着所有的I/O回调都形如<em>callback(er,results…)</em>，唯一的里外是结果为<em>布尔型</em>的回调。布尔型回调的写法就是callback(result),所以上一代码示例中的isFilename迭代器需要亲自处理错误。对于非布尔型的所有Async.js迭代器，传递非null/undefined的值作为迭代器回调的首参数将会立即因该错误值而调用完工回调(onComplete)，这正是readAndConcat不用throw也能工作的原因。</p>
-<h3 id="3-2Asyncjs的任务组织技术">3.2Asyncjs的任务组织技术</h3>
-<h4 id="3-2-1异步函数序列的运行">3.2.1异步函数序列的运行</h4>
-<pre><code>  funcs[<span class="link_label">0</span>](<span class="link_url">function(</span>){
-<span class="code">      funcs[1](function(){</span>
-<span class="code">          funcs[2](onComplete);</span>
-<span class="code">      });</span>
-  });
-</code></pre><p><em>async.series</em>和<em>async.waterfall</em>均接受一组函数作为参数并顺序运行它们，二者给任何表中的函数均传递一个node风格的回调，其差别是，前者给各个任务的只有回调，而后者还会提供任务列表中前一任务的结果。</p>
-<pre><code>  <span class="keyword">var</span> async = <span class="built_in">require</span>(<span class="string">'async'</span>);
-  <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>;
-  async.series([
-      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">100</span>);},
-      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">300</span>);},
-      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">200</span>);}
-      ],<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span>{</span>
-      concole.log(<span class="string">'Conpleted in'</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>- start)+<span class="string">'ms'</span>);<span class="comment">//600</span>
-  });
-</code></pre></li>
-</ul>
-<h4 id="3-2-2异步函数的并行运行">3.2.2异步函数的并行运行</h4>
-<p>Async.js提供了series的并行版，即parallel，也接受一组形为function(callback){..}的函数作为参数，但会再加上一个（可选的）在触发最末回调后运行的完工时间处理器。</p>
-<pre><code>    <span class="keyword">var</span> async = <span class="built_in">require</span>(<span class="string">'async'</span>);
-    <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>;
-    async.parallel([
-        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">100</span>);},
-        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">300</span>);},
-        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">200</span>);}
-        ],<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span>{</span>
-        concole.log(<span class="string">'Conpleted in'</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>- start)+<span class="string">'ms'</span>);<span class="comment">//300</span>
-    });
-</code></pre><p>Async.js按照<em>任务列表的次序</em>向完工事件处理器传递结果，<em>而不是按照生成这些结果的次序</em>。这样，我们既拥有了并行机的性能优势，又没有失去结果的可预知性。</p>
-<h3 id="3-3异步工作流的动态排队技术">3.3异步工作流的动态排队技术</h3>
-<p>series 和parallel的局限性：</p>
-<ul>
-<li>任务列表是静态，一旦调用，不能再增减任务。</li>
-<li>任务处于黑箱，无法查看进度，除非内部自行派发更新信息。</li>
-<li>只有两个选择，要么完全没有并发性，要么不受限制的并发性。对文件I/O任务是个大问题，如果要操作上千个文件，当然不想因按顺序操作而效率低下，但如果试着并行执行所有操作，又很可能会激怒操作系统。</li>
-</ul>
-<p>Async.js提供了一种可以解决上述问题的全能方法：queue。</p>
-<h4 id="3-3-1深入理解队列">3.3.1深入理解队列</h4>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="6rf3v86by0ir8c4k" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/asynchronous/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异步/">异步</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/HTTP/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1_HTTP概述">1 HTTP概述</h2>
-<h3 id="1-1-1媒体类型">1.1.1媒体类型</h3>
-<p><strong>MIME(Multipurpose Internet Mail Extension,多用途因特网邮件扩展)</strong>,HTTP采纳了它描述并标记多媒体内容。</p>
-<ul>
-<li>HTML格式：text/html</li>
-<li>普通ASCII文本：text/plain</li>
-<li>JPEG图片：image/jpeg</li>
-<li>GIF:image/gif</li>
-<li>Quicktime:video/quicktime</li>
-<li>PowerPoint :application/vnd.ms-powerpoint<h3 id="1-1-2URI">1.1.2URI</h3>
-<strong>URI(Uniform Resource Identifier 统一资源标识符)</strong>,分为URL和URN.<h3 id="1-1-3URL">1.1.3URL</h3>
-<strong>统一资源定位符</strong></li>
-<li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
-<li>第二部分给出服务器的因特网地址</li>
-<li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
-<strong>统一资源名</strong><br><strong>URI的第二种形式，作为特定内容的唯一名称使用，与目前资源所在地无关</strong><h3 id="1-2-1事务方法">1.2.1事务方法</h3>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>HTTP方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td>从服务器向客户端发送命名资源</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>将来自客户端的数据存储到一个命名的服务器资源中去</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>从服务器中删除命名资源</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>将客户端数据发送到一个服务器网关应用程序</td>
-</tr>
-<tr>
-<td>HEAD</td>
-<td>仅发送命名资源响应中的 HTTP 首部</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1-2-2_状态码">1.2.2 状态码</h3>
-<table>
-<thead>
-<tr>
-<th>HTTP状态码</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>302</td>
-<td>Redirect</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1-2-3Web页面中可以包含多个对象">1.2.3Web页面中可以包含多个对象</h3>
-<h3 id="1-3报文">1.3报文</h3>
-<p>分为request message,response message,包括以下三个部分：</p>
-<ul>
-<li>起始行:报文的第一行，请求报文用来说明要做些什么，响应报文用来说明出现了什么情况。</li>
-<li>首部字段：起始行后面有零个或多个首部字段。每个首部字段都包含一个名字和一个值，为了便于解析，两者之间用冒号（:）来分隔，首部以一个空行结束。每添加一个首部字段和添加新行一样简单。</li>
-<li>主体：空行之后就是可选报文的主体了，其中包含了所有类型的数据。请求主体中包括了要发送给Web服务器的数据；响应主体中装载了要返回给客户端的数据。起始行和首部都是文本形式且都是结构化的，主体则不同，主体中可以包含任意的二进制数据(图片，视频，音轨，软件程序等)，当然，主体中也可以包含文本。<h3 id="1-4-1TCP/IP">1.4.1TCP/IP</h3>
-HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把联网的细节都<br>交给了通用、可靠的因特网传输协议 TCP/IP。<br>TCP提供了：</li>
-<li>无差错的数据传输</li>
-<li>按序传输</li>
-<li>未分段的数据流<h3 id="1-4-2连接、IP地址及端口号">1.4.2连接、IP地址及端口号</h3>
-浏览器通过HTTP显示位于远端服务器中HMTL资源的步骤如下：</li>
-<li>浏览器从URL中解析出服务器主机名；</li>
-<li>浏览器将服务器的主机名转换成服务器的IP地址；</li>
-<li>浏览器讲端口号（如果有的话）从URL中解析出来；</li>
-<li>浏览器建立一条与Web服务器的TCP连接；</li>
-<li>浏览器向服务器发送一条HTTP请求报文；</li>
-<li>服务器向浏览器回送一条HTTP响应报文；</li>
-<li><p>关闭连接，浏览器显示文档；</p>
-<h3 id="1-4-3telnet">1.4.3telnet</h3>
-<h3 id="1-5协议版本">1.5协议版本</h3>
-<h3 id="1-6web的结构组件">1.6web的结构组件</h3>
-</li>
-<li><p>代理：位于客户端和服务器之间的HTTP中间实体</p>
-</li>
-<li>缓存：HTTP的仓库，使常用页面的副本可以保存在离客户端更近的地方。</li>
-<li>网关：连接其他应用程序的特殊Web服务器。</li>
-<li>隧道：对HTTP通信报文进行盲转发的特殊代理</li>
-<li>Agent代理：发起自动HTTP请求的半智能Web客户端</li>
-</ul>
-<h2 id="2URL与资源">2URL与资源</h2>
-<h3 id="2-1浏览因特网资源">2.1浏览因特网资源</h3>
-<h3 id="2-2URL语法">2.2URL语法</h3>
-<pre><code>    &lt;scheme&gt;<span class="symbol">://&lt;user&gt;</span><span class="symbol">:&lt;password&gt;</span>@&lt;host&gt;<span class="symbol">:&lt;port&gt;/&lt;path&gt;</span>;&lt;params&gt;?&lt;query&gt;<span class="comment">#&lt;frag&gt;</span>
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="e32cb309q9ldghd2" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-regexp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/regexp/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/正则/">正则</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/regexp/">js正则总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="RegExp">RegExp</h2>
-<pre><code>    <span class="keyword">var</span> expression = <span class="regexp">/pattern/</span>flags;
-    <span class="keyword">var</span> expression = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"pattern"</span>,flags);
-</code></pre><p>其中的模式（pattern）部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。<br><strong> 由于RegExp构造函数的模式参数是字符串，所以在某些情况下要对字符进行双重转义。所有元字符都必须双重转义，那些转义过的字符也是如此。</strong></p>
-<ul>
-<li>g:全局模式，应用于所有字符串，而非在发现第一个匹配项时立即停止</li>
-<li>i:不区分大小写</li>
-<li>m:多行模式</li>
-</ul>
-<p>所有元字符需要转义。包括：</p>
-<pre><code>    <span class="list">( <span class="collection">[ <span class="collection">{ \ ^ $ | ) ? * + . ]</span>}</span></span>
-</code></pre><p>直接量字符:</p>
-<pre><code>    <span class="command">\o</span>         NUL字符
-    <span class="command">\t</span>        制表符
-    <span class="command">\n</span>        换行符
-    <span class="command">\v</span>        垂直制表符
-    <span class="command">\f</span>        换页符
-    <span class="command">\r</span>        回车符
-    <span class="command">\uxxxx</span>    16进制数 xxxx制定的unicode
-</code></pre><p>字符类:</p>
-<pre><code>    .        除换行符和其它Unicode行终止符之外的任意字符
-    <span class="command">\w</span>        任何ASCII字符组成的单词，等价于<span class="special">[</span>a-zA-Z0-9<span class="special">]</span>
-    <span class="command">\W</span>        任何不是ASCII字符组成的单词，等价于<span class="special">[</span>^a-zA-Z0-9<span class="special">]</span>
-    <span class="command">\s</span>        任何Unicode空白符
-    <span class="command">\S</span>        任何非Unicode空白符的字符，注意<span class="command">\w</span>和<span class="command">\S</span>不 
-    <span class="command">\d</span>        任何ASCII数字，等价于<span class="special">[</span>0-9<span class="special">]</span>
-    <span class="command">\D</span>        <span class="special">[</span>^0-9<span class="special">]</span>
-    <span class="special">[</span><span class="command">\b</span><span class="special">]</span>    退格直接量(特例)
-</code></pre><p>重复字符语法：</p>
-<pre><code>    ？        <span class="rules">{<span class="rule">0,1}</span></span>
-    +        <span class="rules">{<span class="rule">1,}</span></span>
-    *        <span class="rules">{<span class="rule">0,}</span></span>
-</code></pre><p><strong>使用正则表达式字面量和使用RegExp够做函数创建的正则表达式不一样。前者始终会共享一个RegExp实例，后者每次都是创建一个新实例。</strong></p>
-<h3 id="实例属性">实例属性</h3>
-<p>RegExp每个实例都有下列属性：</p>
-<ul>
-<li>global:boolean</li>
-<li>ignoreCase:boolean</li>
-<li>lastIndex:int,表示开始搜索下一个匹配项的字符位置，从0算起</li>
-<li>multiline:boolean</li>
-<li>source:正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回</li>
-</ul>
-<h3 id="实例方法">实例方法</h3>
-<blockquote>
-<p>主要方法是<code>exec()</code>，该方法专门为捕获设计的。返回包含第一个匹配项信息的数组，没有返回null。数组包含两个额外的属性：<code>index</code>和<code>input</code>。index表示匹配项在字符串中的位置，input表示应用正则表达式的字符串。数组第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串（没有捕获组则只包含第一项）。<strong>对于exec而言，即使在模式中设置了全局标志（g），它每次也只会返回一个匹配项。在不设置全局标志的情况下，在同一个字符串上多次调用exec()方法将始终返回第一个匹配项的信息。在设置全局标志的情况下，每次调用将会字符串中继续查找新匹配项</strong></p>
-<p>第二个方法是<code>test()</code></p>
-</blockquote>
-<pre><code>input              <span class="variable">$_</span>         最近一次要匹配的字符串
-lastMatch          <span class="variable">$&amp;</span>        最近一次的匹配项
-lastParen        <span class="variable">$+</span>        最近一次匹配的捕获组
-leftContext        <span class="variable">$`</span>        input字符串中lastMatch之前的文本
-multiline        <span class="variable">$*</span>        布尔值，表示是否所有表达式都使用多行模式。
-rightContext    <span class="variable">$`</span>        input字符串中lastMatch之后的文本
-</code></pre><h2 id="语法">语法</h2>
-<p><img src="http://bairedzhang.github.io/imgs/reg1.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg2.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg3.png" alt="Alt text"><br><img src="http://bairedzhang.github.io/imgs/reg4.png" alt="Alt text"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="0suc5jvifjszm8cp" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/js面试题总结/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
-<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> counter = <span class="number">0</span>;
-    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        counter++;
-        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
-    }
-    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> tmp = counter;
-        counter = <span class="number">0</span>;
-        <span class="keyword">return</span> tmp;
-    }
-    <span class="keyword">return</span> fn;        
-})();
-<span class="comment">//===以下方法有待改进</span>
-<span class="keyword">var</span> t = <span class="number">0</span>;
-<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
-    t++;
-    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
-    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> nt = t;
-        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
-        t =<span class="number">0</span>;
-    },<span class="number">100</span>);
-
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
-            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
-        }
-        <span class="keyword">return</span> args;
-    }
-}
-</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
-<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
-or
-<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
-    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
-    }
-})
-</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="2spu4485ugjkauff" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
 
     </footer>
   </div>

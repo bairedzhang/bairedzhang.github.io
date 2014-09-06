@@ -59,14 +59,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-grunt" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-guid" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/grunt/" class="article-date">
+    <a href="/2014/05/24/guid/" class="article-date">
   <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/markdown/">markdown</a>
   </div>
 
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/grunt/">gruntFile简单配置</a>
+      <a class="article-title" href="/2014/05/24/guid/">markdown语法</a>
     </h1>
   
 
@@ -85,40 +85,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="grunt">grunt</h1>
-<h3 id="install">install</h3>
-<pre><code>        npm <span class="keyword">install</span> grunt-cli -g
-        进入项目根目录配置package.json,gruntFile
-        npm <span class="keyword">install</span>
-        grunt
-</code></pre><h5 id="gruntFile">gruntFile</h5>
-<pre><code>    <span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span></span>{
-        grunt.initConfig({
-            pkg:grunt.file.readJSON(<span class="string">'package.json'</span>),
-            uglify:{
-                banner:<span class="string">''</span>,
-                beautify:{
-                    beautify:<span class="keyword">false</span>,
-                    ascii-only:<span class="keyword">true</span>
-                }
-            },
-            ....
-        })
+        <p>斜体强调：<em>em</em>，<strong>strong</strong></p>
+<h1 id="h1">h1</h1>
+<h6 id="h6">h6</h6>
+<h1 id="H1">H1</h1>
+<h2 id="H2">H2</h2>
+<blockquote>
+<p>blockquot</p>
+</blockquote>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ol>
+<li>li</li>
+<li>li</li>
+</ol>
+<p>这是一个普通段落：</p>
+<pre><code><span class="title">pre</span>-&gt;code-&gt; 这是一个代码区块。
+</code></pre><hr>
+<hr>
+<p>this is <a href="http:www.baidu.com" title="title">an example</a> inline link</p>
+<p>This is <a href="http://example.com/" title="Optional Title Here" target="_blank">an</a> reference-style link.</p>
+<p>Use the <code>printf()</code> function.</p>
+<p>A single backtick in a code span: <code>`foo` </code></p>
+<p>Please don’t use any <code>&lt;blink&gt;</code> tags.</p>
+<p><code>&amp;#8212;</code> is the decimal-encoded equivalent of <code>&amp;mdash;</code>.</p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" alt="Alt text"></p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" width="200"></p>
 
-        grunt.loadNpmTask(<span class="string">'uglify'</span>);
-
-        grunt.registerTask(<span class="string">'default'</span>,[<span class="string">'uglify'</span>]);    
-    }
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="1v3qvjej8cmb5btv" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="r3erha8go1ty7zyc" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/05/24/guid/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grunt/">grunt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
     </footer>
   </div>
