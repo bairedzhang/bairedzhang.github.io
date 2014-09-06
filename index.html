@@ -59,6 +59,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jquery01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/06/jquery01/" class="article-date">
+  <time datetime="2014-09-06T03:11:58.000Z" itemprop="datePublished">Sep 6 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jquery源码学习-01">jquery源码学习-01</h1>
+<h2 id="1-总体结构">1.总体结构</h2>
+<h3 id="功能模块划分">功能模块划分</h3>
+<ul>
+<li>属性操作Attributes </li>
+<li>事件系统Events</li>
+<li>Dom遍历 traversing</li>
+<li>Dom操作 manipulation</li>
+<li>样式操作css (计算样式&amp;内联样式；尺寸dimensions；坐标offset)</li>
+<li>异步请求ajax</li>
+<li>动画Effects</li>
+</ul>
+<h3 id="底层模块支持">底层模块支持</h3>
+<ul>
+<li>Sizzle选择器</li>
+<li>异步队列Deffered Object</li>
+<li>浏览器检测 Support</li>
+<li>数据缓存 Data</li>
+<li>回调函数列表Callbacks Object</li>
+<li>Utilities工具</li>
+<li>队列queue</li>
+</ul>
+<h3 id="入口">入口</h3>
+<p><strong>构造函数jQuery()创建对象：是一组类数组对象</strong></p>
+<h2 id="2构造jQuery对象">2构造jQuery对象</h2>
+<h3 id="2-1构造函数jQuery">2.1构造函数jQuery</h3>
+<p><strong>根据传参不同重载，共7种用法</strong></p>
+<pre><code>1<span class="class">.jQuery</span>(selector,<span class="attr_selector">[,context]</span>)
+2<span class="class">.jQuery</span>(<span class="tag">html</span>,<span class="attr_selector">[,ownerDocument]</span>)、<span class="function">jQuery(html,props)</span>
+3<span class="class">.jQuery</span>(<span class="tag">object</span>)
+4<span class="class">.jQuery</span>(element)、<span class="function">jQuery(elementArray)</span>
+5<span class="class">.jQuery</span>(callback)
+6<span class="class">.jQuery</span>(jQuery <span class="tag">object</span>)
+7<span class="class">.jQuery</span>()
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/09/06/jquery01/" data-id="pqzkxkocelha1l77" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/09/06/jquery01/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Event" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/09/06/Event/" class="article-date">
@@ -94,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/09/06/Event/" data-id="hdl1fdkptwu46xws" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/09/06/Event/" data-id="5u6a6ywwm0tiowu5" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/09/06/Event/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -981,104 +1043,12 @@ JavaScript：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/06/09/前端面试题转/" data-id="8f3cur2p4thij1uc" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/06/09/前端面试题转/" data-id="x04n38w1tjmjzg8c" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/06/09/前端面试题转/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-高级技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/高级技巧/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/高级技巧/">js高级技巧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="高级技巧">高级技巧</h1>
-<h3 id="类型检测">类型检测</h3>
-<pre><code>Object.prototype.toString.call(value)//[object <span class="keyword">Function</span>/JSON/<span class="keyword">Array</span>/<span class="keyword">String</span>/<span class="keyword">Number</span>] 
-</code></pre><h3 id="作用域安全的构造函数">作用域安全的构造函数</h3>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span><span class="params">(args)</span>{</span>
-    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Constructor){
-        <span class="comment">//doSomething</span>
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> Constructor(args)
-    }
-}
-</code></pre><h3 id="惰性载入函数">惰性载入函数</h3>
-<pre><code> <span class="keyword">var</span> CreateXHR = (<span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
-    <span class="keyword">if</span>(<span class="keyword">typeof</span> XMLHttpRequest !=<span class="string">'undefined'</span>){
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();
-        }
-
-    }
-    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> ActiveXObject !=<span class="string">'undefined'</span>){
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">if</span>(<span class="keyword">typeof</span> argumenst.callee.ActiveXString !=<span class="string">'string'</span>){
-                <span class="keyword">var</span> versions = [<span class="string">'MSXML2.XMLHttp.6.0'</span>
-                               ,<span class="string">'MSXML2.XMLHttp3.0'</span>
-                               ,<span class="string">'MSXML2.XMLHttp'</span>];
-                <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;version.length;i++){
-                    <span class="keyword">try</span>{
-                        <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(versions[i]);
-                        <span class="built_in">arguments</span>.callee.ActiveXString = vresions[i];
-                        <span class="keyword">break</span>;
-                    }<span class="keyword">catch</span>(e){}
-                }
-            }
-            <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(ActiveXString);
-        }
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"new XHR Object supply"</span>);
-        }
-    }
-})();    
-</code></pre><h3 id="定时器">定时器</h3>
-<pre><code>    <span class="keyword">var</span> interval = <span class="function"><span class="keyword">function</span><span class="params">(fn,intervaltime)</span>{</span>
-        <span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            fn(timer);
-            timer = setTimeout(<span class="built_in">arguments</span>.callee,intervaltime);
-        },intervaltime)
-    }
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="ohn9ksp0xv9ajlac" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
 
     </footer>
   </div>
@@ -1162,7 +1132,7 @@ JavaScript：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="azn97fbopynvlrnz" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="ki5zrdhavd2nn4em" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/prototype/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1222,7 +1192,7 @@ example:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="dwv31vdc2skrz4rc" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="jsqk6cz1ha0fra8x" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1308,7 +1278,7 @@ or
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="sbqvuds527eqb52z" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="0okq2v1iavdt6jus" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1407,12 +1377,89 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="h5b8ekej933d5gmb" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="77xb6qm3uuzpbxw9" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-guid" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/guid/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/markdown/">markdown</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/guid/">markdown语法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>斜体强调：<em>em</em>，<strong>strong</strong></p>
+<h1 id="h1">h1</h1>
+<h6 id="h6">h6</h6>
+<h1 id="H1">H1</h1>
+<h2 id="H2">H2</h2>
+<blockquote>
+<p>blockquot</p>
+</blockquote>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ul>
+<li>li</li>
+</ul>
+<ol>
+<li>li</li>
+<li>li</li>
+</ol>
+<p>这是一个普通段落：</p>
+<pre><code><span class="title">pre</span>-&gt;code-&gt; 这是一个代码区块。
+</code></pre><hr>
+<hr>
+<p>this is <a href="http:www.baidu.com" title="title">an example</a> inline link</p>
+<p>This is <a href="http://example.com/" title="Optional Title Here" target="_blank">an</a> reference-style link.</p>
+<p>Use the <code>printf()</code> function.</p>
+<p>A single backtick in a code span: <code>`foo` </code></p>
+<p>Please don’t use any <code>&lt;blink&gt;</code> tags.</p>
+<p><code>&amp;#8212;</code> is the decimal-encoded equivalent of <code>&amp;mdash;</code>.</p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" alt="Alt text"></p>
+<p><img src="http://cdn.duitang.com/uploads/item/201307/05/20130705193844_J22rs.thumb.600_0.jpeg" width="200"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="zselgdh0g9s608g8" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/guid/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
     </footer>
   </div>
@@ -1475,7 +1522,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="6c9675yupn7sx2fm" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="4xazpvp1x3m60dsy" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1519,286 +1566,12 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="738ixi8c1ofbi7xc" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/bootstrap/" data-id="secgulshnk8v5txi" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/bootstrap/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css-frame/">css-frame</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-asynchronous" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/asynchronous/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/asynchronous/">js异步响应总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Asynchronous">Asynchronous</h1>
-<h2 id="1-public/subscribe">1.public/subscribe</h2>
-<blockquote>
-<p>node自身提供的events模块是发布/订阅模式的一个简单实现，node中部分模块都继承自它，这个模块比前端中大量DOM事件简单，不存在事件冒泡，也不存在preventDeafault、stopPropagation(),stopImmediatePropagation()等控制事件传递的方法。它具有addListener/on(),once(),removeListener,removeAllListeners()和emit()等基本的事件监听模式的方法实现。</p>
-</blockquote>
-<pre><code>examples:
-    emitter.<span class="keyword">on</span>(<span class="string">'event1'</span>,<span class="function"><span class="keyword">function</span><span class="params">(<span class="keyword">message</span>)</span><span class="comment">{
-        console.log(message);
-    }</span>);</span>
-    emitter.emit(<span class="string">'event1'</span>,<span class="string">'i am message'</span>);
-</code></pre><h2 id="2-promise/defferer">2.promise/defferer</h2>
-<blockquote>
-<p>Deffered 就是Promise的超集，它比promise多一项关键特性：可以直接触发。纯promise只允许添加多个调用，而且必须由其他什么东西来触发这些调用。<br>  使用resolve方法或者reject均可触发Deferred对象。</p>
-</blockquote>
-<pre><code>      <span class="keyword">var</span> promptDeferred = <span class="keyword">new</span> $.Defrred();
-      promptDefferred
-      .always(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-          conosole.log(<span class="string">'A choice was made:'</span>);
-      }).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-          conosole.log(<span class="string">'Starting game...'</span>);
-      }).fail(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-          conosole.log(<span class="string">'No game today...'</span>);
-      });
-
-  <span class="keyword">var</span> promptPromise = promptDefrred.promise();<span class="comment">//纯promise对象,无resolve/reject</span>
-  <span class="keyword">var</span> promise1 = promptDefrred.promise();
-  <span class="keyword">var</span> promise2 = promptDefrred.promise();
-  console.log(promise1 ===promise2)<span class="comment">//true,多个promise对象和promptDeferred分享同样的stat(pending,resolved,rejected);</span>
-  console.log(promise1 === promise1.promise());<span class="comment">//true 对promise对象再调用promise方法，只不过产生一个指向相同对象的引用</span>
-</code></pre><blockquote>
-<p>使用promise方法的唯一理由就是“封装”。</p>
-</blockquote>
-<h3 id="2-1jquery_API中的promise对象">2.1jquery API中的promise对象</h3>
-<pre><code>    Animation
-<span class="keyword">var</span> $flash = $(<span class="string">'.flash'</span>);
-<span class="keyword">var</span> showPromise = $flash.show().promise();
-
-<span class="keyword">var</span> slideUpDeferred = <span class="keyword">new</span> $.Deferred();
-$(<span class="string">'.menu'</span>).slideUp(slideUpDeferred.resolve);
-<span class="keyword">var</span> slideUpPromise = slideUpDeferred.promise();    
-以下<span class="number">3</span>种等效：
-$(onReady);
-$(document).ready(onReady);
-$.ready.promise().done(onReady);
-</code></pre><h4 id="2-1-1向回调函数传据数">2.1.1向回调函数传据数</h4>
-<pre><code>    <span class="keyword">var</span> slashdotter = {
-        comment:<span class="function"><span class="keyword">function</span><span class="params">(editor)</span>{</span>
-            conosole.log(<span class="string">'Obviously'</span>,editor,<span class="string">'is the best text editor.'</span>);
-        }
-    };
-    <span class="keyword">var</span> grammarDeferred = <span class="keyword">new</span> $.Deferred();
-    grammarDefferred.done(<span class="function"><span class="keyword">function</span><span class="params">(verb,object)</span>{</span>
-        <span class="keyword">this</span>[verb](object);
-    });
-    grammarDefferred.resolve.call(slashdotter,<span class="string">'comment'</span>,<span class="string">'Emacs'</span>);
-    <span class="comment">//grammarDefferred.resolveWith(slashdotter,[comment,'Emacs']);</span>
-    <span class="comment">//grammarDefferred.resolve.apply(slashdotter,['comment','Emacs']);</span>
-》Obviously Emacs is the best text editor.
-</code></pre><h4 id="2-1-2进度通知">2.1.2进度通知</h4>
-<pre><code>    <span class="keyword">var</span> nanowrimoing = $.Deferred();
-    <span class="keyword">var</span> wordGoal = <span class="number">5000</span>;
-    nanowrimoing.progress(<span class="function"><span class="keyword">function</span><span class="params">(wordCount)</span>{</span>
-        <span class="keyword">var</span> percentComplete = <span class="built_in">Math</span>.floor(wordCount/wordGoal*<span class="number">100</span>);
-        $(<span class="string">'#indicator'</span>).text(percentComplete +<span class="string">'% complete'</span>);
-    });
-    nanowrimoing.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        $(<span class="string">'#indicator'</span>).text(<span class="string">'Good job!'</span>);
-    });
-    $(<span class="string">'#document'</span>).on(<span class="string">'keypress'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> wordCount = $(<span class="keyword">this</span>).val().split(<span class="regexp">/\s/</span>).length;
-        <span class="keyword">if</span>(wordCount&gt;=wordCoal){                            nanowrimoing.resolve();
-        }
-        nanowrimoing.notify(wordCount);
-    });
-</code></pre><h4 id="2-1-3Promise对象合并">2.1.3Promise对象合并</h4>
-<blockquote>
-<p>Promise如此强的的一个主要原因是，它允许我们把任务当成布尔量来处理。</p>
-</blockquote>
-<pre><code>when:
-<span class="keyword">var</span> gameReadying = $.when(tutorialPromise,gameLoadedPromise);
-gameReadying.done(startGame);
-
-<span class="keyword">var</span> serverData = {};
-<span class="keyword">var</span> getting1 = $.get(<span class="string">'/1'</span>).done(<span class="function"><span class="keyword">function</span><span class="params">(result)</span>{</span>serverData[<span class="string">'1'</span>] = result;});
-<span class="keyword">var</span> getting1 = $.get(<span class="string">'/2'</span>).done(<span class="function"><span class="keyword">function</span><span class="params">(result)</span>{</span>serverData[<span class="string">'2'</span>] = result;});
-$.when(getting1,getting2).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="comment">//获得的信息现在都已位于serverData...</span>
-});
-</code></pre><blockquote>
-<p>$.when 及其他能取用Promise对象的jQuery方法均支持传入非Promise对象作为参数。<br>而这些非Promise参数会被当成因相应参数位置已赋值而执行的Promise对象来处理。例如</p>
-</blockquote>
-<pre><code>    <span class="variable">$.</span><span class="keyword">when</span>(<span class="string">'foo'</span>);<span class="regexp">//</span>相当于匿名自执行promise对象并传递数据’foo‘
-</code></pre><p>会生成一个因赋值’foo’而立即执行的Promise对象;</p>
-<pre><code>    <span class="keyword">var</span> promise = $.Deferred().resolve(<span class="string">'manchu'</span>); 
-    $.when(<span class="string">'foo'</span>, promise).done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        console.log(<span class="built_in">arguments</span>);<span class="comment">//['foo','manchu'];</span>
-    });
-</code></pre><h4 id="2-1-4管道连接未来(pipe)">2.1.4管道连接未来(pipe)</h4>
-<pre><code><span class="keyword">var</span> getPromise =$.get(<span class="string">'/query'</span>);
-getPromise.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> postPromise = $.post(<span class="string">'/query'</span>)        
-})
-getPromsie完成之前无法对postPromise绑定回调，因为posePromise还不存在
-
-<span class="keyword">var</span> getPromise = $.get(<span class="string">'query'</span>);
-<span class="keyword">var</span> postPromise = getPromise.pipe(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">return</span> $.post(<span class="string">'query'</span>);
-})
-postPromise.done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>});
-</code></pre><h2 id="3Async-js">3Async.js</h2>
-<h4 id="3-1-1异步工作流次序问题">3.1.1异步工作流次序问题</h4>
-<blockquote>
-<p>假想先按字母顺序读取recipes(菜谱)目录中的所有文件，接着把读取出的这些内容连接成一个字符串并显示出来，使用同步方法很容易做到这点。</p>
-</blockquote>
-<pre><code><span class="keyword">var</span> fs = <span class="keyword">require</span>(<span class="string">'fs'</span>);
-process.chdir(<span class="string">'recipes'</span>);<span class="comment">//改变工作目录</span>
-<span class="keyword">var</span> concatenation = <span class="string">''</span>;
-<span class="comment">//=======origin</span>
-fs.readdirSync(<span class="string">'.'</span>)
-  .filter(<span class="function"><span class="keyword">function</span><span class="params">(filename)</span>{</span>
-  <span class="comment">//跳过不是文件的目录</span>
-  <span class="keyword">return</span> fs.statSync(filename).isFile();
-}).<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    concatenation+=fs.readFileSync(filename,<span class="string">'utf8'</span>);
-});
-console.log(concatenation);
-
-<span class="comment">//=======answer1</span>
-fs.readdir(<span class="string">'.'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,filenames)</span>{</span>
-    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-    <span class="function"><span class="keyword">function</span> <span class="title">readFileAt</span><span class="params">(i)</span>{</span>
-        <span class="keyword">var</span> filename = filenames[i];
-        fs.stat(filename,<span class="function"><span class="keyword">function</span><span class="params">(err,stats)</span>{</span>
-            <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-            <span class="keyword">if</span>(!stats.isFile()) <span class="keyword">return</span> readFileAt(i+<span class="number">1</span>);
-            fs.readFile(filename,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,text)</span>{</span>
-                <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-                concatenation+=text;
-                <span class="keyword">if</span>(i+<span class="number">1</span> ===filenames.length){
-                    <span class="keyword">return</span> console.log(concatenation);
-                }
-                readFileAt(i+<span class="number">1</span>);
-            })
-        })
-    }
-    readFileAt(<span class="number">0</span>);
-});
-
-<span class="comment">//=======answer2</span>
-<span class="keyword">var</span> async = <span class="keyword">require</span>(<span class="string">'async'</span>);
-<span class="keyword">var</span> fs = <span class="keyword">require</span>(<span class="string">'fs'</span>);
-process.chdir(<span class="string">'recipes'</span>);
-
-<span class="keyword">var</span> concatenation = <span class="string">''</span>;
-
-<span class="keyword">var</span> dirContents = fs.readdirSync(<span class="string">'.'</span>);
-
-async.filter(dirContents,isFilename,<span class="function"><span class="keyword">function</span><span class="params">(filenames)</span>{</span>
-    async.forEachSeries(filenames,readAndConcat,onComplete);
-});
-<span class="function"><span class="keyword">function</span> <span class="title">isFilename</span><span class="params">(filename,callback)</span>{</span>
-    fs.stat(filename,<span class="function"><span class="keyword">function</span><span class="params">(err,stats)</span>{</span>
-        <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-        callback(stats.isFile());
-    });
-}
-<span class="function"><span class="keyword">function</span> <span class="title">readAndContancat</span><span class="params">(filename,callback)</span>{</span>
-    fs.readFile(filename,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span><span class="params">(err,fileContents)</span>{</span>
-        <span class="keyword">if</span>(err) <span class="keyword">return</span> callback(err);
-        concatenation += fileContents;
-        callback();
-    })
-}
-<span class="function"><span class="keyword">function</span> <span class="title">onComplete</span><span class="params">(err)</span>{</span>
-    <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
-    consolelog(concatenation);
-}
-</code></pre><blockquote>
-<p>Async.js提供了以下方法：</p>
-</blockquote>
-<ul>
-<li>reject/rejectSeries，与filter刚好相反</li>
-<li>map/mapSeries,1:1变换</li>
-<li>reduce/reduceRight,值的逐步变换；</li>
-<li>detect/detectSeries,找到筛选器匹配的值 </li>
-<li>sortBy,产生一个副本；</li>
-<li>some,测试是否至少有一个值符合给定标准</li>
-<li><p>every,测试是否所有值均符合标准</p>
-<h4 id="3-1-2Async-js的错误处理技术">3.1.2Async.js的错误处理技术</h4>
-<p>简单来说，Async.js遵守Node的约定。这意味着所有的I/O回调都形如<em>callback(er,results…)</em>，唯一的里外是结果为<em>布尔型</em>的回调。布尔型回调的写法就是callback(result),所以上一代码示例中的isFilename迭代器需要亲自处理错误。对于非布尔型的所有Async.js迭代器，传递非null/undefined的值作为迭代器回调的首参数将会立即因该错误值而调用完工回调(onComplete)，这正是readAndConcat不用throw也能工作的原因。</p>
-<h3 id="3-2Asyncjs的任务组织技术">3.2Asyncjs的任务组织技术</h3>
-<h4 id="3-2-1异步函数序列的运行">3.2.1异步函数序列的运行</h4>
-<pre><code>  funcs[<span class="link_label">0</span>](<span class="link_url">function(</span>){
-<span class="code">      funcs[1](function(){</span>
-<span class="code">          funcs[2](onComplete);</span>
-<span class="code">      });</span>
-  });
-</code></pre><p><em>async.series</em>和<em>async.waterfall</em>均接受一组函数作为参数并顺序运行它们，二者给任何表中的函数均传递一个node风格的回调，其差别是，前者给各个任务的只有回调，而后者还会提供任务列表中前一任务的结果。</p>
-<pre><code>  <span class="keyword">var</span> async = <span class="built_in">require</span>(<span class="string">'async'</span>);
-  <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>;
-  async.series([
-      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">100</span>);},
-      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">300</span>);},
-      <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">200</span>);}
-      ],<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span>{</span>
-      concole.log(<span class="string">'Conpleted in'</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>- start)+<span class="string">'ms'</span>);<span class="comment">//600</span>
-  });
-</code></pre></li>
-</ul>
-<h4 id="3-2-2异步函数的并行运行">3.2.2异步函数的并行运行</h4>
-<p>Async.js提供了series的并行版，即parallel，也接受一组形为function(callback){..}的函数作为参数，但会再加上一个（可选的）在触发最末回调后运行的完工时间处理器。</p>
-<pre><code>    <span class="keyword">var</span> async = <span class="built_in">require</span>(<span class="string">'async'</span>);
-    <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>;
-    async.parallel([
-        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">100</span>);},
-        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">300</span>);},
-        <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>setTimeout(callback,<span class="number">200</span>);}
-        ],<span class="function"><span class="keyword">function</span><span class="params">(err,results)</span>{</span>
-        concole.log(<span class="string">'Conpleted in'</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>- start)+<span class="string">'ms'</span>);<span class="comment">//300</span>
-    });
-</code></pre><p>Async.js按照<em>任务列表的次序</em>向完工事件处理器传递结果，<em>而不是按照生成这些结果的次序</em>。这样，我们既拥有了并行机的性能优势，又没有失去结果的可预知性。</p>
-<h3 id="3-3异步工作流的动态排队技术">3.3异步工作流的动态排队技术</h3>
-<p>series 和parallel的局限性：</p>
-<ul>
-<li>任务列表是静态，一旦调用，不能再增减任务。</li>
-<li>任务处于黑箱，无法查看进度，除非内部自行派发更新信息。</li>
-<li>只有两个选择，要么完全没有并发性，要么不受限制的并发性。对文件I/O任务是个大问题，如果要操作上千个文件，当然不想因按顺序操作而效率低下，但如果试着并行执行所有操作，又很可能会激怒操作系统。</li>
-</ul>
-<p>Async.js提供了一种可以解决上述问题的全能方法：queue。</p>
-<h4 id="3-3-1深入理解队列">3.3.1深入理解队列</h4>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/asynchronous/" data-id="r1133ksa3rzi941b" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/asynchronous/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异步/">异步</a></li></ul>
 
     </footer>
   </div>
@@ -1847,7 +1620,7 @@ async.filter(dirContents,isFilename,<span class="function"><span class="keyword"
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -1859,15 +1632,15 @@ async.filter(dirContents,isFilename,<span class="function"><span class="keyword"
       <ul>
         
           <li>
+            <a href="/2014/09/06/jquery01/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2014/09/06/Event/">(no title)</a>
           </li>
         
           <li>
             <a href="/2014/06/09/前端面试题转/">(转)2014年最新前端开发面试题（题目列表+答案 完整版）</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
           </li>
         
           <li>

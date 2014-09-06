@@ -3,22 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>node-mongoose db | bairedzhang</title>
+  <title>bairedzhang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta content="article" property="og:type">
-<meta content="node-mongoose db" property="og:title">
-<meta content="http://bairedzhang.github.io/2014/05/24/mongoose/" property="og:url">
+<meta content="bairedzhang" property="og:title">
+<meta content="http://bairedzhang.github.io/2014/09/06/jquery01/" property="og:url">
 <meta property="og:image">
 <meta content="bairedzhang" property="og:site_name">
-<meta content="var mongoose = require('mongoose');
-var schema = mongoose.Schema;
-db = mongoose.createConnection(port);
-db.on('open',function(){
-    console.log('database connect successfully');
-})；
+<meta content="jquery源码学习-01
+1.总体结构
+功能模块划分
 
-example:
-    v" property="og:description">
+属性操作Attributes 
+事件系统Events
+Dom遍历 traversing
+Dom操作 manipulation
+样式操作css (计算样式&amp;内联样式；尺寸dimensions；坐标offset)
+异步请求ajax
+动画Effects
+
+底层模块支持
+
+Sizzle选择器
+异步队列Deffered Object
+浏览器检" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="bairedzhang" type="application/atom+xml">
@@ -65,78 +73,71 @@ example:
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-mongoose" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jquery01" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/mongoose/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+    <a href="/2014/09/06/jquery01/" class="article-date">
+  <time datetime="2014-09-06T03:11:58.000Z" itemprop="datePublished">Sep 6 2014</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/nodejs/">nodejs</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      node-mongoose db
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="_"> </h3>
-<pre><code><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);
-<span class="keyword">var</span> schema = mongoose.Schema;
-db = mongoose.createConnection(port);
-db.on(<span class="string">'open'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    console.log(<span class="string">'database connect successfully'</span>);
-})；
-
-example:
-    <span class="keyword">var</span>  PersonSchema = <span class="keyword">new</span> schema({name:<span class="built_in">String</span>});
-    <span class="keyword">var</span>  PersonModel = db.model(<span class="string">'Person'</span>,PersonSchema);
-    <span class="keyword">var</span>  personEntity = <span class="keyword">new</span> PersonModel({name:<span class="string">'bairedzhang'</span>);
-    personEntity.save();
-    PersonModel.find({name:<span class="regexp">/^baired/</span>},<span class="function"><span class="keyword">function</span><span class="params">(err,persons)</span>{</span>
-
-    });
+        <h1 id="jquery源码学习-01">jquery源码学习-01</h1>
+<h2 id="1-总体结构">1.总体结构</h2>
+<h3 id="功能模块划分">功能模块划分</h3>
+<ul>
+<li>属性操作Attributes </li>
+<li>事件系统Events</li>
+<li>Dom遍历 traversing</li>
+<li>Dom操作 manipulation</li>
+<li>样式操作css (计算样式&amp;内联样式；尺寸dimensions；坐标offset)</li>
+<li>异步请求ajax</li>
+<li>动画Effects</li>
+</ul>
+<h3 id="底层模块支持">底层模块支持</h3>
+<ul>
+<li>Sizzle选择器</li>
+<li>异步队列Deffered Object</li>
+<li>浏览器检测 Support</li>
+<li>数据缓存 Data</li>
+<li>回调函数列表Callbacks Object</li>
+<li>Utilities工具</li>
+<li>队列queue</li>
+</ul>
+<h3 id="入口">入口</h3>
+<p><strong>构造函数jQuery()创建对象：是一组类数组对象</strong></p>
+<h2 id="2构造jQuery对象">2构造jQuery对象</h2>
+<h3 id="2-1构造函数jQuery">2.1构造函数jQuery</h3>
+<p><strong>根据传参不同重载，共7种用法</strong></p>
+<pre><code>1<span class="class">.jQuery</span>(selector,<span class="attr_selector">[,context]</span>)
+2<span class="class">.jQuery</span>(<span class="tag">html</span>,<span class="attr_selector">[,ownerDocument]</span>)、<span class="function">jQuery(html,props)</span>
+3<span class="class">.jQuery</span>(<span class="tag">object</span>)
+4<span class="class">.jQuery</span>(element)、<span class="function">jQuery(elementArray)</span>
+5<span class="class">.jQuery</span>(callback)
+6<span class="class">.jQuery</span>(jQuery <span class="tag">object</span>)
+7<span class="class">.jQuery</span>()
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="jsqk6cz1ha0fra8x" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/09/06/jquery01/" data-id="pqzkxkocelha1l77" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/09/06/jquery01/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2014/05/24/prototype/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          js原型
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/05/24/js面试题总结/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/09/06/Event/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">js面试题</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -245,7 +246,7 @@ example:
 <script>
   var disqus_shortname = 'bairedzhang';
   
-  var disqus_url = 'http://bairedzhang.github.io/2014/05/24/mongoose/';
+  var disqus_url = 'http://bairedzhang.github.io/2014/09/06/jquery01/';
   
   (function(){
     var dsq = document.createElement('script');

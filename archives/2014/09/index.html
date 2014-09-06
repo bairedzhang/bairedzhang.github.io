@@ -59,6 +59,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jquery01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/06/jquery01/" class="article-date">
+  <time datetime="2014-09-06T03:11:58.000Z" itemprop="datePublished">Sep 6 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jquery源码学习-01">jquery源码学习-01</h1>
+<h2 id="1-总体结构">1.总体结构</h2>
+<h3 id="功能模块划分">功能模块划分</h3>
+<ul>
+<li>属性操作Attributes </li>
+<li>事件系统Events</li>
+<li>Dom遍历 traversing</li>
+<li>Dom操作 manipulation</li>
+<li>样式操作css (计算样式&amp;内联样式；尺寸dimensions；坐标offset)</li>
+<li>异步请求ajax</li>
+<li>动画Effects</li>
+</ul>
+<h3 id="底层模块支持">底层模块支持</h3>
+<ul>
+<li>Sizzle选择器</li>
+<li>异步队列Deffered Object</li>
+<li>浏览器检测 Support</li>
+<li>数据缓存 Data</li>
+<li>回调函数列表Callbacks Object</li>
+<li>Utilities工具</li>
+<li>队列queue</li>
+</ul>
+<h3 id="入口">入口</h3>
+<p><strong>构造函数jQuery()创建对象：是一组类数组对象</strong></p>
+<h2 id="2构造jQuery对象">2构造jQuery对象</h2>
+<h3 id="2-1构造函数jQuery">2.1构造函数jQuery</h3>
+<p><strong>根据传参不同重载，共7种用法</strong></p>
+<pre><code>1<span class="class">.jQuery</span>(selector,<span class="attr_selector">[,context]</span>)
+2<span class="class">.jQuery</span>(<span class="tag">html</span>,<span class="attr_selector">[,ownerDocument]</span>)、<span class="function">jQuery(html,props)</span>
+3<span class="class">.jQuery</span>(<span class="tag">object</span>)
+4<span class="class">.jQuery</span>(element)、<span class="function">jQuery(elementArray)</span>
+5<span class="class">.jQuery</span>(callback)
+6<span class="class">.jQuery</span>(jQuery <span class="tag">object</span>)
+7<span class="class">.jQuery</span>()
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/09/06/jquery01/" data-id="pqzkxkocelha1l77" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/09/06/jquery01/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Event" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/09/06/Event/" class="article-date">
@@ -94,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/09/06/Event/" data-id="hdl1fdkptwu46xws" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/09/06/Event/" data-id="5u6a6ywwm0tiowu5" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/09/06/Event/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -142,7 +204,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -154,15 +216,15 @@
       <ul>
         
           <li>
+            <a href="/2014/09/06/jquery01/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2014/09/06/Event/">(no title)</a>
           </li>
         
           <li>
             <a href="/2014/06/09/前端面试题转/">(转)2014年最新前端开发面试题（题目列表+答案 完整版）</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
           </li>
         
           <li>
