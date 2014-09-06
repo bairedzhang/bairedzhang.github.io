@@ -59,14 +59,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-grunt" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/js面试题总结/" class="article-date">
+    <a href="/2014/05/24/grunt/" class="article-date">
   <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
   </div>
 
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
+      <a class="article-title" href="/2014/05/24/grunt/">gruntFile简单配置</a>
     </h1>
   
 
@@ -85,58 +85,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
-<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> counter = <span class="number">0</span>;
-    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        counter++;
-        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
-    }
-    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> tmp = counter;
-        counter = <span class="number">0</span>;
-        <span class="keyword">return</span> tmp;
-    }
-    <span class="keyword">return</span> fn;        
-})();
-<span class="comment">//===以下方法有待改进</span>
-<span class="keyword">var</span> t = <span class="number">0</span>;
-<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
-    t++;
-    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
-    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> nt = t;
-        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
-        t =<span class="number">0</span>;
-    },<span class="number">100</span>);
+        <h1 id="grunt">grunt</h1>
+<h3 id="install">install</h3>
+<pre><code>        npm <span class="keyword">install</span> grunt-cli -g
+        进入项目根目录配置package.json,gruntFile
+        npm <span class="keyword">install</span>
+        grunt
+</code></pre><h5 id="gruntFile">gruntFile</h5>
+<pre><code>    <span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span></span>{
+        grunt.initConfig({
+            pkg:grunt.file.readJSON(<span class="string">'package.json'</span>),
+            uglify:{
+                banner:<span class="string">''</span>,
+                beautify:{
+                    beautify:<span class="keyword">false</span>,
+                    ascii-only:<span class="keyword">true</span>
+                }
+            },
+            ....
+        })
 
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
-            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
-        }
-        <span class="keyword">return</span> args;
-    }
-}
-</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
-<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
-or
-<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
-    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
-    }
-})
-</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
+        grunt.loadNpmTask(<span class="string">'uglify'</span>);
 
+        grunt.registerTask(<span class="string">'default'</span>,[<span class="string">'uglify'</span>]);    
+    }
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="le1ejdhvkqwpcdje" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="1v3qvjej8cmb5btv" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grunt/">grunt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
     </footer>
   </div>
@@ -209,11 +191,11 @@ or
           </li>
         
           <li>
-            <a href="/2014/05/24/regexp/">js正则总结</a>
+            <a href="/2014/05/24/prototype/">js原型</a>
           </li>
         
           <li>
-            <a href="/2014/05/24/prototype/">js原型</a>
+            <a href="/2014/05/24/mongoose/">node-mongoose db</a>
           </li>
         
       </ul>
