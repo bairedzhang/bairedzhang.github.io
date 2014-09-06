@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: HTTP | bairedzhang</title>
+  <title>bairedzhang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta content="website" property="og:type">
+  <meta content="article" property="og:type">
 <meta content="bairedzhang" property="og:title">
-<meta content="http://bairedzhang.github.io/tags/HTTP/" property="og:url">
+<meta content="http://bairedzhang.github.io/2014/09/06/Event/" property="og:url">
 <meta property="og:image">
 <meta content="bairedzhang" property="og:site_name">
-<meta content="bairedzhang-jser" property="og:description">
+<meta content="事件系统
+
+浏览器提供了3种层次API,最原始的写在标签内，再次以el.onXXX=function形式绑定（DOM0事件），最后是多投事件系统（DOM2事件）。
+
+IE与Opera方
+
+绑定：el.attatchEvent(‘on’+type,callback);
+卸载：el.detatchEvent(‘on’+type,callback);
+创建：document.createEventObj" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="bairedzhang" type="application/atom+xml">
@@ -57,158 +65,69 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Event" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/HTTP/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+    <a href="/2014/09/06/Event/" class="article-date">
+  <time datetime="2014-09-06T02:24:54.000Z" itemprop="datePublished">Sep 6 2014</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/HTTP/">HTTP权威指南随笔</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1_HTTP概述">1 HTTP概述</h2>
-<h3 id="1-1-1媒体类型">1.1.1媒体类型</h3>
-<p><strong>MIME(Multipurpose Internet Mail Extension,多用途因特网邮件扩展)</strong>,HTTP采纳了它描述并标记多媒体内容。</p>
+        <p>事件系统</p>
+<blockquote>
+<p>浏览器提供了3种层次API,<em>最原始的写在标签内</em>，再次以el.onXXX=function形式绑定（DOM0事件），最后是多投事件系统（DOM2事件）。</p>
+</blockquote>
+<h3 id="IE与Opera方">IE与Opera方</h3>
 <ul>
-<li>HTML格式：text/html</li>
-<li>普通ASCII文本：text/plain</li>
-<li>JPEG图片：image/jpeg</li>
-<li>GIF:image/gif</li>
-<li>Quicktime:video/quicktime</li>
-<li>PowerPoint :application/vnd.ms-powerpoint<h3 id="1-1-2URI">1.1.2URI</h3>
-<strong>URI(Uniform Resource Identifier 统一资源标识符)</strong>,分为URL和URN.<h3 id="1-1-3URL">1.1.3URL</h3>
-<strong>统一资源定位符</strong></li>
-<li>第一部分为方案（scheme），说明访问资源所使用的协议类型。通常为http://</li>
-<li>第二部分给出服务器的因特网地址</li>
-<li>其余部分指定web服务器上的某个资源<h3 id="1-1-4URN">1.1.4URN</h3>
-<strong>统一资源名</strong><br><strong>URI的第二种形式，作为特定内容的唯一名称使用，与目前资源所在地无关</strong><h3 id="1-2-1事务方法">1.2.1事务方法</h3>
-</li>
+<li>绑定：el.attatchEvent(‘on’+type,callback);</li>
+<li>卸载：el.detatchEvent(‘on’+type,callback);</li>
+<li>创建：document.createEventObject()</li>
+<li>派发：el.fireEvent(type,event)</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>HTTP方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td>从服务器向客户端发送命名资源</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>将来自客户端的数据存储到一个命名的服务器资源中去</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>从服务器中删除命名资源</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>将客户端数据发送到一个服务器网关应用程序</td>
-</tr>
-<tr>
-<td>HEAD</td>
-<td>仅发送命名资源响应中的 HTTP 首部</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1-2-2_状态码">1.2.2 状态码</h3>
-<table>
-<thead>
-<tr>
-<th>HTTP状态码</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>302</td>
-<td>Redirect</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1-2-3Web页面中可以包含多个对象">1.2.3Web页面中可以包含多个对象</h3>
-<h3 id="1-3报文">1.3报文</h3>
-<p>分为request message,response message,包括以下三个部分：</p>
+<h3 id="W3C方">W3C方</h3>
 <ul>
-<li>起始行:报文的第一行，请求报文用来说明要做些什么，响应报文用来说明出现了什么情况。</li>
-<li>首部字段：起始行后面有零个或多个首部字段。每个首部字段都包含一个名字和一个值，为了便于解析，两者之间用冒号（:）来分隔，首部以一个空行结束。每添加一个首部字段和添加新行一样简单。</li>
-<li>主体：空行之后就是可选报文的主体了，其中包含了所有类型的数据。请求主体中包括了要发送给Web服务器的数据；响应主体中装载了要返回给客户端的数据。起始行和首部都是文本形式且都是结构化的，主体则不同，主体中可以包含任意的二进制数据(图片，视频，音轨，软件程序等)，当然，主体中也可以包含文本。<h3 id="1-4-1TCP/IP">1.4.1TCP/IP</h3>
-HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把联网的细节都<br>交给了通用、可靠的因特网传输协议 TCP/IP。<br>TCP提供了：</li>
-<li>无差错的数据传输</li>
-<li>按序传输</li>
-<li>未分段的数据流<h3 id="1-4-2连接、IP地址及端口号">1.4.2连接、IP地址及端口号</h3>
-浏览器通过HTTP显示位于远端服务器中HMTL资源的步骤如下：</li>
-<li>浏览器从URL中解析出服务器主机名；</li>
-<li>浏览器将服务器的主机名转换成服务器的IP地址；</li>
-<li>浏览器讲端口号（如果有的话）从URL中解析出来；</li>
-<li>浏览器建立一条与Web服务器的TCP连接；</li>
-<li>浏览器向服务器发送一条HTTP请求报文；</li>
-<li>服务器向浏览器回送一条HTTP响应报文；</li>
-<li><p>关闭连接，浏览器显示文档；</p>
-<h3 id="1-4-3telnet">1.4.3telnet</h3>
-<h3 id="1-5协议版本">1.5协议版本</h3>
-<h3 id="1-6web的结构组件">1.6web的结构组件</h3>
-</li>
-<li><p>代理：位于客户端和服务器之间的HTTP中间实体</p>
-</li>
-<li>缓存：HTTP的仓库，使常用页面的副本可以保存在离客户端更近的地方。</li>
-<li>网关：连接其他应用程序的特殊Web服务器。</li>
-<li>隧道：对HTTP通信报文进行盲转发的特殊代理</li>
-<li>Agent代理：发起自动HTTP请求的半智能Web客户端</li>
+<li>绑定：el.addEventListener(type,callback,[phase]) false为冒泡</li>
+<li>卸载: el.removeEventListener(type,callback,[phase])</li>
+<li>创建: el.createEvent(types)</li>
+<li>初始化：el.initEvent()</li>
+<li>派发事件：el.dispatchEvent(event);</li>
 </ul>
-<h2 id="2URL与资源">2URL与资源</h2>
-<h3 id="2-1浏览因特网资源">2.1浏览因特网资源</h3>
-<h3 id="2-2URL语法">2.2URL语法</h3>
-<pre><code>    &lt;scheme&gt;<span class="symbol">://&lt;user&gt;</span><span class="symbol">:&lt;password&gt;</span>@&lt;host&gt;<span class="symbol">:&lt;port&gt;/&lt;path&gt;</span>;&lt;params&gt;?&lt;query&gt;<span class="comment">#&lt;frag&gt;</span>
-</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="dt4ld0sc7ii9kwf8" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/09/06/Event/" data-id="id0udbcptuwrwty4" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/09/06/Event/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/06/09/前端面试题转/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">(转)2014年最新前端开发面试题（题目列表+答案 完整版）</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-  
-  
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
         
           <aside id="sidebar">
@@ -304,11 +223,13 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
 <script>
   var disqus_shortname = 'bairedzhang';
   
+  var disqus_url = 'http://bairedzhang.github.io/2014/09/06/Event/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//go.disqus.com/count.js';
+    dsq.src = '//go.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
