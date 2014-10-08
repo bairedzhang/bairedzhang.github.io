@@ -1,0 +1,235 @@
+@-webkit-keyframes myrotate{
+    0%{
+        -webkit-transform : rotateY(0deg);
+    }
+    100%{
+        -webkit-transform : rotateY(360deg);
+    }
+}
+
+@keyframes myrotate{
+    0%{
+        transform : rotateY(0deg);
+    }
+    100%{
+        transform : rotateY(360deg);
+    }
+}
+.rotateY{
+    -webkit-animation: myrotate 6.5s linear infinite;
+    animation: myrotate 6.5s linear infinite;
+
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
+}
+
+@-webkit-keyframes raise {
+    from {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+    }
+    to {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+@keyframes raise {
+    from {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+    }
+    to {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+@-webkit-keyframes round {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    3% {
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+    6% {
+        -webkit-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+    }
+    9% {
+        -webkit-transform: rotate(20deg);
+        transform: rotate(20deg);
+    }
+    10% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+#layer {
+    -webkit-transform: translate3d(0px, 0px, -284px) rotate3d(0, 1, 0, 0deg);
+}
+
+.slide {
+    display: table;
+}
+
+.slide:nth-child(n+4) {
+    display: none;
+}
+
+.slide>span {
+    display: table-cell;
+    vertical-align: middle;
+    backface-visibility:hidden;
+    position: relative;
+}
+
+.slide img:nth-child(n+2) {
+    position: absolute;
+}
+
+#s2 img:nth-child(2) {
+    width: 9.24259%;
+    left: 64.2%;
+    top: 25.5%;
+}
+
+#s2 img:nth-child(3) {
+    width: 11.61971%;
+    top: 22.8%;
+    left: 39.2%;
+    z-index: 4;
+}
+
+#s2 img:nth-child(4) {
+    width: 11.61971%;
+    left: 10.475%;
+    top: 31.25%;
+}
+
+#s2 img:nth-child(5) {
+    width: 11.6198%;
+    left: 49.6%;
+    top: 36.6%;
+}
+
+#s2 img:nth-child(6) {
+    width: 10.38732%;
+    left: 23.9%;
+    top: 44.1%;
+}
+
+#s2 img:nth-child(7) {
+    width: 9.24295%;
+    left: 37.6%;
+    top: 50.9%;
+}
+
+#s2 img:nth-child(8) {
+    width: 11.61971%;
+    left: 68%;
+    top: 60.9%;
+}
+
+#s2 img:nth-child(9) {
+    width: 9.941901%;
+    left: 40.5%;
+    top: 68.4%;
+}
+
+#s2 img:nth-child(10) {
+    width: 9.941901%;
+    left: 32.3%;
+    top: 72.2%;
+}
+
+#s3 div {
+    position: absolute;
+}
+
+#s7 img:nth-child(n+2) {
+    position: absolute;
+}
+
+#s7 img:nth-child(2) {
+    /* left: 12.2%; */
+    left: -29.84154%;
+    top: 17%;
+    width: 29.84154%;
+}
+
+#s7 img:nth-child(3) {
+    top: 39.7%;
+    left: -28.25704%;
+    /* left: 6.2%; */
+    width: 28.25704%;
+}
+
+#s7 img:nth-child(4) {
+    top: 68.4%;
+    /* left: 7.8%; */
+    left: -29.13732%;
+    width: 29.13732%;
+}
+
+#s7 img:nth-child(5) {
+    top: 7.4%;
+    left: 76.6%;
+    width: 7.5%;
+}
+
+#s10 .chart1 {
+    -webkit-transition: all 1s;
+    transition: all 1s;
+    position: absolute;
+    width: 12.5%;
+    height: 21.6%;
+    top: 41.8%;
+    left: 32%;
+    -webkit-border-radius: 15%;
+    background: -webkit-linear-gradient(-45deg, #ebeded 0%, #fefefe 100%);
+}
+#s10 .chart1 img {
+    width: 63.11764%;
+    position: absolute;
+    left: 23.5157%;
+    top: 23%;
+}
+
+#s10 .chart2 {
+    position: absolute;
+    width: 10.7%;
+    height: 17.3%;
+    top: 16.3%;
+    left: 61.4%;
+}
+
+#s12 img:nth-child(2) {
+    left: 54.1%;
+    top: 52.6%;
+    width: 11.707746478873239%;
+}
+
+#s12 img:nth-child(3) {
+    left: 61.7%;
+    top: 68%;
+    width: 34.9%;
+    opacity: 0;
+    -webkit-transition: opacity 1s 0.3s;
+    transition: opacity 1s 0.3s;
+}
+
+#s13 img:nth-child(2) {
+    width: 26.2%;
+    left: 56.5%;
+    top: 27.8%;
+}
+
+#s13 img:nth-child(3) {
+    width: 23.7%;
+    left: 10.1%;
+    top: 63.8%;
+}
