@@ -62,7 +62,7 @@
     <article id="post-Event" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/10/08/Event/" class="article-date">
-  <time datetime="2014-10-08T08:51:19.000Z" itemprop="datePublished">Oct 8 2014</time>
+  <time datetime="2014-10-08T08:52:26.000Z" itemprop="datePublished">Oct 8 2014</time>
 </a>
     
   </div>
@@ -73,7 +73,7 @@
       
         <p>事件系统</p>
 <blockquote>
-<p>test<br>浏览器提供了3种层次API,<em>最原始的写在标签内</em>，再次以el.onXXX=function形式绑定（DOM0事件），最后是多投事件系统（DOM2事件）。</p>
+<p>浏览器提供了3种层次API,<em>最原始的写在标签内</em>，再次以el.onXXX=function形式绑定（DOM0事件），最后是多投事件系统（DOM2事件）。</p>
 </blockquote>
 <h3 id="IE与Opera方">IE与Opera方</h3>
 <ul>
@@ -94,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/10/08/Event/" data-id="jgxccsfypkwtlbx0" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/10/08/Event/" data-id="lt6zy6htbae78zdn" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/10/08/Event/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -156,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/10/08/jquery01/" data-id="ft9kutiq0bu5pxqu" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/10/08/jquery01/" data-id="4lqq83a3nrdctixv" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/10/08/jquery01/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1043,104 +1043,12 @@ JavaScript：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/06/09/前端面试题转/" data-id="be1w345ciht84qwp" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/06/09/前端面试题转/" data-id="82vikkxge9jomu1d" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/06/09/前端面试题转/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-高级技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/24/高级技巧/" class="article-date">
-  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/高级技巧/">js高级技巧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="高级技巧">高级技巧</h1>
-<h3 id="类型检测">类型检测</h3>
-<pre><code>Object.prototype.toString.call(value)//[object <span class="keyword">Function</span>/JSON/<span class="keyword">Array</span>/<span class="keyword">String</span>/<span class="keyword">Number</span>] 
-</code></pre><h3 id="作用域安全的构造函数">作用域安全的构造函数</h3>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span><span class="params">(args)</span>{</span>
-    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Constructor){
-        <span class="comment">//doSomething</span>
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> Constructor(args)
-    }
-}
-</code></pre><h3 id="惰性载入函数">惰性载入函数</h3>
-<pre><code> <span class="keyword">var</span> CreateXHR = (<span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
-    <span class="keyword">if</span>(<span class="keyword">typeof</span> XMLHttpRequest !=<span class="string">'undefined'</span>){
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();
-        }
-
-    }
-    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> ActiveXObject !=<span class="string">'undefined'</span>){
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">if</span>(<span class="keyword">typeof</span> argumenst.callee.ActiveXString !=<span class="string">'string'</span>){
-                <span class="keyword">var</span> versions = [<span class="string">'MSXML2.XMLHttp.6.0'</span>
-                               ,<span class="string">'MSXML2.XMLHttp3.0'</span>
-                               ,<span class="string">'MSXML2.XMLHttp'</span>];
-                <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;version.length;i++){
-                    <span class="keyword">try</span>{
-                        <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(versions[i]);
-                        <span class="built_in">arguments</span>.callee.ActiveXString = vresions[i];
-                        <span class="keyword">break</span>;
-                    }<span class="keyword">catch</span>(e){}
-                }
-            }
-            <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(ActiveXString);
-        }
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"new XHR Object supply"</span>);
-        }
-    }
-})();    
-</code></pre><h3 id="定时器">定时器</h3>
-<pre><code>    <span class="keyword">var</span> interval = <span class="function"><span class="keyword">function</span><span class="params">(fn,intervaltime)</span>{</span>
-        <span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            fn(timer);
-            timer = setTimeout(<span class="built_in">arguments</span>.callee,intervaltime);
-        },intervaltime)
-    }
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="ez80q1vcj43yvz8p" class="article-share-link">Share</a>
-      
-        <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
 
     </footer>
   </div>
@@ -1234,7 +1142,7 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="0uv1lna9xvv6brjw" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/regexp/" data-id="3qfg72qaahsqn93o" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/regexp/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1323,12 +1231,72 @@ rightContext    <span class="variable">$`</span>        input字符串中lastMat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="hifvk1pdjwavi6ep" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/prototype/" data-id="fzazdsv8cajhk6xa" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/prototype/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prototype/">prototype</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mongoose" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/24/mongoose/" class="article-date">
+  <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/nodejs/">nodejs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/24/mongoose/">node-mongoose db</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="_"> </h3>
+<pre><code><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);
+<span class="keyword">var</span> schema = mongoose.Schema;
+db = mongoose.createConnection(port);
+db.on(<span class="string">'open'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    console.log(<span class="string">'database connect successfully'</span>);
+})；
+
+example:
+    <span class="keyword">var</span>  PersonSchema = <span class="keyword">new</span> schema({name:<span class="built_in">String</span>});
+    <span class="keyword">var</span>  PersonModel = db.model(<span class="string">'Person'</span>,PersonSchema);
+    <span class="keyword">var</span>  personEntity = <span class="keyword">new</span> PersonModel({name:<span class="string">'bairedzhang'</span>);
+    personEntity.save();
+    PersonModel.find({name:<span class="regexp">/^baired/</span>},<span class="function"><span class="keyword">function</span><span class="params">(err,persons)</span>{</span>
+
+    });
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bairedzhang.github.io/2014/05/24/mongoose/" data-id="grc3spibu5n9rh98" class="article-share-link">Share</a>
+      
+        <a href="http://bairedzhang.github.io/2014/05/24/mongoose/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
 
     </footer>
   </div>
@@ -1472,7 +1440,7 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="2fvfxhb6lkzcvx1y" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/HTTP/" data-id="ahe237b2e3i6s1sd" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/HTTP/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1486,14 +1454,14 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
 
 
   
-    <article id="post-js面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-高级技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/24/js面试题总结/" class="article-date">
+    <a href="/2014/05/24/高级技巧/" class="article-date">
   <time datetime="2014-05-24T14:24:12.000Z" itemprop="datePublished">May 24 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/面试/">面试</a>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
   </div>
 
   </div>
@@ -1504,7 +1472,7 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/24/js面试题总结/">js面试题</a>
+      <a class="article-title" href="/2014/05/24/高级技巧/">js高级技巧</a>
     </h1>
   
 
@@ -1512,58 +1480,64 @@ HTTP 是个应用层协议。HTTP 无需操心网络通信的具体细节;它把
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-$()()()()/返回括号个数">1.$()()()()/返回括号个数</h3>
-<pre><code><span class="keyword">var</span> $ = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">var</span> counter = <span class="number">0</span>;
-    <span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        counter++;
-        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;
-    }
-    fn.toString = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> tmp = counter;
-        counter = <span class="number">0</span>;
-        <span class="keyword">return</span> tmp;
-    }
-    <span class="keyword">return</span> fn;        
-})();
-<span class="comment">//===以下方法有待改进</span>
-<span class="keyword">var</span> t = <span class="number">0</span>;
-<span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>;
-    t++;
-    <span class="keyword">var</span> args = <span class="built_in">arguments</span>.callee;
-    <span class="built_in">arguments</span>.callee.timer = setTimetout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> nt = t;
-        <span class="keyword">if</span>(t!=<span class="number">0</span>) console.log(nt);
-        t =<span class="number">0</span>;
-    },<span class="number">100</span>);
-
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">if</span>(<span class="built_in">arguments</span>.callee.called = <span class="literal">true</span>){
-            clearTimeout(<span class="built_in">arguments</span>.callee.timer);
-        }
-        <span class="keyword">return</span> args;
+        <h1 id="高级技巧">高级技巧</h1>
+<h3 id="类型检测">类型检测</h3>
+<pre><code>Object.prototype.toString.call(value)//[object <span class="keyword">Function</span>/JSON/<span class="keyword">Array</span>/<span class="keyword">String</span>/<span class="keyword">Number</span>] 
+</code></pre><h3 id="作用域安全的构造函数">作用域安全的构造函数</h3>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span><span class="params">(args)</span>{</span>
+    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Constructor){
+        <span class="comment">//doSomething</span>
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> Constructor(args)
     }
 }
-</code></pre><h3 id="2-设置ALERT为打印ALERT(即alert(‘ALERT’))">2.设置ALERT为打印ALERT(即alert(‘ALERT’))</h3>
-<pre><code>window.__defineGetter__(<span class="string">'ALERT'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span><span class="keyword">return</span> alert(<span class="string">'ALERT'</span>)})
-or
-<span class="built_in">Object</span>.defineProperty(window,<span class="string">'ALERT'</span>,{
-    get:<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> alert(<span class="string">'ALERT'</span>);
-    }
-})
-</code></pre><h3 id="3-对象深拷贝">3.对象深拷贝</h3>
+</code></pre><h3 id="惰性载入函数">惰性载入函数</h3>
+<pre><code> <span class="keyword">var</span> CreateXHR = (<span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
+    <span class="keyword">if</span>(<span class="keyword">typeof</span> XMLHttpRequest !=<span class="string">'undefined'</span>){
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();
+        }
 
+    }
+    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> ActiveXObject !=<span class="string">'undefined'</span>){
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">if</span>(<span class="keyword">typeof</span> argumenst.callee.ActiveXString !=<span class="string">'string'</span>){
+                <span class="keyword">var</span> versions = [<span class="string">'MSXML2.XMLHttp.6.0'</span>
+                               ,<span class="string">'MSXML2.XMLHttp3.0'</span>
+                               ,<span class="string">'MSXML2.XMLHttp'</span>];
+                <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;version.length;i++){
+                    <span class="keyword">try</span>{
+                        <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(versions[i]);
+                        <span class="built_in">arguments</span>.callee.ActiveXString = vresions[i];
+                        <span class="keyword">break</span>;
+                    }<span class="keyword">catch</span>(e){}
+                }
+            }
+            <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(ActiveXString);
+        }
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"new XHR Object supply"</span>);
+        }
+    }
+})();    
+</code></pre><h3 id="定时器">定时器</h3>
+<pre><code>    <span class="keyword">var</span> interval = <span class="function"><span class="keyword">function</span><span class="params">(fn,intervaltime)</span>{</span>
+        <span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            fn(timer);
+            timer = setTimeout(<span class="built_in">arguments</span>.callee,intervaltime);
+        },intervaltime)
+    }
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/js面试题总结/" data-id="iiqmraqokhuf2xqu" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/高级技巧/" data-id="ocojugrizc4wstqd" class="article-share-link">Share</a>
       
-        <a href="http://bairedzhang.github.io/2014/05/24/js面试题总结/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://bairedzhang.github.io/2014/05/24/高级技巧/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
 
     </footer>
   </div>
@@ -1635,7 +1609,7 @@ or
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="fx00byux2ayz79o9" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/guid/" data-id="ibj3mdv4e61if325" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/guid/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1703,7 +1677,7 @@ or
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="o70ipi5bcins1o7b" class="article-share-link">Share</a>
+      <a data-url="http://bairedzhang.github.io/2014/05/24/grunt/" data-id="90oe0md356zmasj3" class="article-share-link">Share</a>
       
         <a href="http://bairedzhang.github.io/2014/05/24/grunt/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1781,11 +1755,11 @@ or
           </li>
         
           <li>
-            <a href="/2014/05/24/高级技巧/">js高级技巧</a>
+            <a href="/2014/05/24/regexp/">js正则总结</a>
           </li>
         
           <li>
-            <a href="/2014/05/24/regexp/">js正则总结</a>
+            <a href="/2014/05/24/prototype/">js原型</a>
           </li>
         
       </ul>
