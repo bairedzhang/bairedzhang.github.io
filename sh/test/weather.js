@@ -289,20 +289,20 @@ $(function() {
                 $('#layer').css('-webkit-transform', 'translate3d(0px, 0px, -' + width / 2 + 'px) rotate3d(0, 1, 0, ' + degree + 'deg)');
                 xCor = 0;
                 isActive = true;
-                var currentSlideNum = active - 1,
-                    currentSlide = $("#s" + lastSlideNum);
-
-                if (active !== 1) {
-                    if (animateQueue[lastSlideNum] && animateQueue[lastSlideNum][1]) {
-                        animateQueue[lastSlideNum][1].call(currentSlide, currentSlide);
-                    }
-                }
-
-                currentSlide = $("#s" + currentSlideNum);
-
-                if (animateQueue[currentSlideNum] && animateQueue[currentSlideNum][0]) {
-                    animateQueue[currentSlideNum][0].call(currentSlide, currentSlide);
-                }
+//                var currentSlideNum = active - 1,
+//                    currentSlide = $("#s" + lastSlideNum);
+//
+//                if (active !== 1) {
+//                    if (animateQueue[lastSlideNum] && animateQueue[lastSlideNum][1]) {
+//                        animateQueue[lastSlideNum][1].call(currentSlide, currentSlide);
+//                    }
+//                }
+//
+//                currentSlide = $("#s" + currentSlideNum);
+//
+//                if (animateQueue[currentSlideNum] && animateQueue[currentSlideNum][0]) {
+//                    animateQueue[currentSlideNum][0].call(currentSlide, currentSlide);
+//                }
 
                 doc.delay(551).queue(function() {
                     isActive = false;
