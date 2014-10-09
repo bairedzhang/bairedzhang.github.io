@@ -198,7 +198,7 @@ $(function() {
 
     var slide, isSettings = false,
         pinchOut = false;
-    $('#layer').on('touchstart', '.slide',
+    $('body').on('touchstart', '.slide',
         function(e) {
             e.preventDefault();
             var touch = event.touches[0];
@@ -228,7 +228,6 @@ $(function() {
                 isActive = true;
                 $('body').addClass('animate build');
                 $(this).addClass('active');
-                playSound('woosh', 0);
                 $(this).delay(450).queue(function() {
                     $('body').addClass('revealed');
                     $(this).dequeue();
@@ -238,7 +237,6 @@ $(function() {
             if (event.touches.length == 2 && event.scale < 1 && isActive != true && isSettings == false && pinchOut == false) {
                 if (!$('body').hasClass('out')) {
                     isActive = true;
-                    playSound('woosh2', 0);
                     var slider = $(this);
                     var small = $('#small .slide:eq(' + slider.index() + ')');
 
@@ -289,20 +287,20 @@ $(function() {
                 $('#layer').css('-webkit-transform', 'translate3d(0px, 0px, -' + width / 2 + 'px) rotate3d(0, 1, 0, ' + degree + 'deg)');
                 xCor = 0;
                 isActive = true;
-//                var currentSlideNum = active - 1,
-//                    currentSlide = $("#s" + lastSlideNum);
-//
-//                if (active !== 1) {
-//                    if (animateQueue[lastSlideNum] && animateQueue[lastSlideNum][1]) {
-//                        animateQueue[lastSlideNum][1].call(currentSlide, currentSlide);
-//                    }
-//                }
-//
-//                currentSlide = $("#s" + currentSlideNum);
-//
-//                if (animateQueue[currentSlideNum] && animateQueue[currentSlideNum][0]) {
-//                    animateQueue[currentSlideNum][0].call(currentSlide, currentSlide);
-//                }
+                var currentSlideNum = active - 1,
+                    currentSlide = $("#s" + lastSlideNum);
+
+                if (active !== 1) {
+                    if (animateQueue[lastSlideNum] && animateQueue[lastSlideNum][1]) {
+                        animateQueue[lastSlideNum][1].call(currentSlide, currentSlide);
+                    }
+                }
+
+                currentSlide = $("#s" + currentSlideNum);
+
+                if (animateQueue[currentSlideNum] && animateQueue[currentSlideNum][0]) {
+                    animateQueue[currentSlideNum][0].call(currentSlide, currentSlide);
+                }
 
                 doc.delay(551).queue(function() {
                     isActive = false;
