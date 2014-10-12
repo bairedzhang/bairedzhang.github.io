@@ -327,10 +327,7 @@ $(function() {
     });
 });
 window.onload = function(){
-   var music = $('#backMusic')[0];
-   played= true;
-   $('.playMusic').addClass('rotateZ');
-   music.play(); 
+   $('.playMusic').eq(0).trigger('touchend');
 }
 
 $(function() {
