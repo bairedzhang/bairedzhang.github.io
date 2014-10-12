@@ -1,7 +1,8 @@
 //定义全局变量  height 当前document的高度, width当前document 的宽度,degree 当前的旋转了多少度,unit 获取温度设置, w_unit 当前 
 var height, width, degree, active, unit, w_unit, theme, isActive = false,
     timeout,
-    color;
+    color,
+    played=false;
 var bgColors = []
 $('#layer .slide').each(function(i){
 
@@ -20,10 +21,10 @@ animateQueue[0] = [
 
 animateQueue[2] = [
     function(elem) {
-        elem.find("img:gt(0)").css("-webkit-animation", "myscale 0.8s");
+        elem.find("img:gt(0)").not('.playMusic').css("-webkit-animation", "myscale 0.8s");
     },
     function(elem) {
-        elem.find("img:gt(0)").css("-webkit-animation", "");
+        elem.find("img:gt(0)").not('.playMusic').css("-webkit-animation", "");
     }
 ];
 
@@ -302,8 +303,23 @@ var ScrollFix = function(elem) {
 
 //初始化-webkit-transform
 $(function() {
+    var music = $('#backMusic')[0];
+
     $(".slide").each(function(index, elem) {
         elem.style.webkitTransform = "rotate3d(0, 1, 0, " + index * 180 + "deg) translate3d(0px, 0px, 284px)";
+    });
+
+    $('.playMusic').on('touchend',function(e){
+        e.stopPropagation();
+        if(played){
+            music.pause();
+            played= false;
+            $('.playMusic').removeClass('rotateZ')
+        }else{
+            music.play();
+            $('.playMusic').addClass('rotateZ')
+            played= true;
+        }
     });
 });
 
