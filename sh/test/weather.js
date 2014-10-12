@@ -7,16 +7,44 @@ $('#layer .slide').each(function(i){
 
 });
 var animateQueue = new Array(13);
+animateQueue[0] = [
+    function(elem) {
+        elem.find("img:gt(0):lt(4)").addClass("rotateZ");
+        elem.find(".car1").addClass("run");
+    },
+    function(elem) {
+        elem.find("img:gt(0):lt(4)").removeClass("rotateZ");
+        elem.find(".car1").removeClass("run");
+    }
+];
+
 animateQueue[2] = [
     function(elem) {
-        elem.find("img:gt(0)").css("-webkit-animation", "raise 1s");
+        elem.find("img:gt(0)").css("-webkit-animation", "myscale 0.8s");
     },
     function(elem) {
         elem.find("img:gt(0)").css("-webkit-animation", "");
     }
 ];
 
-animateQueue[7] = [
+animateQueue[5] = [
+    function(elem) {
+        elem.find("img:eq(1)")
+            .css("-webkit-transform", "rotateZ(0deg) scale(0)")
+        setTimeout(function() {
+            elem.find("img:eq(1)")
+                .css("-webkit-transition", "all 1s")
+                .css("-webkit-transform", "rotateZ(720deg) scale(1)");
+        }, 15);
+
+    },
+    function(elem) {
+        elem.find("img:eq(1)")
+            .css("-webkit-transform", "rotateZ(0deg) scale(0)");
+    }
+];
+
+/*animateQueue[7] = [
     function(elem) {
         var leftPoint = [12.2, 6.2, 7.8];
         elem.find("img:gt(0):lt(3)").each(function(index, item) {
@@ -33,11 +61,67 @@ animateQueue[7] = [
         });
         elem.find("img:last-child").removeClass("rotateY");
     }
+];*/
+
+animateQueue[9] = [
+    function(elem) {
+        elem.find("img:eq(1)")
+            .css("-webkit-transform", "rotateZ(0deg)");
+            
+        elem.find("img:eq(2)")
+            .css("-webkit-transform", "rotateZ(360deg)");
+            
+        setTimeout(function() {
+            elem.find("img:eq(1)")
+                .css("-webkit-transition", "all 1s")
+                .css("-webkit-transform", "rotateZ(360deg)");
+
+            elem.find("img:eq(2)")
+                .css("-webkit-transition", "all 1s")
+                .css("-webkit-transform", "rotateZ(0deg)");
+        }, 15);
+
+    },
+    function(elem) {
+        elem.find("img:eq(1)")
+            .css("-webkit-transform", "rotateZ(0deg)");
+        elem.find("img:eq(2)")
+            .css("-webkit-transform", "rotateZ(360deg)");
+    }
+];
+
+/**
+-webkit-transform: rotateX(90deg);
+-webkit-transform-origin: 50% 77.2%;
+*/
+animateQueue[8] = [
+    function(elem) {
+        elem.find("img:eq(1)")
+            .css("-webkit-transform", "rotateX(90deg)")
+        setTimeout(function() {
+            elem.find("img:eq(1)")
+                .css("-webkit-transition", "all 2s")
+                .css("-webkit-transform", "rotateX(0deg)");
+        }, 15);
+
+    },
+    function(elem) {
+        elem.find("img:eq(1)")
+            .css("-webkit-transform", "rotateX(90deg)");
+    }
 ];
 
 animateQueue[10] = [
     function(elem) {
         var scaleEleme;
+        elem.find(".chart2").css({
+            "-webkit-transition": "all 2s"
+        });
+        setTimeout(function() {
+            elem.find(".chart2").css({
+                "clip": "rect(0, 100px, 100px, 0)"
+            });
+        }, 15);
         elem.on("touchend.s10animate", ".scale", function(e) {
             if (scaleEleme) {
                 scaleEleme.style.webkitTransform = "";
@@ -58,6 +142,10 @@ animateQueue[10] = [
     },
     function(elem) {
         elem.off(".s10animate");
+        elem.find(".chart2").css({
+            "clip": "rect(0, 0, 100px, 0)",
+            "-webkit-transition": ""
+        });
     }
 ];
 
@@ -74,10 +162,45 @@ animateQueue[12] = [
 
 animateQueue[13] = [
     function(elem) {
-        elem.find("img:gt(0)").css("-webkit-animation", "myrotate 1.2s 0.5s ease-in-out");       
+               
+        setTimeout(function() {
+            elem.find("img:gt(2)").each(function(index, elem) {
+                $(elem).css({
+                    "-webkit-transition-delay": index * 0.2 + "s",
+                    "opacity": "1"
+                });
+            });
+        }, 15);
+    },
+    function(elem) {   
+        elem.find("img:gt(2)").css({
+            "-webkit-transition-delay": "",
+            "opacity": "0"
+        });       
+    }
+];
+
+animateQueue[14] = [
+    function(elem) {
+        elem.find("img:eq(1)").css("-webkit-transition", "all 8s");       
+        elem.find("img:eq(2)").css("-webkit-transition", "all 5s");       
+        setTimeout(function() {
+            elem.find("img:eq(1)").css({
+                "-webkit-transform": "rotateZ(720deg)",
+                "top": "80%"
+            });
+             elem.find("img:eq(2)").css({
+                "-webkit-transform": "rotateZ(360deg)",
+                "top": "85%"
+            });
+        }, 15);
     },
     function(elem) {
-        elem.find("img:gt(0)").css("-webkit-animation", "");       
+          elem.find("img:lt(1)").css({
+            "-webkit-transition": "",
+            "-webkit-transform": "",
+            "top": ""
+        });
     }
 ];
 
@@ -228,6 +351,7 @@ $(function() {
                 isActive = true;
                 $('body').addClass('animate build');
                 $(this).addClass('active');
+                playSound('woosh', 0);
                 $(this).delay(450).queue(function() {
                     $('body').addClass('revealed');
                     $(this).dequeue();
@@ -237,6 +361,7 @@ $(function() {
             if (event.touches.length == 2 && event.scale < 1 && isActive != true && isSettings == false && pinchOut == false) {
                 if (!$('body').hasClass('out')) {
                     isActive = true;
+                    playSound('woosh2', 0);
                     var slider = $(this);
                     var small = $('#small .slide:eq(' + slider.index() + ')');
 
