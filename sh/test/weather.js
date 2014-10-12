@@ -312,9 +312,7 @@ $(function() {
         location.reload();
     });
 
-    music.play();
-    $('.playMusic').addClass('rotateZ')
-    played= true;
+    
     $('.playMusic').on('touchend',function(e){
         e.stopPropagation();
         if(played){
@@ -328,6 +326,12 @@ $(function() {
         }
     });
 });
+window.onload = function(){
+   var music = $('#backMusic')[0];
+   played= true;
+   $('.playMusic').addClass('rotateZ');
+   music.play(); 
+}
 
 $(function() {
     var xPos, xOrg, xCor;
