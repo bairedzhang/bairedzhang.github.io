@@ -303,7 +303,8 @@ var ScrollFix = function(elem) {
 
 //初始化-webkit-transform
 $(function() {
-    var music = $('#backMusic')[0];
+    var music = $('#backMusic')[0],
+        inited = false;
 
     $(".slide").each(function(index, elem) {
         elem.style.webkitTransform = "rotate3d(0, 1, 0, " + index * 180 + "deg) translate3d(0px, 0px, 284px)";
@@ -311,7 +312,14 @@ $(function() {
     $(window).on('orientationchange', function(){
         location.reload();
     });
-
+    $('body').on('touchend.init',function(){
+        if(!inited){
+            inited= true;
+            music.play();
+            $('.playMusic').addClass('rotateZ');
+            played =true;
+        }
+    })
     
     $('.playMusic').on('touchend',function(e){
         e.stopPropagation();
@@ -321,14 +329,11 @@ $(function() {
             $('.playMusic').removeClass('rotateZ')
         }else{
             music.play();
-            $('.playMusic').addClass('rotateZ')
+            $('.playMusic').addClass('rotateZ');
             played= true;
         }
     });
 });
-window.onload = function(){
-   $('.playMusic').eq(0).trigger('touchend');
-}
 
 $(function() {
     var xPos, xOrg, xCor;
