@@ -123,26 +123,31 @@ svg {
         left: 66.2%;
         top: 24.7%;
         transform: scale(0.8);
+        -webkit-transform: scale(0.8);
     }
     30% {
         left: 63.1%;
         top: 47%;
         transform: scale(1.4);
+        -webkit-transform: scale(1.4);
     }
     50% {
         top: 56.2%;
         left: 57.5%;
         transform: rotateZ(56deg) scale(1.4);
+        -webkit-transform: rotateZ(56deg) scale(1.4);
     }
     80% {
         left: 45.8%;
         top: 62.2%;
         transform: rotateZ(56deg) scale(1);
+        -webkit-transform: rotateZ(56deg) scale(1);
     }
     100% {
         left: 45.8%;
         top: 62.2%;
         transform: rotateZ(56deg) scale(1);
+        -webkit-transform: rotateZ(56deg) scale(1);
     }
 }
 

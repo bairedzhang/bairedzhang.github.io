@@ -196,7 +196,7 @@ animateQueue[14] = [
         }, 15);
     },
     function(elem) {
-          elem.find("img:lt(1)").css({
+          elem.find("img:gt(0)").css({
             "-webkit-transition": "",
             "-webkit-transform": "",
             "top": ""
@@ -401,6 +401,13 @@ $(function() {
                     }
                     lastSlideNum = active - 2;
                 }
+                if (lastSlideNum < 0) {
+                    lastSlideNum += 15;
+                }
+                if (lastSlideNum === 15) {
+                    lastSlideNum = 0;
+                }
+
                 $('#layer .slide').each(function(i) {
                     if (i > active || i < active - 2) {
                         $(this).hide();
@@ -415,10 +422,8 @@ $(function() {
                 var currentSlideNum = active - 1,
                     currentSlide = $("#s" + lastSlideNum);
 
-                if (active !== 1) {
-                    if (animateQueue[lastSlideNum] && animateQueue[lastSlideNum][1]) {
-                        animateQueue[lastSlideNum][1].call(currentSlide, currentSlide);
-                    }
+                if (animateQueue[lastSlideNum] && animateQueue[lastSlideNum][1]) {
+                    animateQueue[lastSlideNum][1].call(currentSlide, currentSlide);
                 }
 
                 currentSlide = $("#s" + currentSlideNum);
