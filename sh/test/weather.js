@@ -309,9 +309,9 @@ $(function() {
         elem.style.webkitTransform = "rotate3d(0, 1, 0, " + index * 180 + "deg) translate3d(0px, 0px, 284px)";
     });
     $(window).on('orientationchange', function(){
-        alert(111);
+        location.reload();
     });
-    
+
     music.play();
     $('.playMusic').addClass('rotateZ')
     played= true;
