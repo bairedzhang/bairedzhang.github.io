@@ -28,20 +28,45 @@ animateQueue[2] = [
     }
 ];
 
+
+animateQueue[4] = [
+    function(elem) {
+        elem.removeClass("anmi");
+    },
+    function(elem) {
+        elem.addClass("anmi");
+    }
+];
+
 animateQueue[5] = [
     function(elem) {
         elem.find("img:eq(1)")
-            .css("-webkit-transform", "rotateZ(0deg) scale(0)")
+            .css("-webkit-transform", "translate(-30%, -20%)")
+            .css("opacity", "0");
+        elem.find("img:eq(2)")
+            .css("-webkit-transform", "translate(-30%, 20%)")
+            .css("opacity", "0");
+        elem.find("img:eq(3)")
+            .css("-webkit-transform", "translate(30%, -20%)")
+            .css("opacity", "0");
         setTimeout(function() {
-            elem.find("img:eq(1)")
+            elem.find("img:gt(0)")
                 .css("-webkit-transition", "all 1s")
-                .css("-webkit-transform", "rotateZ(720deg) scale(1)");
+                .css("opacity", "1")
+                .css("-webkit-transform", "translate(0%, 0%)");
         }, 15);
 
     },
     function(elem) {
         elem.find("img:eq(1)")
-            .css("-webkit-transform", "rotateZ(0deg) scale(0)");
+            .css("opacity", "1")
+            .css("-webkit-transform", "translate(-30%, -20%)");
+        elem.find("img:eq(2)")
+            .css("opacity", "1")
+            .css("-webkit-transform", "translate(-30%, 20%)");
+        elem.find("img:eq(3)")
+            .css("opacity", "1")
+            .css("-webkit-transform", "translate(30%, -20%)");
     }
 ];
 
@@ -309,9 +334,7 @@ $(function() {
     $(".slide").each(function(index, elem) {
         elem.style.webkitTransform = "rotate3d(0, 1, 0, " + index * 180 + "deg) translate3d(0px, 0px, 284px)";
     });
-    $(window).on('orientationchange', function(){
-        location.reload();
-    });
+    $(window).on('orientationchange', transform);
     $('body').on('touchend.init',function(){
         if(!inited){
             inited= true;

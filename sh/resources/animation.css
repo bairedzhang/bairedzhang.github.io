@@ -93,23 +93,23 @@ svg {
 }
 #s0 img:nth-child(2) {
     width: 3.4%;
-    top: 12.8%;
-    left: 68%;
-    -webkit-transform-origin: 63% 55%;
+    top: 12.9%;
+    left: 68.1%;
+    -webkit-transform-origin: 64.1025% 53.7%;
 }
 
 #s0 img:nth-child(3) {
     width: 3.7%;
-    top: 11.6%;
-    left: 70.4%;
-    -webkit-transform-origin: 59% 51%;
+    top: 11.88888%;
+    left: 70.6%;
+    -webkit-transform-origin: 56.14285% 52.22222%;
 }
 
 #s0 img:nth-child(4) {
     width: 2.6%;
     top: 17.8%;
-    left: 71.7%;
-    -webkit-transform-origin: 63.3% 50%;
+    left: 71.65%;
+    -webkit-transform-origin: 66.66666% 52.941%;
 }
 
 #s0 img:nth-child(5) {
@@ -189,7 +189,7 @@ svg {
 #s2 img:nth-child(7) {
     width: 9.24295%;
     left: 37.6%;
-    top: 50.9%;
+    top: 49.9%;
 }
 
 #s2 img:nth-child(8) {
@@ -200,8 +200,8 @@ svg {
 
 #s2 img:nth-child(9) {
     width: 9.941901%;
-    left: 40.5%;
-    top: 68.4%;
+    left: 45.3%;
+    top: 67.4%;
 }
 
 #s2 img:nth-child(10) {
@@ -215,22 +215,84 @@ svg {
 }
 
 #s4 img:nth-child(2){
-    width: 12.6%;
+    left: 22.2%;
+    top: 34.8%;
+    width: 13.6%;
+    z-index: 9999;
 }
+#s4 img:nth-child(n+1) {
+     -webkit-transition: all 1s;
+}
+
+#s4.anmi img:nth-child(2) {
+    -webkit-transform: scale(0.3);
+    top: 10%;
+    left: 34%;
+}
+#s4.anmi img:nth-child(3) {
+    -webkit-transform: scale(0.3);
+    top: 27.3%;
+    left: 39.4%;
+}
+#s4.anmi img:nth-child(4) {
+    -webkit-transform: scale(0.23);
+    top: 22.9%;
+    left: 46%;
+}
+#s4.anmi img:nth-child(5) {
+    -webkit-transform: scale(0.35);
+    top: 17.4%;
+    left: 48%;
+}
+#s4.anmi img:nth-child(6) {
+    -webkit-transform: scale(0.23);
+    top: 28.6%;
+    left: 58.4%;
+}
+#s4.anmi img:nth-child(7) {
+    -webkit-transform: scale(0.3);
+    top: 14.5%;
+    left: 56.9%;
+}
+#s4.anmi img:nth-child(8) {
+    opacity: 0;
+    -webkit-transition: all 0s;
+}
+
+#s4 img:nth-child(8) {
+    -webkit-transition: all 1s 1s;
+    opacity: 1;
+}
+
 #s4 img:nth-child(3){
-    width: 11.4%;
+    width: 13%;
+    left: 26.4%;
+    top: 63.4%;
+    z-index: 9999;
 }
 #s4 img:nth-child(4){
-    width: 15.1%;
+    width: 15.8%;
+    left: 42.6%;
+    top: 67.5%;
+    z-index: 9999;
 }
 #s4 img:nth-child(5){
-    width: 9.7%;
+    left: 53.3%;
+    top: 45.6%;
+    width: 10.5%;
+    z-index: 9999;
 }
 #s4 img:nth-child(6){
-    width: 12.2%;
+    width: 15.7%;
+    top: 66.5%;
+    left: 67.1%;
+    z-index: 9999;
 }
 #s4 img:nth-child(7){
-    width: 14.8%;
+    left: 74.1%;
+    top: 34.8%;
+    width: 13.6%;
+    z-index: 9999;
 }
 
 #s7 img:nth-child(n+2) {
