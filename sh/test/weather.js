@@ -397,33 +397,6 @@ $(function() {
                 $('#layer').css('-webkit-transform', 'translate3d(0px, 0px, -' + width / 2 + 'px) rotate3d(0, 1, 0, ' + (degree - xCor) + 'deg)');
                 e.preventDefault();
             }
-            // Pinch in
-            if (event.touches.length == 2 && event.scale > 1 && isActive != true && isSettings == false && pinchOut == false) {
-                isActive = true;
-                $('body').addClass('animate build');
-                $(this).addClass('active');
-                playSound('woosh', 0);
-                $(this).delay(450).queue(function() {
-                    $('body').addClass('revealed');
-                    $(this).dequeue();
-                });
-            }
-            // Pinch out
-            if (event.touches.length == 2 && event.scale < 1 && isActive != true && isSettings == false && pinchOut == false) {
-                if (!$('body').hasClass('out')) {
-                    isActive = true;
-                    playSound('woosh2', 0);
-                    var slider = $(this);
-                    var small = $('#small .slide:eq(' + slider.index() + ')');
-
-                    $('body').addClass('out');
-                    small.siblings().addClass('non');
-                    small.addClass('active').delay(850).queue(function() {
-                        $(this).removeClass('active');
-                        $(this).dequeue();
-                    });
-                }
-            }
         }
     ).on('touchend', '.slide',
         function(e) {
