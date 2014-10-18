@@ -89,7 +89,7 @@ animateQueue[5] = [
     }
 ];*/
 
-animateQueue[9] = [
+animateQueue[8] = [
     function(elem) {
         elem.find("img:eq(1)")
             .css("-webkit-transform", "rotateZ(0deg)");
@@ -120,7 +120,7 @@ animateQueue[9] = [
 -webkit-transform: rotateX(90deg);
 -webkit-transform-origin: 50% 77.2%;
 */
-animateQueue[8] = [
+animateQueue[7] = [
     function(elem) {
         elem.find("img:eq(1)")
             .css("-webkit-transform", "rotateX(90deg)")
@@ -137,7 +137,7 @@ animateQueue[8] = [
     }
 ];
 
-animateQueue[10] = [
+animateQueue[9] = [
     function(elem) {
         var scaleEleme;
         elem.find(".chart2").css({
@@ -372,6 +372,7 @@ $(function() {
 
     var slide, isSettings = false,
         pinchOut = false;
+    
     $('body').on('touchstart', '.slide',
         function(e) {
             e.preventDefault();
@@ -397,6 +398,7 @@ $(function() {
                 $('#layer').css('-webkit-transform', 'translate3d(0px, 0px, -' + width / 2 + 'px) rotate3d(0, 1, 0, ' + (degree - xCor) + 'deg)');
                 e.preventDefault();
             }
+            
         }
     ).on('touchend', '.slide',
         function(e) {
@@ -462,4 +464,20 @@ $(function() {
                 });
             }
         });
+    
+    $("#dialogLayer").on("touchend", ".close", function(e) {
+        $("#dialogLayer").hide();
+        e.stopImmediatePropagation();
+    });
+
+    document.body.addEventListener('touchend', function(e) {
+        var offset = document.querySelector("#s" + (active - 1) + " img").getBoundingClientRect();
+        var left = (e.changedTouches[0].clientX - offset.left) / width, top = (e.changedTouches[0].clientY - offset.top)/ offset.height;
+        if (active != 1 & left > 0.03 && left < 0.285 && top > 0.02 && top < 0.14) {
+            $("#dialogLayer .dialog").hide();
+            $('#dialog'+(active-1)).show();
+            $('#dialogLayer').show();
+            e.stopPropagation();
+        } 
+    }, true);
 });

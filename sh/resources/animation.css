@@ -295,48 +295,48 @@ svg {
     z-index: 9999;
 }
 
-#s7 img:nth-child(n+2) {
+#s11 img:nth-child(n+2) {
     position: absolute;
 }
 
-#s7 img:nth-child(2) {
+#s11 img:nth-child(2) {
     /* left: 12.2%; */
     left: -29.84154%;
     top: 17%;
     width: 29.84154%;
 }
 
-#s7 img:nth-child(3) {
+#s11 img:nth-child(3) {
     top: 39.7%;
     left: -28.25704%;
     /* left: 6.2%; */
     width: 28.25704%;
 }
 
-#s7 img:nth-child(4) {
+#s11 img:nth-child(4) {
     top: 68.4%;
     /* left: 7.8%; */
     left: -29.13732%;
     width: 29.13732%;
 }
 
-#s7 img:nth-child(5) {
+#s11 img:nth-child(5) {
     top: 7.4%;
     left: 76.6%;
     width: 7.5%;
 }
-#s8 img:nth-child(2) {
+#s7 img:nth-child(2) {
     -webkit-transform-origin: 50% 77.2%;
 }
 
-#s9 img:nth-child(2),
-#s9 img:nth-child(3) {
+#s8 img:nth-child(2),
+#s8 img:nth-child(3) {
     top: 0;
     left: 0;
     -webkit-transform-origin: 48.8% 53.5%;
 }
 
-#s10 .chart1 {
+#s9 .chart1 {
     -webkit-transition: all 1s;
     transition: all 1s;
     position: absolute;
@@ -347,14 +347,14 @@ svg {
     -webkit-border-radius: 15%;
     background: -webkit-linear-gradient(-45deg, #ebeded 0%, #fefefe 100%);
 }
-#s10 .chart1 img {
+#s9 .chart1 img {
     width: 63.11764%;
     position: absolute;
     left: 23.5157%;
-    top: 23%;
+    top: 23%;s
 }
 
-#s10 .chart2 {
+#s9 .chart2 {
     position: absolute;
     width: 6.7%;
     top: 20.3%;
@@ -405,4 +405,53 @@ svg {
     left: 90%;
     top: 20%;
     width: 2%;
+}
+#dialogLayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.dialog {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    margin: 5% 10% 15%;
+    padding: 0em 0.75em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    overflow: auto;
+}
+.dialog dl dt,
+.dialog dl dd {
+    padding: 0;
+    margin: 0;
+}  
+
+.dialog dl dt {
+    background: #00c35a;
+    color: #fff;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    margin: 0.5em 0;
+}
+
+.dialog dl dd {
+    text-indent: 0.25em;
+    color: #444444;
+}
+
+.dialog .close {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    width: 4%;
+}
+@media all and (orientation : portrait){
+    .dialog .close {
+        top: 3%;
+    }
 }
